@@ -1,0 +1,13 @@
+name: importadosdash
+title:
+username:
+account: vinicius-maia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2729006
+bundleId: 3772066
+url: https://vinicius-maia.shinyapps.io/importadosdash/
+when: 1603398548.29514
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _server-backup.R

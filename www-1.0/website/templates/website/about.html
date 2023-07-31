@@ -1,0 +1,392 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<div class="page-first-block containers">
+	<div class="col-md-12">
+		<h1>{% trans "Sobre o projeto" %}</h1>
+		<div class="about-page-container about-first-container">
+			<div class="col-md-6 double-column text-about-justify">
+				<p>
+					{% trans "A Plataforma" %} <b>SaMI</b>
+					{% trans "é uma plataforma de suporte à decisão para criação de políticas públicas de saúde voltada à saúde materno e infantil. Ela aplica inteligência artificial sobre dados públicos para entender com mais profundidade os fatores de mortalidade de crianças com até 28 dias de nascimento, a chamada mortalidade neonatal." %}
+				</p>
+				<p>
+					{% trans "O projeto é desenvolvido por pesquisadores do" %} <b>Instituto Federal de São
+						Paulo</b>{% trans " e da" %}
+					<b>{% trans "UNICAMP" %}</b>,
+					{% trans "e conta com financiamento da Gates Foundation, CNPq e Ministério da Saúde. Foi vencedor do desafio Grand Challenges Explorations - Brazil, da Fundação Bill & Melinda Gates." %}
+				</p>
+			</div>
+			<div class="col-md-6 double-column text-about-justify">
+				<p>
+					{% trans "No que diz respeito à mortalidade de crianças, é preciso destacar que quase metade das mortes do mundo ocorre entre crianças menores de cinco anos, e o primeiro mês de vida é quando a criança está mais vulnerável: três a cada quatro mortes infantis ocorrem nesse período." %}
+				</p>
+				<p>
+					{% trans "A sobrevivência depende tanto do organismo de cada criança quanto do estado socioeconômico da família e de políticas públicas. Baseado em estudos recentes, podemos afirmar que a maior parte das mortes neonatais poderia ser prevenida por melhores condições dos sistemas de saúde, uma vez que entre 1999 e 2013," %}
+					<b>{% trans "sete a cada dez mortes" %}</b>{% trans " de recém-nascidos ocorreram por causas evitáveis." %}
+				</p>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="sami-main-wrapper">
+	<div class="sami-wrapper-white sami-wrapper">
+		<div class="no-card-section about-page-container center-container">
+			<h4 class="section-title">{% trans "A Mortalidade Neonatal" %}</h4>
+			<div class="multi-column-wrapper">
+				<div class="col-md-12">
+					<img src="{% static 'website/img/new/about_map_1.png' %}" style="width: 100%;" alt="Mapa 1" />
+					<div class="legend">{% trans "Fonte: data.worldbank.org" %}</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper">
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "Como mostra a figura acima, mesmo tendo havido forte redução nas últimas décadas, a mortalidade neonatal no Brasil ainda é mais alta do que em diversos países." %}
+					</p>
+					<p>
+						{% trans "Estamos abaixo da média mundial e levemente abaixo da média da América Latina, mas não tivemos a rápida redução observada na China nas últimas décadas, por exemplo. Até 2005, a taxa de mortalidade neonatal no gigante asiático era maior que no Brasil. Hoje, ela quase se equipara ao nível observado na União Europeia." %}
+					</p>
+				</div>
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "Isso é especialmente mais grave nas regiões mais pobres do Brasil. O principal destaque são as regiões Norte e Nordeste, mas também morrem muitas crianças no primeiro mês de vida em bolsões de pobreza de outras regiões. Embora Santa Catarina tenha o menor índice de mortalidade neonatal precoce do país, com 4.82 crianças morrendo em sua primeira semana de vida a cada mil nascidas vivas, sua microrregião de Campos de Lages, na divisa com Rio Grande do Sul, tem índice de 7.35 - comparável a algo entre Pernambuco e Alagoas, no Nordeste, como pode ser observado nas figuras abaixo." %}
+					</p>
+				</div>
+			</div>
+			<div class="multi-column-wrapper">
+				<div class="col-md-6">
+					<img src="{% static 'website/img/new/about_map_2.png' %}" alt="Mapa 3" style="width: 100%;" />
+					<div class="legend">{% trans "Visualização: SaMI" %}</div>
+				</div>
+				<div class="col-md-6">
+					<img src="{% static 'website/img/new/about_map_3.png' %}" alt="Mapa 2" style="width: 100%;" />
+					<div class="legend">{% trans "Visualização: SaMI" %}</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sami-wrapper-grey sami-wrapper">
+		<div class="about-page-container center-container">
+			<h4 class="section-title">{% trans "Três eixos fundamentais" %}</h4>
+			<div class="multi-column-wrapper">
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "Para acelerar o combate ao problema, é preciso identificar os fatores específicos que mais influem na	mortalidade infantil nas diferentes latitudes. Num país do tamanho do Brasil, soluções" %}
+					</p>
+				</div>
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "homogêneas ajudaram até agora, mas os componentes específicos regionais podem gerar recomendações mais específicas. É por isso que o projeto SaMI tem" %}
+						<b>{% trans "três eixos fundamentais" %}:</b>
+					</p>
+				</div>
+			</div>
+			<div class="multi-column-wrapper">
+				<div class="col-md-4">
+					<div class="fundamentals-points">
+						<img src="{% static 'website/img/new/mortalidade-neonatal-il.png' %}" />
+						<label>{% trans "Classificação Quanto ao Risco de Morte Neonatal" %}</label>
+						<div>{% trans "para recém-nascidos, com base em informações do bebê e da mãe." %}
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fundamentals-points">
+						<img src="{% static 'website/img/new/big-data-il.png' %}" />
+						<label>{% trans "Visualizações Interativas e Exploratórias" %}</label>
+						<div>{% trans "dentro da plataforma." %}</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="fundamentals-points">
+						<img src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+						<div>{% trans "Ferramenta para" %}</div>
+						<label>{% trans " Simular as Taxas de Mortalidade Neonatal Futuras" %}</label>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper">
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "O poder público gera informações brutas em grande quantidade, que podem colaborar para o entendimento do fenômeno. Neste projeto criou-se uma base de dados com aproximadamente 40 milhões de registros oriundos do Sistema de Informação sobre Nascidos Vivos (Sinasc) e do Sistema de Informações de Mortalidade (SIM)." %}
+					</p>
+					<p>
+						{% trans "Uma massa de dados tão grande e tão detalhada dificilmente poderia ser analisada por análises tabulares, ou mesmo por métodos como regressões lineares simples. É aí que entram as técnicas de Aprendizado de Máquina, uma sub-área do campo da Inteligência Artificial. Ela permite identificar, a partir unicamente de uma análise de todo o volume de dados, de fatores que podem passar despercebidos por até mesmo para demógrafos e profissionais de saúde pública altamente qualificados." %}
+					</p>
+				</div>
+				<div class="col-md-6 text-about-justify">
+					<p>
+						{% trans "A partir de diferentes fontes de dados, a plataforma SaMI disponibiliza diferentes formas de visualização que permitem avaliar, correlacionar e compreender as diferentes variáveis envolvidas na mortalidade neonatal nas diferentes regiões de um país de dimensões continentais como o Brasil, com todas as suas desigualdades. Com isso, é possível estabelecer processos contínuos de monitoramento da eficácia de políticas públicas locais." %}
+					</p>
+					<p>
+						{% trans "Disponibilizamos também dois serviços, construídos a partir de métodos de Aprendizado de Máquina importantes para a redução da mortalidade neonatal: (1) o primeiro trata-se de um modelo para classificar recém-nascidos quanto as suas chances de sobrevivência nos primeiros 28 dias de vida, o que poderia ajudar profissionais de saúde em suas decisões em diferentes casos de risco que envolvam a criança logo após seu nascimento; (2) o segundo trata-se de um modelo de predição para a taxa de mortalidade neonatal em diferentes regiões de saúde do país, o que pode ajudar gestores a planejar com antecedência ações para reduzir taxas de mortalidade que apresentam tendência de crescimento." %}
+					</p>
+				</div>
+			</div>
+			<div class="multi-column-wrapper">
+				<div class="col-md-4">
+					<a href="{% url 'website:datavisualization' %}">
+						<button class="primary-button">{% trans "Ver Visualizações" %}</button>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="{% url 'website:predictions' %}">
+						<button class="primary-button">{% trans "Ver Modelos" %}</button>
+					</a>
+				</div>
+				<div class="col-md-4">
+					<a href="{% url 'website:discoveries' %}">
+						<button class="primary-button">{% trans "Ver Publicações" %}</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="sami-wrapper-white sami-wrapper">
+		<div class="about-page-container center-container">
+			<h4 class="section-title">{% trans "Conheça nosso time" %}</h4>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/tiago.png' %}" />
+						<label class="team-member-name">Tiago Carvalho</label>
+						<label class="team-member-contact">tiagojc@synapse.org</label>
+						<label class="team-member-job">{% trans "Professor Associado" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/Luciana_alves.png' %}" />
+							<label class="team-member-name">Luciana Alves</label>
+							<label class="team-member-contact">lcalves@synapse.org</label>
+							<label class="team-member-job">{% trans "Professor Associado" %}</label>
+							<label
+								class="team-member-institute">{% trans "Departamento de Demografia na Universidade Unicamp (Unicamp)" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/carlos.jpg' %}" />
+							<label class="team-member-name">Carlos Eduardo Beluzo</label>
+							<label class="team-member-contact">cbeluzo@synapse.org</label>
+							<label class="team-member-job">{% trans "Professor Associado" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/samuel.jpg' %}" />
+						<label class="team-member-name">Samuel Martins</label>
+						<label class="team-member-contact">hisamuka@synapse.org</label>
+						<label class="team-member-job">{% trans "Professor Associado" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/everton.jpg' %}" />
+							<label class="team-member-name">Everton Silva</label>
+							<label class="team-member-contact">evertonjsilva@synapse.org</label>
+							<label class="team-member-job">{% trans "Professor Associado" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/Adriano_Souza.jpg' %}" />
+							<label class="team-member-name">Adriano Souza</label>
+							<label class="team-member-contact">silva.souza.adriano@synapse.org</label>
+							<label class="team-member-job">{% trans "Desenvolvedor Full stack" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/bresan.jpeg' %}" />
+						<label class="team-member-name">Rodrigo Bresan</label>
+						<label class="team-member-contact">bresan@synapse.org</label>
+						<label class="team-member-job">{% trans "Pesquisador Assistente e Cientista de Dados" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/natalia.jpg' %}" />
+							<label class="team-member-name">Natália Arruda</label>
+							<label class="team-member-contact">ArrudaNatalia@synapse.org</label>
+							<label class="team-member-job">{% trans "Pesquisador Assistente e Cientista de Dados" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/sovat.png' %}" />
+							<label class="team-member-name">Ricardo Barz Sovat</label>
+							<label class="team-member-contact">sovat@synapse.org</label>
+							<label class="team-member-job">{% trans "Professor" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/lavinia.jpeg' %}" />
+						<label class="team-member-name">Lavínia Pedrosa</label>
+						<label class="team-member-contact">laviniapedrosa@synapse.org</label>
+						<label class="team-member-job">{% trans "Estudante de Pequisa Científica" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/Vinicius_Torrezin.jpg' %}" />
+							<label class="team-member-name">Vinicius Eduardo Torrezin</label>
+							<label class="team-member-contact">torrezin@synapse.org</label>
+							<label class="team-member-job">{% trans "Estudante" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/caio_mota.png' %}" />
+							<label class="team-member-name">Caio Mota</label>
+							<label class="team-member-contact">CaioMota@synapse.org</label>
+							<label class="team-member-job">{% trans "Estudante" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/lucas.jpg' %}" />
+						<label class="team-member-name">Lucas Pimentel</label>
+						<label class="team-member-contact">lucasrdrgs@synapse.org</label>
+						<label class="team-member-job">{% trans "Estudante de Pequisa Científica" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/pedro_costa.jpeg' %}" />
+							<label class="team-member-name">Pedro Costa</label>
+							<label class="team-member-contact">p175751@dac.unicamp.br</label>
+							<label class="team-member-job">{% trans "Estudante" %}</label>
+							<label class="team-member-institute">{% trans "Unicamp" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/Ana Chebel.png' %}" />
+							<label class="team-member-name">Ana Carolina Chebel Pelissari</label>
+							<label class="team-member-contact">anacchebel@synapse.org</label>
+							<label class="team-member-job">{% trans "Estudante" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="multi-column-wrapper team-member-wrapper">
+				<div class="col-md-4">
+					<div class="team-member">
+						<img class="team-member-photo" src="{% static 'website/img/new/team/leo_rocco.jpg' %}" />
+						<label class="team-member-name">Leonardo Rocco</label>
+						<label class="team-member-contact">leeo.rocco@synapse.org</label>
+						<label class="team-member-job">{% trans "Analista de Sistemas" %}</label>
+						<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/matheus_liberato.jpg' %}" />
+							<label class="team-member-name">Matheus Liberato</label>
+							<label class="team-member-contact">mliberato@synapse.org</label>
+							<label class="team-member-job">{% trans "Engenheiro Cloud DevOps" %}</label>
+							<label class="team-member-institute">{% trans "Instituto Federal de São Paulo" %}</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="team-member">
+						<div class="team-member">
+							<img class="team-member-photo" src="{% static 'website/img/new/team/catia.jpg' %}" />
+							<label class="team-member-name">Catia Sepetauskas</label>
+							<label class="team-member-contact">mliberato@synapse.org</label>
+							<label class="team-member-job">{% trans "Cientista de Dados" %}</label>
+							<label class="team-member-institute"></label>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="sami-footer">
+	<div class="footer-wrapper">
+		<div class="col-md-4 sami-logo">
+			<a href="{% url 'website:home' %}">
+				<img src="{% static 'website/img/new/Logotipo_SaMI.png' %}" />
+			</a>
+		</div>
+		<div class="col-md-4 contact">
+			<h2>{% trans "contato" %}</h2>
+			<div class="doubts"><a>{% trans "Ficou com alguma dúvida?" %}</a></div>
+			<div class="doubts"><a>{% trans "Quer mais visualizações?" %}</a></div>
+			<div class="email"><a>contatoplataformasami@gmail.com</a></div>
+		</div>
+		<div class="col-md-4 address">
+			<h2>{% trans "endereços" %}</h2>
+			<div><span class="uni-name">IFSP</span>
+				{% trans "R. Heitor Lacerda Guedes, 1000 - Cidade Satélite Íris, Campinas - SP, 13059-581" %}
+			</div>
+			<div><span class="uni-name">UNICAMP</span>
+				{% trans "Cidade Universitária Zeferino Vaz, Barão Geraldo, Campinas - SP, 13083-970" %}</div>
+		</div>
+	</div>
+</div>
+
+<script>
+	let navLiAhref = document.getElementById("about");
+	navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+
+
+{% endblock %}

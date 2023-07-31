@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} {% endblock %}</title>
+    <style>
+        .message {
+            padding: 1px;
+            margin: 5px;
+            background-color: #f3f3f3
+        }
+        nav a {
+            color: #d64161;
+            font-size: 1em;
+            margin-left: 50px;
+            text-decoration: none;
+        }
+
+        .alert {
+            padding: 20px;
+            margin: 5px;
+            color: #970020;
+            background-color: #ffd5de;
+        }
+
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Sobre</a>
+        <a href="{{ url_for('classifier') }}">Simular</a>
+        <a href="">Dados</a>
+        <a href="">Modelo</a>
+        <a href="">Código</a>
+    </nav>
+    <hr>
+    <div class="content">
+        {% block content %} {% endblock %}
+    </div>
+</body>
+</html>
+

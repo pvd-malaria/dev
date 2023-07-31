@@ -1,0 +1,37 @@
+---
+title: "Steps in Forecasting"
+author: "Vinícius de Souza Maia"
+date: "25/06/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Definição do problema
+
+Nosso objetivo é prever a quantidade de casos de malária na Amazônia Legal em várias unidades de agregação para pelo menos 3 cenários distintos:
+
+- as estimativas devem ser mais precisas que modelos atualmente em produção
+- nowcasting de casos considerando o atraso no processamento de notificações
+- previsões para o próximo mês, trimestre, semestre e ano, com finalidade de planejamento
+- os modelos devem funcionar de formar automatizada e pedir pouco input dos técnicos
+- as saídas dos modelos devem ser visíveis para os técnicos de forma simples e clara
+
+## Recolhendo informação
+
+Devido a natureza desestruturada do gov. atual, conseguindo reunir as informações estatísticas do SIVEP ao longo do período do projeto, mas não conseguimos contato com os potenciais usuários das previsões. Isso nos força a tomar algumas decisões e tentar antecipar o uso que os técnicos farão das informações.
+
+## Análise preliminar exploratória
+
+Produção de diversos gráficos que exploram padrões nos dados, como tendências, sazonalidade, ciclos, outliers, correlações. Esta é a fase na qual me encontro atualmente. Apesar de já estar trabalhando com o SIVEP à cerca de um ano, acredito que as informações no formato de série temporal necessitarão de um novo ciclo de exploração.
+
+## Escolha e ajuste de modelos
+
+Aqui, será necessário fazer uma série de testes envolvendo diversos modelos, desde regressões comuns, suavização exponencial, Box-Jenkins ARIMA, regressões dinâmicas, previsão hierárquica e modelos avançados usando redes neurais e autoregressão em vetores.
+
+## Uso e avaliação de modelos
+
+O último passo é a aplicação dos modelos e o verdadeiro teste da sua precisão só é possível após o período previsto. Podemos tentar deixar engatilhados alguns testes de validação das previsões, que permitam aos usuários dos dados ajustá-las no futuro. Também é preciso pensar em questões organizacionais relacionadas ao uso de previsões, mas como o uso do SIVEP já é bem estabelecido, talvez esse seja um problema secundário aqui. Também é preciso pensar em questões práticas, como outliers e missing values e séries curtas, o que pretendo aprender lendo o livro.
+

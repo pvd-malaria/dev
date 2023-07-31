@@ -1,0 +1,809 @@
+coduf_2019_g0;ufname_2019_g0;cod7_2019_g0;name_2019_g0;cod6_2019_g0
+11;Rondônia;1100015;Alta Floresta D'Oeste;110001
+11;Rondônia;1100023;Ariquemes;110002
+11;Rondônia;1100031;Cabixi;110003
+11;Rondônia;1100049;Cacoal;110004
+11;Rondônia;1100056;Cerejeiras;110005
+11;Rondônia;1100064;Colorado do Oeste;110006
+11;Rondônia;1100072;Corumbiara;110007
+11;Rondônia;1100080;Costa Marques;110008
+11;Rondônia;1100098;Espigão D'Oeste;110009
+11;Rondônia;1100106;Guajará-Mirim;110010
+11;Rondônia;1100114;Jaru;110011
+11;Rondônia;1100122;Ji-Paraná;110012
+11;Rondônia;1100130;Machadinho D'Oeste;110013
+11;Rondônia;1100148;Nova Brasilândia D'Oeste;110014
+11;Rondônia;1100155;Ouro Preto do Oeste;110015
+11;Rondônia;1100189;Pimenta Bueno;110018
+11;Rondônia;1100205;Porto Velho;110020
+11;Rondônia;1100254;Presidente Médici;110025
+11;Rondônia;1100262;Rio Crespo;110026
+11;Rondônia;1100288;Rolim de Moura;110028
+11;Rondônia;1100296;Santa Luzia D'Oeste;110029
+11;Rondônia;1100304;Vilhena;110030
+11;Rondônia;1100320;São Miguel do Guaporé;110032
+11;Rondônia;1100338;Nova Mamoré;110033
+11;Rondônia;1100346;Alvorada D'Oeste;110034
+11;Rondônia;1100379;Alto Alegre dos Parecis;110037
+11;Rondônia;1100403;Alto Paraíso;110040
+11;Rondônia;1100452;Buritis;110045
+11;Rondônia;1100502;Novo Horizonte do Oeste;110050
+11;Rondônia;1100601;Cacaulândia;110060
+11;Rondônia;1100700;Campo Novo de Rondônia;110070
+11;Rondônia;1100809;Candeias do Jamari;110080
+11;Rondônia;1100908;Castanheiras;110090
+11;Rondônia;1100924;Chupinguaia;110092
+11;Rondônia;1100940;Cujubim;110094
+11;Rondônia;1101005;Governador Jorge Teixeira;110100
+11;Rondônia;1101104;Itapuã do Oeste;110110
+11;Rondônia;1101203;Ministro Andreazza;110120
+11;Rondônia;1101302;Mirante da Serra;110130
+11;Rondônia;1101401;Monte Negro;110140
+11;Rondônia;1101435;Nova União;110143
+11;Rondônia;1101450;Parecis;110145
+11;Rondônia;1101468;Pimenteiras do Oeste;110146
+11;Rondônia;1101476;Primavera de Rondônia;110147
+11;Rondônia;1101484;São Felipe D'Oeste;110148
+11;Rondônia;1101492;São Francisco do Guaporé;110149
+11;Rondônia;1101500;Seringueiras;110150
+11;Rondônia;1101559;Teixeirópolis;110155
+11;Rondônia;1101609;Theobroma;110160
+11;Rondônia;1101708;Urupá;110170
+11;Rondônia;1101757;Vale do Anari;110175
+11;Rondônia;1101807;Vale do Paraíso;110180
+12;Acre;1200013;Acrelândia;120001
+12;Acre;1200054;Assis Brasil;120005
+12;Acre;1200104;Brasiléia;120010
+12;Acre;1200138;Bujari;120013
+12;Acre;1200179;Capixaba;120017
+12;Acre;1200203;Cruzeiro do Sul;120020
+12;Acre;1200252;Epitaciolândia;120025
+12;Acre;1200302;Feijó;120030
+12;Acre;1200328;Jordão;120032
+12;Acre;1200336;Mâncio Lima;120033
+12;Acre;1200344;Manoel Urbano;120034
+12;Acre;1200351;Marechal Thaumaturgo;120035
+12;Acre;1200385;Plácido de Castro;120038
+12;Acre;1200393;Porto Walter;120039
+12;Acre;1200401;Rio Branco;120040
+12;Acre;1200427;Rodrigues Alves;120042
+12;Acre;1200435;Santa Rosa do Purus;120043
+12;Acre;1200450;Senador Guiomard;120045
+12;Acre;1200500;Sena Madureira;120050
+12;Acre;1200609;Tarauacá;120060
+12;Acre;1200708;Xapuri;120070
+12;Acre;1200807;Porto Acre;120080
+13;Amazonas;1300029;Alvarães;130002
+13;Amazonas;1300060;Amaturá;130006
+13;Amazonas;1300086;Anamã;130008
+13;Amazonas;1300102;Anori;130010
+13;Amazonas;1300144;Apuí;130014
+13;Amazonas;1300201;Atalaia do Norte;130020
+13;Amazonas;1300300;Autazes;130030
+13;Amazonas;1300409;Barcelos;130040
+13;Amazonas;1300508;Barreirinha;130050
+13;Amazonas;1300607;Benjamin Constant;130060
+13;Amazonas;1300631;Beruri;130063
+13;Amazonas;1300680;Boa Vista do Ramos;130068
+13;Amazonas;1300706;Boca do Acre;130070
+13;Amazonas;1300805;Borba;130080
+13;Amazonas;1300839;Caapiranga;130083
+13;Amazonas;1300904;Canutama;130090
+13;Amazonas;1301001;Carauari;130100
+13;Amazonas;1301100;Careiro;130110
+13;Amazonas;1301159;Careiro da Várzea;130115
+13;Amazonas;1301209;Coari;130120
+13;Amazonas;1301308;Codajás;130130
+13;Amazonas;1301407;Eirunepé;130140
+13;Amazonas;1301506;Envira;130150
+13;Amazonas;1301605;Fonte Boa;130160
+13;Amazonas;1301654;Guajará;130165
+13;Amazonas;1301704;Humaitá;130170
+13;Amazonas;1301803;Ipixuna;130180
+13;Amazonas;1301852;Iranduba;130185
+13;Amazonas;1301902;Itacoatiara;130190
+13;Amazonas;1301951;Itamarati;130195
+13;Amazonas;1302009;Itapiranga;130200
+13;Amazonas;1302108;Japurá;130210
+13;Amazonas;1302207;Juruá;130220
+13;Amazonas;1302306;Jutaí;130230
+13;Amazonas;1302405;Lábrea;130240
+13;Amazonas;1302504;Manacapuru;130250
+13;Amazonas;1302553;Manaquiri;130255
+13;Amazonas;1302603;Manaus;130260
+13;Amazonas;1302702;Manicoré;130270
+13;Amazonas;1302801;Maraã;130280
+13;Amazonas;1302900;Maués;130290
+13;Amazonas;1303007;Nhamundá;130300
+13;Amazonas;1303106;Nova Olinda do Norte;130310
+13;Amazonas;1303205;Novo Airão;130320
+13;Amazonas;1303304;Novo Aripuanã;130330
+13;Amazonas;1303403;Parintins;130340
+13;Amazonas;1303502;Pauini;130350
+13;Amazonas;1303536;Presidente Figueiredo;130353
+13;Amazonas;1303569;Rio Preto da Eva;130356
+13;Amazonas;1303601;Santa Isabel do Rio Negro;130360
+13;Amazonas;1303700;Santo Antônio do Içá;130370
+13;Amazonas;1303809;São Gabriel da Cachoeira;130380
+13;Amazonas;1303908;São Paulo de Olivença;130390
+13;Amazonas;1303957;São Sebastião do Uatumã;130395
+13;Amazonas;1304005;Silves;130400
+13;Amazonas;1304062;Tabatinga;130406
+13;Amazonas;1304104;Tapauá;130410
+13;Amazonas;1304203;Tefé;130420
+13;Amazonas;1304237;Tonantins;130423
+13;Amazonas;1304260;Uarini;130426
+13;Amazonas;1304302;Urucará;130430
+13;Amazonas;1304401;Urucurituba;130440
+14;Roraima;1400027;Amajari;140002
+14;Roraima;1400050;Alto Alegre;140005
+14;Roraima;1400100;Boa Vista;140010
+14;Roraima;1400159;Bonfim;140015
+14;Roraima;1400175;Cantá;140017
+14;Roraima;1400209;Caracaraí;140020
+14;Roraima;1400233;Caroebe;140023
+14;Roraima;1400282;Iracema;140028
+14;Roraima;1400308;Mucajaí;140030
+14;Roraima;1400407;Normandia;140040
+14;Roraima;1400456;Pacaraima;140045
+14;Roraima;1400472;Rorainópolis;140047
+14;Roraima;1400506;São João da Baliza;140050
+14;Roraima;1400605;São Luiz;140060
+14;Roraima;1400704;Uiramutã;140070
+15;Pará;1500107;Abaetetuba;150010
+15;Pará;1500131;Abel Figueiredo;150013
+15;Pará;1500206;Acará;150020
+15;Pará;1500305;Afuá;150030
+15;Pará;1500347;Água Azul do Norte;150034
+15;Pará;1500404;Alenquer;150040
+15;Pará;1500503;Almeirim;150050
+15;Pará;1500602;Altamira;150060
+15;Pará;1500701;Anajás;150070
+15;Pará;1500800;Ananindeua;150080
+15;Pará;1500859;Anapu;150085
+15;Pará;1500909;Augusto Corrêa;150090
+15;Pará;1500958;Aurora do Pará;150095
+15;Pará;1501006;Aveiro;150100
+15;Pará;1501105;Bagre;150110
+15;Pará;1501204;Baião;150120
+15;Pará;1501253;Bannach;150125
+15;Pará;1501303;Barcarena;150130
+15;Pará;1501402;Belém;150140
+15;Pará;1501451;Belterra;150145
+15;Pará;1501501;Benevides;150150
+15;Pará;1501576;Bom Jesus do Tocantins;150157
+15;Pará;1501600;Bonito;150160
+15;Pará;1501709;Bragança;150170
+15;Pará;1501725;Brasil Novo;150172
+15;Pará;1501758;Brejo Grande do Araguaia;150175
+15;Pará;1501782;Breu Branco;150178
+15;Pará;1501808;Breves;150180
+15;Pará;1501907;Bujaru;150190
+15;Pará;1501956;Cachoeira do Piriá;150195
+15;Pará;1502004;Cachoeira do Arari;150200
+15;Pará;1502103;Cametá;150210
+15;Pará;1502152;Canaã dos Carajás;150215
+15;Pará;1502202;Capanema;150220
+15;Pará;1502301;Capitão Poço;150230
+15;Pará;1502400;Castanhal;150240
+15;Pará;1502509;Chaves;150250
+15;Pará;1502608;Colares;150260
+15;Pará;1502707;Conceição do Araguaia;150270
+15;Pará;1502756;Concórdia do Pará;150275
+15;Pará;1502764;Cumaru do Norte;150276
+15;Pará;1502772;Curionópolis;150277
+15;Pará;1502806;Curralinho;150280
+15;Pará;1502855;Curuá;150285
+15;Pará;1502905;Curuçá;150290
+15;Pará;1502939;Dom Eliseu;150293
+15;Pará;1502954;Eldorado dos Carajás;150295
+15;Pará;1503002;Faro;150300
+15;Pará;1503044;Floresta do Araguaia;150304
+15;Pará;1503077;Garrafão do Norte;150307
+15;Pará;1503093;Goianésia do Pará;150309
+15;Pará;1503101;Gurupá;150310
+15;Pará;1503200;Igarapé-Açu;150320
+15;Pará;1503309;Igarapé-Miri;150330
+15;Pará;1503408;Inhangapi;150340
+15;Pará;1503457;Ipixuna do Pará;150345
+15;Pará;1503507;Irituia;150350
+15;Pará;1503606;Itaituba;150360
+15;Pará;1503705;Itupiranga;150370
+15;Pará;1503754;Jacareacanga;150375
+15;Pará;1503804;Jacundá;150380
+15;Pará;1503903;Juruti;150390
+15;Pará;1504000;Limoeiro do Ajuru;150400
+15;Pará;1504059;Mãe do Rio;150405
+15;Pará;1504109;Magalhães Barata;150410
+15;Pará;1504208;Marabá;150420
+15;Pará;1504307;Maracanã;150430
+15;Pará;1504406;Marapanim;150440
+15;Pará;1504422;Marituba;150442
+15;Pará;1504455;Medicilândia;150445
+15;Pará;1504505;Melgaço;150450
+15;Pará;1504604;Mocajuba;150460
+15;Pará;1504703;Moju;150470
+15;Pará;1504802;Monte Alegre;150480
+15;Pará;1504901;Muaná;150490
+15;Pará;1504950;Nova Esperança do Piriá;150495
+15;Pará;1504976;Nova Ipixuna;150497
+15;Pará;1505007;Nova Timboteua;150500
+15;Pará;1505031;Novo Progresso;150503
+15;Pará;1505064;Novo Repartimento;150506
+15;Pará;1505106;Óbidos;150510
+15;Pará;1505205;Oeiras do Pará;150520
+15;Pará;1505304;Oriximiná;150530
+15;Pará;1505403;Ourém;150540
+15;Pará;1505437;Ourilândia do Norte;150543
+15;Pará;1505486;Pacajá;150548
+15;Pará;1505494;Palestina do Pará;150549
+15;Pará;1505502;Paragominas;150550
+15;Pará;1505536;Parauapebas;150553
+15;Pará;1505551;Pau D'Arco;150555
+15;Pará;1505601;Peixe-Boi;150560
+15;Pará;1505635;Piçarra;150563
+15;Pará;1505650;Placas;150565
+15;Pará;1505700;Ponta de Pedras;150570
+15;Pará;1505809;Portel;150580
+15;Pará;1505908;Porto de Moz;150590
+15;Pará;1506005;Prainha;150600
+15;Pará;1506104;Primavera;150610
+15;Pará;1506112;Quatipuru;150611
+15;Pará;1506138;Redenção;150613
+15;Pará;1506161;Rio Maria;150616
+15;Pará;1506187;Rondon do Pará;150618
+15;Pará;1506195;Rurópolis;150619
+15;Pará;1506203;Salinópolis;150620
+15;Pará;1506302;Salvaterra;150630
+15;Pará;1506351;Santa Bárbara do Pará;150635
+15;Pará;1506401;Santa Cruz do Arari;150640
+15;Pará;1506500;Santa Isabel do Pará;150650
+15;Pará;1506559;Santa Luzia do Pará;150655
+15;Pará;1506583;Santa Maria das Barreiras;150658
+15;Pará;1506609;Santa Maria do Pará;150660
+15;Pará;1506708;Santana do Araguaia;150670
+15;Pará;1506807;Santarém;150680
+15;Pará;1506906;Santarém Novo;150690
+15;Pará;1507003;Santo Antônio do Tauá;150700
+15;Pará;1507102;São Caetano de Odivelas;150710
+15;Pará;1507151;São Domingos do Araguaia;150715
+15;Pará;1507201;São Domingos do Capim;150720
+15;Pará;1507300;São Félix do Xingu;150730
+15;Pará;1507409;São Francisco do Pará;150740
+15;Pará;1507458;São Geraldo do Araguaia;150745
+15;Pará;1507466;São João da Ponta;150746
+15;Pará;1507474;São João de Pirabas;150747
+15;Pará;1507508;São João do Araguaia;150750
+15;Pará;1507607;São Miguel do Guamá;150760
+15;Pará;1507706;São Sebastião da Boa Vista;150770
+15;Pará;1507755;Sapucaia;150775
+15;Pará;1507805;Senador José Porfírio;150780
+15;Pará;1507904;Soure;150790
+15;Pará;1507953;Tailândia;150795
+15;Pará;1507961;Terra Alta;150796
+15;Pará;1507979;Terra Santa;150797
+15;Pará;1508001;Tomé-Açu;150800
+15;Pará;1508035;Tracuateua;150803
+15;Pará;1508050;Trairão;150805
+15;Pará;1508084;Tucumã;150808
+15;Pará;1508100;Tucuruí;150810
+15;Pará;1508126;Ulianópolis;150812
+15;Pará;1508159;Uruará;150815
+15;Pará;1508209;Vigia;150820
+15;Pará;1508308;Viseu;150830
+15;Pará;1508357;Vitória do Xingu;150835
+15;Pará;1508407;Xinguara;150840
+16;Amapá;1600055;Serra do Navio;160005
+16;Amapá;1600105;Amapá;160010
+16;Amapá;1600154;Pedra Branca do Amapari;160015
+16;Amapá;1600204;Calçoene;160020
+16;Amapá;1600212;Cutias;160021
+16;Amapá;1600238;Ferreira Gomes;160023
+16;Amapá;1600253;Itaubal;160025
+16;Amapá;1600279;Laranjal do Jari;160027
+16;Amapá;1600303;Macapá;160030
+16;Amapá;1600402;Mazagão;160040
+16;Amapá;1600501;Oiapoque;160050
+16;Amapá;1600535;Porto Grande;160053
+16;Amapá;1600550;Pracuúba;160055
+16;Amapá;1600600;Santana;160060
+16;Amapá;1600709;Tartarugalzinho;160070
+16;Amapá;1600808;Vitória do Jari;160080
+17;Tocantins;1700251;Abreulândia;170025
+17;Tocantins;1700301;Aguiarnópolis;170030
+17;Tocantins;1700350;Aliança do Tocantins;170035
+17;Tocantins;1700400;Almas;170040
+17;Tocantins;1700707;Alvorada;170070
+17;Tocantins;1701002;Ananás;170100
+17;Tocantins;1701051;Angico;170105
+17;Tocantins;1701101;Aparecida do Rio Negro;170110
+17;Tocantins;1701309;Aragominas;170130
+17;Tocantins;1701903;Araguacema;170190
+17;Tocantins;1702000;Araguaçu;170200
+17;Tocantins;1702109;Araguaína;170210
+17;Tocantins;1702158;Araguanã;170215
+17;Tocantins;1702208;Araguatins;170220
+17;Tocantins;1702307;Arapoema;170230
+17;Tocantins;1702406;Arraias;170240
+17;Tocantins;1702554;Augustinópolis;170255
+17;Tocantins;1702703;Aurora do Tocantins;170270
+17;Tocantins;1702901;Axixá do Tocantins;170290
+17;Tocantins;1703008;Babaçulândia;170300
+17;Tocantins;1703057;Bandeirantes do Tocantins;170305
+17;Tocantins;1703073;Barra do Ouro;170307
+17;Tocantins;1703107;Barrolândia;170310
+17;Tocantins;1703206;Bernardo Sayão;170320
+17;Tocantins;1703305;Bom Jesus do Tocantins;170330
+17;Tocantins;1703602;Brasilândia do Tocantins;170360
+17;Tocantins;1703701;Brejinho de Nazaré;170370
+17;Tocantins;1703800;Buriti do Tocantins;170380
+17;Tocantins;1703826;Cachoeirinha;170382
+17;Tocantins;1703842;Campos Lindos;170384
+17;Tocantins;1703867;Cariri do Tocantins;170386
+17;Tocantins;1703883;Carmolândia;170388
+17;Tocantins;1703891;Carrasco Bonito;170389
+17;Tocantins;1703909;Caseara;170390
+17;Tocantins;1704105;Centenário;170410
+17;Tocantins;1704600;Chapada de Areia;170460
+17;Tocantins;1705102;Chapada da Natividade;170510
+17;Tocantins;1705508;Colinas do Tocantins;170550
+17;Tocantins;1705557;Combinado;170555
+17;Tocantins;1705607;Conceição do Tocantins;170560
+17;Tocantins;1706001;Couto Magalhães;170600
+17;Tocantins;1706100;Cristalândia;170610
+17;Tocantins;1706258;Crixás do Tocantins;170625
+17;Tocantins;1706506;Darcinópolis;170650
+17;Tocantins;1707009;Dianópolis;170700
+17;Tocantins;1707108;Divinópolis do Tocantins;170710
+17;Tocantins;1707207;Dois Irmãos do Tocantins;170720
+17;Tocantins;1707306;Dueré;170730
+17;Tocantins;1707405;Esperantina;170740
+17;Tocantins;1707553;Fátima;170755
+17;Tocantins;1707652;Figueirópolis;170765
+17;Tocantins;1707702;Filadélfia;170770
+17;Tocantins;1708205;Formoso do Araguaia;170820
+17;Tocantins;1708254;Fortaleza do Tabocão;170825
+17;Tocantins;1708304;Goianorte;170830
+17;Tocantins;1709005;Goiatins;170900
+17;Tocantins;1709302;Guaraí;170930
+17;Tocantins;1709500;Gurupi;170950
+17;Tocantins;1709807;Ipueiras;170980
+17;Tocantins;1710508;Itacajá;171050
+17;Tocantins;1710706;Itaguatins;171070
+17;Tocantins;1710904;Itapiratins;171090
+17;Tocantins;1711100;Itaporã do Tocantins;171110
+17;Tocantins;1711506;Jaú do Tocantins;171150
+17;Tocantins;1711803;Juarina;171180
+17;Tocantins;1711902;Lagoa da Confusão;171190
+17;Tocantins;1711951;Lagoa do Tocantins;171195
+17;Tocantins;1712009;Lajeado;171200
+17;Tocantins;1712157;Lavandeira;171215
+17;Tocantins;1712405;Lizarda;171240
+17;Tocantins;1712454;Luzinópolis;171245
+17;Tocantins;1712504;Marianópolis do Tocantins;171250
+17;Tocantins;1712702;Mateiros;171270
+17;Tocantins;1712801;Maurilândia do Tocantins;171280
+17;Tocantins;1713205;Miracema do Tocantins;171320
+17;Tocantins;1713304;Miranorte;171330
+17;Tocantins;1713601;Monte do Carmo;171360
+17;Tocantins;1713700;Monte Santo do Tocantins;171370
+17;Tocantins;1713809;Palmeiras do Tocantins;171380
+17;Tocantins;1713957;Muricilândia;171395
+17;Tocantins;1714203;Natividade;171420
+17;Tocantins;1714302;Nazaré;171430
+17;Tocantins;1714880;Nova Olinda;171488
+17;Tocantins;1715002;Nova Rosalândia;171500
+17;Tocantins;1715101;Novo Acordo;171510
+17;Tocantins;1715150;Novo Alegre;171515
+17;Tocantins;1715259;Novo Jardim;171525
+17;Tocantins;1715507;Oliveira de Fátima;171550
+17;Tocantins;1715705;Palmeirante;171570
+17;Tocantins;1715754;Palmeirópolis;171575
+17;Tocantins;1716109;Paraíso do Tocantins;171610
+17;Tocantins;1716208;Paranã;171620
+17;Tocantins;1716307;Pau D'Arco;171630
+17;Tocantins;1716505;Pedro Afonso;171650
+17;Tocantins;1716604;Peixe;171660
+17;Tocantins;1716653;Pequizeiro;171665
+17;Tocantins;1716703;Colméia;171670
+17;Tocantins;1717008;Pindorama do Tocantins;171700
+17;Tocantins;1717206;Piraquê;171720
+17;Tocantins;1717503;Pium;171750
+17;Tocantins;1717800;Ponte Alta do Bom Jesus;171780
+17;Tocantins;1717909;Ponte Alta do Tocantins;171790
+17;Tocantins;1718006;Porto Alegre do Tocantins;171800
+17;Tocantins;1718204;Porto Nacional;171820
+17;Tocantins;1718303;Praia Norte;171830
+17;Tocantins;1718402;Presidente Kennedy;171840
+17;Tocantins;1718451;Pugmil;171845
+17;Tocantins;1718501;Recursolândia;171850
+17;Tocantins;1718550;Riachinho;171855
+17;Tocantins;1718659;Rio da Conceição;171865
+17;Tocantins;1718709;Rio dos Bois;171870
+17;Tocantins;1718758;Rio Sono;171875
+17;Tocantins;1718808;Sampaio;171880
+17;Tocantins;1718840;Sandolândia;171884
+17;Tocantins;1718865;Santa Fé do Araguaia;171886
+17;Tocantins;1718881;Santa Maria do Tocantins;171888
+17;Tocantins;1718899;Santa Rita do Tocantins;171889
+17;Tocantins;1718907;Santa Rosa do Tocantins;171890
+17;Tocantins;1719004;Santa Tereza do Tocantins;171900
+17;Tocantins;1720002;Santa Terezinha do Tocantins;172000
+17;Tocantins;1720101;São Bento do Tocantins;172010
+17;Tocantins;1720150;São Félix do Tocantins;172015
+17;Tocantins;1720200;São Miguel do Tocantins;172020
+17;Tocantins;1720259;São Salvador do Tocantins;172025
+17;Tocantins;1720309;São Sebastião do Tocantins;172030
+17;Tocantins;1720499;São Valério;172049
+17;Tocantins;1720655;Silvanópolis;172065
+17;Tocantins;1720804;Sítio Novo do Tocantins;172080
+17;Tocantins;1720853;Sucupira;172085
+17;Tocantins;1720903;Taguatinga;172090
+17;Tocantins;1720937;Taipas do Tocantins;172093
+17;Tocantins;1720978;Talismã;172097
+17;Tocantins;1721000;Palmas;172100
+17;Tocantins;1721109;Tocantínia;172110
+17;Tocantins;1721208;Tocantinópolis;172120
+17;Tocantins;1721257;Tupirama;172125
+17;Tocantins;1721307;Tupiratins;172130
+17;Tocantins;1722081;Wanderlândia;172208
+17;Tocantins;1722107;Xambioá;172210
+21;Maranhão;2100055;Açailândia;210005
+21;Maranhão;2100105;Afonso Cunha;210010
+21;Maranhão;2100154;Água Doce do Maranhão;210015
+21;Maranhão;2100204;Alcântara;210020
+21;Maranhão;2100303;Aldeias Altas;210030
+21;Maranhão;2100402;Altamira do Maranhão;210040
+21;Maranhão;2100436;Alto Alegre do Maranhão;210043
+21;Maranhão;2100477;Alto Alegre do Pindaré;210047
+21;Maranhão;2100501;Alto Parnaíba;210050
+21;Maranhão;2100550;Amapá do Maranhão;210055
+21;Maranhão;2100600;Amarante do Maranhão;210060
+21;Maranhão;2100709;Anajatuba;210070
+21;Maranhão;2100808;Anapurus;210080
+21;Maranhão;2100832;Apicum-Açu;210083
+21;Maranhão;2100873;Araguanã;210087
+21;Maranhão;2100907;Araioses;210090
+21;Maranhão;2100956;Arame;210095
+21;Maranhão;2101004;Arari;210100
+21;Maranhão;2101103;Axixá;210110
+21;Maranhão;2101202;Bacabal;210120
+21;Maranhão;2101251;Bacabeira;210125
+21;Maranhão;2101301;Bacuri;210130
+21;Maranhão;2101350;Bacurituba;210135
+21;Maranhão;2101400;Balsas;210140
+21;Maranhão;2101509;Barão de Grajaú;210150
+21;Maranhão;2101608;Barra do Corda;210160
+21;Maranhão;2101707;Barreirinhas;210170
+21;Maranhão;2101731;Belágua;210173
+21;Maranhão;2101772;Bela Vista do Maranhão;210177
+21;Maranhão;2101806;Benedito Leite;210180
+21;Maranhão;2101905;Bequimão;210190
+21;Maranhão;2101939;Bernardo do Mearim;210193
+21;Maranhão;2101970;Boa Vista do Gurupi;210197
+21;Maranhão;2102002;Bom Jardim;210200
+21;Maranhão;2102036;Bom Jesus das Selvas;210203
+21;Maranhão;2102077;Bom Lugar;210207
+21;Maranhão;2102101;Brejo;210210
+21;Maranhão;2102150;Brejo de Areia;210215
+21;Maranhão;2102200;Buriti;210220
+21;Maranhão;2102309;Buriti Bravo;210230
+21;Maranhão;2102325;Buriticupu;210232
+21;Maranhão;2102358;Buritirana;210235
+21;Maranhão;2102374;Cachoeira Grande;210237
+21;Maranhão;2102408;Cajapió;210240
+21;Maranhão;2102507;Cajari;210250
+21;Maranhão;2102556;Campestre do Maranhão;210255
+21;Maranhão;2102606;Cândido Mendes;210260
+21;Maranhão;2102705;Cantanhede;210270
+21;Maranhão;2102754;Capinzal do Norte;210275
+21;Maranhão;2102804;Carolina;210280
+21;Maranhão;2102903;Carutapera;210290
+21;Maranhão;2103000;Caxias;210300
+21;Maranhão;2103109;Cedral;210310
+21;Maranhão;2103125;Central do Maranhão;210312
+21;Maranhão;2103158;Centro do Guilherme;210315
+21;Maranhão;2103174;Centro Novo do Maranhão;210317
+21;Maranhão;2103208;Chapadinha;210320
+21;Maranhão;2103257;Cidelândia;210325
+21;Maranhão;2103307;Codó;210330
+21;Maranhão;2103406;Coelho Neto;210340
+21;Maranhão;2103505;Colinas;210350
+21;Maranhão;2103554;Conceição do Lago-Açu;210355
+21;Maranhão;2103604;Coroatá;210360
+21;Maranhão;2103703;Cururupu;210370
+21;Maranhão;2103752;Davinópolis;210375
+21;Maranhão;2103802;Dom Pedro;210380
+21;Maranhão;2103901;Duque Bacelar;210390
+21;Maranhão;2104008;Esperantinópolis;210400
+21;Maranhão;2104057;Estreito;210405
+21;Maranhão;2104073;Feira Nova do Maranhão;210407
+21;Maranhão;2104081;Fernando Falcão;210408
+21;Maranhão;2104099;Formosa da Serra Negra;210409
+21;Maranhão;2104107;Fortaleza dos Nogueiras;210410
+21;Maranhão;2104206;Fortuna;210420
+21;Maranhão;2104305;Godofredo Viana;210430
+21;Maranhão;2104404;Gonçalves Dias;210440
+21;Maranhão;2104503;Governador Archer;210450
+21;Maranhão;2104552;Governador Edison Lobão;210455
+21;Maranhão;2104602;Governador Eugênio Barros;210460
+21;Maranhão;2104628;Governador Luiz Rocha;210462
+21;Maranhão;2104651;Governador Newton Bello;210465
+21;Maranhão;2104677;Governador Nunes Freire;210467
+21;Maranhão;2104701;Graça Aranha;210470
+21;Maranhão;2104800;Grajaú;210480
+21;Maranhão;2104909;Guimarães;210490
+21;Maranhão;2105005;Humberto de Campos;210500
+21;Maranhão;2105104;Icatu;210510
+21;Maranhão;2105153;Igarapé do Meio;210515
+21;Maranhão;2105203;Igarapé Grande;210520
+21;Maranhão;2105302;Imperatriz;210530
+21;Maranhão;2105351;Itaipava do Grajaú;210535
+21;Maranhão;2105401;Itapecuru Mirim;210540
+21;Maranhão;2105427;Itinga do Maranhão;210542
+21;Maranhão;2105450;Jatobá;210545
+21;Maranhão;2105476;Jenipapo dos Vieiras;210547
+21;Maranhão;2105500;João Lisboa;210550
+21;Maranhão;2105609;Joselândia;210560
+21;Maranhão;2105658;Junco do Maranhão;210565
+21;Maranhão;2105708;Lago da Pedra;210570
+21;Maranhão;2105807;Lago do Junco;210580
+21;Maranhão;2105906;Lago Verde;210590
+21;Maranhão;2105922;Lagoa do Mato;210592
+21;Maranhão;2105948;Lago dos Rodrigues;210594
+21;Maranhão;2105963;Lagoa Grande do Maranhão;210596
+21;Maranhão;2105989;Lajeado Novo;210598
+21;Maranhão;2106003;Lima Campos;210600
+21;Maranhão;2106102;Loreto;210610
+21;Maranhão;2106201;Luís Domingues;210620
+21;Maranhão;2106300;Magalhães de Almeida;210630
+21;Maranhão;2106326;Maracaçumé;210632
+21;Maranhão;2106359;Marajá do Sena;210635
+21;Maranhão;2106375;Maranhãozinho;210637
+21;Maranhão;2106409;Mata Roma;210640
+21;Maranhão;2106508;Matinha;210650
+21;Maranhão;2106607;Matões;210660
+21;Maranhão;2106631;Matões do Norte;210663
+21;Maranhão;2106672;Milagres do Maranhão;210667
+21;Maranhão;2106706;Mirador;210670
+21;Maranhão;2106755;Miranda do Norte;210675
+21;Maranhão;2106805;Mirinzal;210680
+21;Maranhão;2106904;Monção;210690
+21;Maranhão;2107001;Montes Altos;210700
+21;Maranhão;2107100;Morros;210710
+21;Maranhão;2107209;Nina Rodrigues;210720
+21;Maranhão;2107258;Nova Colinas;210725
+21;Maranhão;2107308;Nova Iorque;210730
+21;Maranhão;2107357;Nova Olinda do Maranhão;210735
+21;Maranhão;2107407;Olho d'Água das Cunhãs;210740
+21;Maranhão;2107456;Olinda Nova do Maranhão;210745
+21;Maranhão;2107506;Paço do Lumiar;210750
+21;Maranhão;2107605;Palmeirândia;210760
+21;Maranhão;2107704;Paraibano;210770
+21;Maranhão;2107803;Parnarama;210780
+21;Maranhão;2107902;Passagem Franca;210790
+21;Maranhão;2108009;Pastos Bons;210800
+21;Maranhão;2108058;Paulino Neves;210805
+21;Maranhão;2108108;Paulo Ramos;210810
+21;Maranhão;2108207;Pedreiras;210820
+21;Maranhão;2108256;Pedro do Rosário;210825
+21;Maranhão;2108306;Penalva;210830
+21;Maranhão;2108405;Peri Mirim;210840
+21;Maranhão;2108454;Peritoró;210845
+21;Maranhão;2108504;Pindaré-Mirim;210850
+21;Maranhão;2108603;Pinheiro;210860
+21;Maranhão;2108702;Pio XII;210870
+21;Maranhão;2108801;Pirapemas;210880
+21;Maranhão;2108900;Poção de Pedras;210890
+21;Maranhão;2109007;Porto Franco;210900
+21;Maranhão;2109056;Porto Rico do Maranhão;210905
+21;Maranhão;2109106;Presidente Dutra;210910
+21;Maranhão;2109205;Presidente Juscelino;210920
+21;Maranhão;2109239;Presidente Médici;210923
+21;Maranhão;2109270;Presidente Sarney;210927
+21;Maranhão;2109304;Presidente Vargas;210930
+21;Maranhão;2109403;Primeira Cruz;210940
+21;Maranhão;2109452;Raposa;210945
+21;Maranhão;2109502;Riachão;210950
+21;Maranhão;2109551;Ribamar Fiquene;210955
+21;Maranhão;2109601;Rosário;210960
+21;Maranhão;2109700;Sambaíba;210970
+21;Maranhão;2109759;Santa Filomena do Maranhão;210975
+21;Maranhão;2109809;Santa Helena;210980
+21;Maranhão;2109908;Santa Inês;210990
+21;Maranhão;2110005;Santa Luzia;211000
+21;Maranhão;2110039;Santa Luzia do Paruá;211003
+21;Maranhão;2110104;Santa Quitéria do Maranhão;211010
+21;Maranhão;2110203;Santa Rita;211020
+21;Maranhão;2110237;Santana do Maranhão;211023
+21;Maranhão;2110278;Santo Amaro do Maranhão;211027
+21;Maranhão;2110302;Santo Antônio dos Lopes;211030
+21;Maranhão;2110401;São Benedito do Rio Preto;211040
+21;Maranhão;2110500;São Bento;211050
+21;Maranhão;2110609;São Bernardo;211060
+21;Maranhão;2110658;São Domingos do Azeitão;211065
+21;Maranhão;2110708;São Domingos do Maranhão;211070
+21;Maranhão;2110807;São Félix de Balsas;211080
+21;Maranhão;2110856;São Francisco do Brejão;211085
+21;Maranhão;2110906;São Francisco do Maranhão;211090
+21;Maranhão;2111003;São João Batista;211100
+21;Maranhão;2111029;São João do Carú;211102
+21;Maranhão;2111052;São João do Paraíso;211105
+21;Maranhão;2111078;São João do Soter;211107
+21;Maranhão;2111102;São João dos Patos;211110
+21;Maranhão;2111201;São José de Ribamar;211120
+21;Maranhão;2111250;São José dos Basílios;211125
+21;Maranhão;2111300;São Luís;211130
+21;Maranhão;2111409;São Luís Gonzaga do Maranhão;211140
+21;Maranhão;2111508;São Mateus do Maranhão;211150
+21;Maranhão;2111532;São Pedro da Água Branca;211153
+21;Maranhão;2111573;São Pedro dos Crentes;211157
+21;Maranhão;2111607;São Raimundo das Mangabeiras;211160
+21;Maranhão;2111631;São Raimundo do Doca Bezerra;211163
+21;Maranhão;2111672;São Roberto;211167
+21;Maranhão;2111706;São Vicente Ferrer;211170
+21;Maranhão;2111722;Satubinha;211172
+21;Maranhão;2111748;Senador Alexandre Costa;211174
+21;Maranhão;2111763;Senador La Rocque;211176
+21;Maranhão;2111789;Serrano do Maranhão;211178
+21;Maranhão;2111805;Sítio Novo;211180
+21;Maranhão;2111904;Sucupira do Norte;211190
+21;Maranhão;2111953;Sucupira do Riachão;211195
+21;Maranhão;2112001;Tasso Fragoso;211200
+21;Maranhão;2112100;Timbiras;211210
+21;Maranhão;2112209;Timon;211220
+21;Maranhão;2112233;Trizidela do Vale;211223
+21;Maranhão;2112274;Tufilândia;211227
+21;Maranhão;2112308;Tuntum;211230
+21;Maranhão;2112407;Turiaçu;211240
+21;Maranhão;2112456;Turilândia;211245
+21;Maranhão;2112506;Tutóia;211250
+21;Maranhão;2112605;Urbano Santos;211260
+21;Maranhão;2112704;Vargem Grande;211270
+21;Maranhão;2112803;Viana;211280
+21;Maranhão;2112852;Vila Nova dos Martírios;211285
+21;Maranhão;2112902;Vitória do Mearim;211290
+21;Maranhão;2113009;Vitorino Freire;211300
+21;Maranhão;2114007;Zé Doca;211400
+51;Mato Grosso;5100102;Acorizal;510010
+51;Mato Grosso;5100201;Água Boa;510020
+51;Mato Grosso;5100250;Alta Floresta;510025
+51;Mato Grosso;5100300;Alto Araguaia;510030
+51;Mato Grosso;5100359;Alto Boa Vista;510035
+51;Mato Grosso;5100409;Alto Garças;510040
+51;Mato Grosso;5100508;Alto Paraguai;510050
+51;Mato Grosso;5100607;Alto Taquari;510060
+51;Mato Grosso;5100805;Apiacás;510080
+51;Mato Grosso;5101001;Araguaiana;510100
+51;Mato Grosso;5101209;Araguainha;510120
+51;Mato Grosso;5101258;Araputanga;510125
+51;Mato Grosso;5101308;Arenápolis;510130
+51;Mato Grosso;5101407;Aripuanã;510140
+51;Mato Grosso;5101605;Barão de Melgaço;510160
+51;Mato Grosso;5101704;Barra do Bugres;510170
+51;Mato Grosso;5101803;Barra do Garças;510180
+51;Mato Grosso;5101852;Bom Jesus do Araguaia;510185
+51;Mato Grosso;5101902;Brasnorte;510190
+51;Mato Grosso;5102504;Cáceres;510250
+51;Mato Grosso;5102603;Campinápolis;510260
+51;Mato Grosso;5102637;Campo Novo do Parecis;510263
+51;Mato Grosso;5102678;Campo Verde;510267
+51;Mato Grosso;5102686;Campos de Júlio;510268
+51;Mato Grosso;5102694;Canabrava do Norte;510269
+51;Mato Grosso;5102702;Canarana;510270
+51;Mato Grosso;5102793;Carlinda;510279
+51;Mato Grosso;5102850;Castanheira;510285
+51;Mato Grosso;5103007;Chapada dos Guimarães;510300
+51;Mato Grosso;5103056;Cláudia;510305
+51;Mato Grosso;5103106;Cocalinho;510310
+51;Mato Grosso;5103205;Colíder;510320
+51;Mato Grosso;5103254;Colniza;510325
+51;Mato Grosso;5103304;Comodoro;510330
+51;Mato Grosso;5103353;Confresa;510335
+51;Mato Grosso;5103361;Conquista D'Oeste;510336
+51;Mato Grosso;5103379;Cotriguaçu;510337
+51;Mato Grosso;5103403;Cuiabá;510340
+51;Mato Grosso;5103437;Curvelândia;510343
+51;Mato Grosso;5103452;Denise;510345
+51;Mato Grosso;5103502;Diamantino;510350
+51;Mato Grosso;5103601;Dom Aquino;510360
+51;Mato Grosso;5103700;Feliz Natal;510370
+51;Mato Grosso;5103809;Figueirópolis D'Oeste;510380
+51;Mato Grosso;5103858;Gaúcha do Norte;510385
+51;Mato Grosso;5103908;General Carneiro;510390
+51;Mato Grosso;5103957;Glória D'Oeste;510395
+51;Mato Grosso;5104104;Guarantã do Norte;510410
+51;Mato Grosso;5104203;Guiratinga;510420
+51;Mato Grosso;5104500;Indiavaí;510450
+51;Mato Grosso;5104526;Ipiranga do Norte;510452
+51;Mato Grosso;5104542;Itanhangá;510454
+51;Mato Grosso;5104559;Itaúba;510455
+51;Mato Grosso;5104609;Itiquira;510460
+51;Mato Grosso;5104807;Jaciara;510480
+51;Mato Grosso;5104906;Jangada;510490
+51;Mato Grosso;5105002;Jauru;510500
+51;Mato Grosso;5105101;Juara;510510
+51;Mato Grosso;5105150;Juína;510515
+51;Mato Grosso;5105176;Juruena;510517
+51;Mato Grosso;5105200;Juscimeira;510520
+51;Mato Grosso;5105234;Lambari D'Oeste;510523
+51;Mato Grosso;5105259;Lucas do Rio Verde;510525
+51;Mato Grosso;5105309;Luciara;510530
+51;Mato Grosso;5105507;Vila Bela da Santíssima Trindade;510550
+51;Mato Grosso;5105580;Marcelândia;510558
+51;Mato Grosso;5105606;Matupá;510560
+51;Mato Grosso;5105622;Mirassol d'Oeste;510562
+51;Mato Grosso;5105903;Nobres;510590
+51;Mato Grosso;5106000;Nortelândia;510600
+51;Mato Grosso;5106109;Nossa Senhora do Livramento;510610
+51;Mato Grosso;5106158;Nova Bandeirantes;510615
+51;Mato Grosso;5106174;Nova Nazaré;510617
+51;Mato Grosso;5106182;Nova Lacerda;510618
+51;Mato Grosso;5106190;Nova Santa Helena;510619
+51;Mato Grosso;5106208;Nova Brasilândia;510620
+51;Mato Grosso;5106216;Nova Canaã do Norte;510621
+51;Mato Grosso;5106224;Nova Mutum;510622
+51;Mato Grosso;5106232;Nova Olímpia;510623
+51;Mato Grosso;5106240;Nova Ubiratã;510624
+51;Mato Grosso;5106257;Nova Xavantina;510625
+51;Mato Grosso;5106265;Novo Mundo;510626
+51;Mato Grosso;5106273;Novo Horizonte do Norte;510627
+51;Mato Grosso;5106281;Novo São Joaquim;510628
+51;Mato Grosso;5106299;Paranaíta;510629
+51;Mato Grosso;5106307;Paranatinga;510630
+51;Mato Grosso;5106315;Novo Santo Antônio;510631
+51;Mato Grosso;5106372;Pedra Preta;510637
+51;Mato Grosso;5106422;Peixoto de Azevedo;510642
+51;Mato Grosso;5106455;Planalto da Serra;510645
+51;Mato Grosso;5106505;Poconé;510650
+51;Mato Grosso;5106653;Pontal do Araguaia;510665
+51;Mato Grosso;5106703;Ponte Branca;510670
+51;Mato Grosso;5106752;Pontes e Lacerda;510675
+51;Mato Grosso;5106778;Porto Alegre do Norte;510677
+51;Mato Grosso;5106802;Porto dos Gaúchos;510680
+51;Mato Grosso;5106828;Porto Esperidião;510682
+51;Mato Grosso;5106851;Porto Estrela;510685
+51;Mato Grosso;5107008;Poxoréo;510700
+51;Mato Grosso;5107040;Primavera do Leste;510704
+51;Mato Grosso;5107065;Querência;510706
+51;Mato Grosso;5107107;São José dos Quatro Marcos;510710
+51;Mato Grosso;5107156;Reserva do Cabaçal;510715
+51;Mato Grosso;5107180;Ribeirão Cascalheira;510718
+51;Mato Grosso;5107198;Ribeirãozinho;510719
+51;Mato Grosso;5107206;Rio Branco;510720
+51;Mato Grosso;5107248;Santa Carmem;510724
+51;Mato Grosso;5107263;Santo Afonso;510726
+51;Mato Grosso;5107297;São José do Povo;510729
+51;Mato Grosso;5107305;São José do Rio Claro;510730
+51;Mato Grosso;5107354;São José do Xingu;510735
+51;Mato Grosso;5107404;São Pedro da Cipa;510740
+51;Mato Grosso;5107578;Rondolândia;510757
+51;Mato Grosso;5107602;Rondonópolis;510760
+51;Mato Grosso;5107701;Rosário Oeste;510770
+51;Mato Grosso;5107743;Santa Cruz do Xingu;510774
+51;Mato Grosso;5107750;Salto do Céu;510775
+51;Mato Grosso;5107768;Santa Rita do Trivelato;510776
+51;Mato Grosso;5107776;Santa Terezinha;510777
+51;Mato Grosso;5107792;Santo Antônio do Leste;510779
+51;Mato Grosso;5107800;Santo Antônio do Leverger;510780
+51;Mato Grosso;5107859;São Félix do Araguaia;510785
+51;Mato Grosso;5107875;Sapezal;510787
+51;Mato Grosso;5107883;Serra Nova Dourada;510788
+51;Mato Grosso;5107909;Sinop;510790
+51;Mato Grosso;5107925;Sorriso;510792
+51;Mato Grosso;5107941;Tabaporã;510794
+51;Mato Grosso;5107958;Tangará da Serra;510795
+51;Mato Grosso;5108006;Tapurah;510800
+51;Mato Grosso;5108055;Terra Nova do Norte;510805
+51;Mato Grosso;5108105;Tesouro;510810
+51;Mato Grosso;5108204;Torixoréu;510820
+51;Mato Grosso;5108303;União do Sul;510830
+51;Mato Grosso;5108352;Vale de São Domingos;510835
+51;Mato Grosso;5108402;Várzea Grande;510840
+51;Mato Grosso;5108501;Vera;510850
+51;Mato Grosso;5108600;Vila Rica;510860
+51;Mato Grosso;5108808;Nova Guarita;510880
+51;Mato Grosso;5108857;Nova Marilândia;510885
+51;Mato Grosso;5108907;Nova Maringá;510890
+51;Mato Grosso;5108956;Nova Monte Verde;510895
+15;Pará;1504752;Mojuí dos Campos;150475

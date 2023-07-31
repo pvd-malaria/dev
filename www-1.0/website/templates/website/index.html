@@ -1,0 +1,231 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+
+<style id="plotly.js-style-global"></style>
+<style id="plotly.js-style-modebar-126fee"></style>
+<style>
+    .linear-background .background-bubble {
+        background: url({% static 'website/img/new/main-bg-malaria.jpg' %}) no-repeat;
+        background-size: cover;
+    }
+
+    .sami-main-wrapper .card-container {
+        background-color: transparent;
+        border-radius: 75px;
+        font-size: 18px;
+        text-align: center;
+        color: #fff;
+
+    }
+
+    .sami-main-wrapper .welcome-container .welcome-text {
+        font-family: Montserrat, Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        font-size: 70px;
+        color: #ffff;
+        margin-bottom: 60px;
+    }
+
+    .sami-main-wrapper .welcome-container {
+        width: 100%;
+    }
+
+    .sami-main-wrapper .welcome-container p {
+        font-family: Source Code Pro, Arial, Helvetica, sans-serif;
+        font-weight: normal;
+        font-size: 28px;
+        color: #ffff;
+        margin-bottom: 30px;
+    }
+
+    .center-container .card-container {
+        width: 100vw;
+    }
+
+    .sami-main-wrapper .sami-wrapper {
+        margin-bottom: -100px;
+
+    }
+
+    .sami-main-wrapper .sami-wrapper .section-title {
+        color: black;
+        margin-top: 50px;
+    }
+
+    .section-title-border-bottom {
+        content: none;
+        margin-left: -180px;
+        margin-top: -10px;
+        margin-bottom: 80px;
+        width: 85vw;
+        border-bottom: 2px solid rgb(120, 120, 120);
+    }
+
+    .mapDeckIFrame {
+        background-color: #F1F0E6;
+        background-size: cover;
+        position: relative;
+        padding: 0;
+        margin-left: -10vw;
+        width: 72vw;
+        height: 102vh;
+        display: block;
+        border: none;
+        overflow: hidden;
+    }
+</style>
+<div class="sami-main-wrapper">
+    <div class="linear-background">
+        <div class="sami-wrapper background-bubble">
+            <div class="center-container card-container welcome-container">
+                <h1 class="welcome-text">{% trans "ProMalaria" %}</h1>
+                <p>
+                    Somos uma Plataforma de Visualização de Dados que busca auxiliar gestores, pesquisadores e público
+                    em geral a entender melhor sobre a contaminação pela malária no Brasil. Por meio dessa plataforma,
+                    pode-se acessar diversas visualizações e criar suas próprias de acordo com as suas necessidades. A
+                    plataforma oferece também um serviço interativo de análise de indicadores por meio de inteligência
+                    artificial.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="sami-wrapper-grey sami-wrapper">
+        <div class="no-card-section center-container">
+            <div class="multi-column-wrapper text-about-justify">
+                <div class="col-md-12">
+                    <p style="text-align: center;">{% trans "Distribuição espacial dos casos de malária." %}
+                    </p>
+
+                    <iframe src="{% static 'website/img/Localidade/map_infeccoes_localidades.html' %}" scrolling="no"
+                        class="mapDeckIFrame">
+                    </iframe>
+
+                    <p style="text-align: left; font-size: 15px; margin-top: 5px;">
+                        {% trans "Nota: O mapa refere-se ao período 2007-2020. A altura é proporcional ao número de notificações." %}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="sami-wrapper-grey sami-wrapper">
+        <div class="center-container card-container">
+            <h4 class="section-title" id="section-title-servicos">{% trans "Serviços" %}</h4>
+            <div class="section-title-border-bottom"></div>
+
+            <div class="multi-column-wrapper services-section">
+                <div class="col-md-6">
+                    <img style="width: 100%;" src="{% static 'website/img/new/mapa2-home.png' %}" />
+                    <h3 class="section-title services-section-title">{% trans "Visualização de Dados" %}</h3>
+                    <a href="{% url 'website:datavisualization' %}">
+                        <button class="primary-button">{% trans "Ver Visualizações" %}</button>
+                    </a>
+                </div>
+                <div class="col-md-6">
+                    <img style="width: 55%;" src="{% static 'website/img/new/predictive-models-chart.png' %}" />
+                    <h3 class="section-title services-section-title">{% trans "Modelos de classificação/Preditivos" %}
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sami-wrapper-grey sami-wrapper">
+        <div class="no-card-section center-container">
+            <h4 class="section-title">{% trans "Publicações" %}</h4>
+            <div class="section-title-border-bottom"></div>
+            <div class="multi-column-wrapper main-topics">
+                <div class="card-wrapper col-md-4">
+                    <div>
+                        <img style="width: 100%;" src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+                    </div>
+                </div>
+                <div class="card-wrapper col-md-4">
+                    <div>
+                        <img style="width: 100%;" src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+                    </div>
+                </div>
+                <div class="card-wrapper col-md-4">
+                    <div>
+                        <img style="width: 100%;" src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="sami-wrapper-grey sami-wrapper">
+        <div class="no-card-section center-container">
+            <h4 class="section-title">{% trans "Mídia" %}</h4>
+            <div class="section-title-border-bottom"></div>
+            <div class="multi-column-wrapper main-topics">
+                <div class="card-wrapper col-md-6">
+                    <div>
+                        <img style="width: 50%;" src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+                    </div>
+                </div>
+                <div class="card-wrapper col-md-6">
+                    <div>
+                        <img style="width: 50%;" src="{% static 'website/img/new/aprendizado-maquina-il.png' %}" />
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="sami-wrapper-white sami-wrapper">
+        <div class="no-card-section center-container credits-section">
+            <div class="multi-column-wrapper">
+                <div class="multi-column-wrapper">
+                    <div class="col-md-12">
+                        <span>{% trans "EXECUÇÃO" %}</span>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="{% static 'website/img/new/1_execucao.png' %}" />
+                    </div>
+                </div>
+
+                <div class="multi-column-wrapper" style="margin-top: 30px;">
+                    <div class="col-md-12">
+                        <span>{% trans "APOIO" %}</span>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="{% static 'website/img/new/funcamp.png' %}" />
+                    </div>
+                </div>
+
+                <div class="multi-column-wrapper" style="margin-top: 30px;">
+                    <div class="col-md-12">
+                        <span>{% trans "FINANCIAMENTO" %}</span>
+                    </div>
+                    <div class="col-md-12">
+                        <img src="{% static 'website/img/new/3_financiamento.png' %}" />
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        let navLiAhref = document.getElementById("home");
+        navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+    </script>
+
+    {% endblock %}

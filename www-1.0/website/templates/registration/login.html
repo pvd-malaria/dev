@@ -1,0 +1,43 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+{% block conteudo %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+<div>
+    <div class="collaborate-with-us-container ">
+        <div class="col-md-6">
+            <h1>collaborate with us!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitr, sed diam nonumy eirmod tempor invidunt ut
+                labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+                ea rebum</p>
+        </div>
+        <div class="col-md-6">
+            <form class="login-form" method="post" type="submit">
+                {% csrf_token %}
+                <div class="input-box">
+                    <img src="{% static 'website/img/new/user.png' %}" />
+                    <input placeholder="login" type="text" name="username"/>
+                </div>
+                <div class="input-box">
+                    <img src="{% static 'website/img/new/padlock.png' %}" />
+                    <input placeholder="password" type="password" name="password"/>
+                </div>
+                <div>
+                    <div class="col-md-6">
+                        <a>esqueci a senha</a>
+                        <a>solicitar acesso</a>
+                    </div>
+                    <button class="col-md-6"><label>LOGIN</label><img class="right-arrow-button"
+                            src="{% static 'website/img/new/arrow-right.png' %}" /></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

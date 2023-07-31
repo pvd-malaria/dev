@@ -1,0 +1,17 @@
+path {
+  fill: #ccc;
+  stroke: #fff;
+  stroke-width: .2px;
+}
+
+svg {
+  margin-top: 75px;
+  margin-left: 150px;
+  position: relative;
+}
+
+#visualization{
+  position: absolute;
+  margin-left: 850px;
+  margin-top: 100px;
+}

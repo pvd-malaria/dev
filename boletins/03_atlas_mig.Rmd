@@ -1,0 +1,414 @@
+---
+title: "Migração"
+output: bookdown::html_document2
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+# pkgs ------------------------------------------------------------------------
+library(sf)
+library(tidyverse)
+library(geobr)
+library(scales)
+library(tmap)
+library(widgetframe)
+library(plotly)
+library(circlize)
+
+# import ----------------------------------------------------------------------
+data <- read_csv2("03_indicadores_migração.csv.xz")
+data
+
+states <-
+  if (!file.exists("brasil-uf.gpkg")) {
+    read_state(showProgress = FALSE)
+  } else {
+    st_read("brasil-uf.gpkg")
+  }
+
+states
+
+files <- c("volume_catmig.csv.xz",
+           "idade_catmig.csv.xz",
+           "escola_catmig.csv.xz",
+           "renda_catmig.csv.xz")
+
+file_list <- map(files, read_csv2)
+
+# cozinha ---------------------------------------------------------------------
+# prepare data
+prep_data <- data %>%
+  filter(uf %in% c(11:21,51)) %>%
+  mutate(
+    ufb = factor(ufb, levels = c(
+      "RONDÔNIA", "ACRE", "AMAZONAS", "RORAIMA", "PARÁ", "AMAPÁ",
+      "TOCANTINS", "MARANHÃO", "MATO GROSSO")),
+    tx_bruta = tx_bruta*1000,
+    tx_liqui = tx_liqui*1000
+  ) %>%
+  select(-ufb)
+
+prep_data
+
+
+# merge with spatial features
+state_data <-
+  inner_join(states, prep_data, by = c("code_state" = "uf"))
+state_data
+
+# leaflet_maps ----------------------------------------------------------------
+tmap_options(basemaps = "OpenStreetMap.Mapnik",
+             limits = c(facets.view = 6))
+
+tmap_mode("view")
+
+map_populacao <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "populacao",
+      style = "fisher",
+      n = 4,
+      midpoint = NA,
+      palette = "Oranges",
+      title = "População total",
+      popup.vars = c("populacao", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+map_migbruta <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "mig_bruta",
+      style = "fisher",
+      n = 4,
+      midpoint = NA,
+      palette = "Oranges",
+      title = "Migração bruta",
+      popup.vars = c("mig_bruta", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+map_migsaldo <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "mig_saldo",
+      style = "fisher",
+      n = 4,
+      midpoint = NA,
+      palette = "-PuOr",
+      title = "Saldo migratório",
+      popup.vars = c("mig_saldo", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+map_txbruta <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "tx_bruta",
+      style = "fisher",
+      n = 4,
+      midpoint = 0,
+      palette = "Oranges",
+      title = "Taxa de migração bruta",
+      popup.vars = c("tx_bruta", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+map_txliqui <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "tx_liqui",
+      style = "fisher",
+      n = 4,
+      midpoint = 0,
+      palette = "-PuOr",
+      title = "Taxa de migração líquida",
+      popup.vars = c("tx_liqui", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 0.1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+
+map_indiceef <-
+    tm_shape(state_data) +
+    tm_polygons(
+      col = "indice_ef",
+      style = "fisher",
+      n = 4,
+      midpoint = NA,
+      title = "Índice de eficácia migratória",
+      palette = "-PuOr",
+      popup.vars = c("indice_ef", "name_state"),
+      legend.format =
+        list(
+          fun = number_format(accuracy = 0.1,
+                              big.mark = ".",
+                              decimal.mark = ","),
+          text.separator = "a"
+        )
+    )
+
+# plotly plots ----------------------------------------------------------------
+p.vol <-
+  plot_ly(data = file_list[[1]], x = ~cat_mig, y = ~populacao) %>%
+  add_bars() %>%
+  layout(xaxis = list(title = "Categoria"),
+         yaxis = list(title = "Número de migrantes",
+                      hoverformat = ".3s"),
+         title = "Volume de migrantes")
+
+p.idade <- plot_ly(data = file_list[[2]], x = ~cat_mig, y = ~p.populacao) %>%
+  add_bars(color = ~cat_ida) %>%
+  layout(legend = list(title = list(text = "Grupo etário")),
+         xaxis = list(title = "Categoria"),
+         yaxis = list(title = "Proporção",
+                      tickformat = "%",
+                      hoverformat = ".1%"),
+         title = "Idade por categorias")
+
+
+p.escola <- plot_ly(data = file_list[[3]], x = ~cat_mig, y = ~p.populacao) %>%
+  add_bars(color = ~fct_inorder(nv_ins2)) %>%
+  layout(xaxis = list(title = "Categoria"),
+         yaxis = list(title = "Proporção",
+                      tickformat = "%",
+                      hoverformat = ".1%"),
+         title = "Escolaridade por categoria")
+
+p.renda <-
+  plot_ly(data = file_list[[4]], color = ~cat_mig, y = ~r_mens) %>%
+  add_boxplot() %>%
+  layout(showlegend = FALSE,
+         xaxis = list(title = "Categoria"),
+         yaxis = list(title = "log da Renda (R$)",
+                      type = "log",
+                      hoverformat = "$,.2r"),
+         title = "Renda mensal total por categoria")
+
+fonte <- list(
+  x = 0,
+  y = -0.1,
+  text = "Fonte: IBGE, Censo Demográfico 2010",
+  showarrow = FALSE,
+  xref = "paper",
+  yref = "paper"
+)
+
+```
+
+
+# Introdução
+
+No Brasil como um todo, a intensidade dos fluxos migratórios nos últimos 30 anos diminuiu bastante, se comparado com o período mais intenso da nossa história, ocorrido entre as décadas de 1960 e 1980. No entanto, no contexto regional, e particularmente no caso da Amazônia Legal, isto não é necessariamente verdade. A migração continua a ser um elemento importante da dinâmica populacional regional e continua a mobilizar volumes significativos de pessoas e moldar o crescimento das populações desta região. É o que mostram os dados do Censo Demográfico 2010 analisados a seguir.
+
+# Volumes e taxas migratórias {#id1}
+
+(ref:fonte) Fonte: IBGE, Censo Demográfico 2010.
+
+```{r painel, fig.width=9, fig.height=9, fig.cap="(ref:fonte)"}
+manipulateWidget::combineWidgets(
+  tmap_leaflet(map_populacao, show = FALSE),
+  tmap_leaflet(map_migbruta, show = FALSE),
+  tmap_leaflet(map_migsaldo, show = FALSE),
+  tmap_leaflet(map_txbruta, show = FALSE),
+  tmap_leaflet(map_txliqui, show = FALSE),
+  tmap_leaflet(map_indiceef, show = FALSE),
+  ncol = 2
+)
+```
+
+O painel \@ref(fig:painel) apresenta de maneira interativa várias estatísticas que caracterizam a migração na Amazônia Legal. O primeiro painel, de população, oferece um contexto para as estatísticas que seguem, considerando que os grandes fluxos migratórios registrados nos estados do Pará e Maranhão, por exemplo, ocorrem nos estados mais populosos, e, portanto, não necessariamente refletem o peso que o fenômeno migratório tem sobre o total da população de um território. Os dados são do [Censo Demográfico 2010][1].
+
+É possível ver o volume total de migrantes, tanto bruto (imigrantes + emigrantes) quanto saldo migratório (imigrantes - emigrantes). Os dois elementos são importantes porque caracterizam não apenas o quanto a migração afetou o crescimento da população (saldo), mas também o fenômeno da mobilidade em geral, mostrando território onde grandes contingentes de população se movimentam (bruta).
+
+Os painéis inferiores mostram uma visão da migração proporcional ao total da população, através de taxas de migração por mil habitantes e do índice de eficácia migratória, que estima a retenção dos migrantes nos estados. O índice assume valores entre -1 e 1, sendo que quanto mais próximo de -1, menor é a quantidade de migrantes que ficam no estado e quanto mais próximo de 1, maior é a quantidade de migrantes que permanece no período.
+
+Os estados mais populosos da região, o Pará e o Maranhão lideram no volume de migração bruta, o que é esperado, porém, são também estados com saldo migratório negativo, o que mostra que grande parte de sua população deixa o estado. Outro estado com números significativos é o Mato Grosso, junto com o Amazonas, são os estados com maior saldo migratório na região. O Maranhão e Pará são os únicos estados desta região que perdem população absoluta devido a migração, o que contrasta com seus números elevados de migração bruta.
+
+Quando colocamos estes números em perspectiva com a população de cada estado, o quadro é mais complexo. A migração bruta da região é bastante elevada, mesmo para os estados com menores taxas, como Amazonas e Acre. O estado do Tocantins tem uma taxa muito alta, de 123 migrantes por 1000 habitantes. No caso da migração líquida, vemos que o Maranhão se destaca por ter uma perda significativa de população devido a emigração. O Pará, por sua vez, tem um saldo ligeiramente negativo, mostrando que é um estado marcado pelo alto número de saídas, mas também de entradas, num fenômeno descrito por especialistas como rotatividade ou circulação migratória, situação similar ocorre com o estado do Acre.
+
+Por outro lado, há estados mais marcados pela imigração, com efeitos significativos sobre o aumento de sua população. São eles, principalmente, Amapá e Roraima, mas, em menor medida, também Amazonas, Rondônia, Mato Grosso e Tocantins, pois, embora o volume de migrantes seja bem menor nesses estados menores, o peso que esses novos habitantes tem sobre a pequena população é mais significativo.
+
+Finalmente, o índice de eficácia migratória nos revela algumas unidades com características peculiares, especialmente o estado do Tocantins, que possui altas taxas de migração bruta e líquida, porém, que não retém grande parte dos migrantes que recebe. O estado do Maranhão, por sua vez, destaca-se pela perda significativa de população, tanto em volume de pessoas, quanto em taxa. O índice mostra que este estado têm perdas significativas de população, mesmo considerando as chegadas.
+
+# Perfil dos migrantes
+
+Agora que já temos uma noção mais clara de quantos migrantes, é interessante avaliar quem são os migrantes da Amazônia Legal e como eles diferem da população local. É importante lembrar que nossa definição de migrante é a população que declarou residir em outra unidade da federação cinco anos antes do último recenseamento, e que nós colocamos as pessoas em três grandes grupos: não-migrantes, migrantes internos e migrantes externos. A única diferença entre os migrantes internos e externos é a sua origem: os migrantes internos são proveniente de algum estado da região, enquanto os externos vêm de outras regiões do Brasil.
+
+(ref:vol) Fonte: IBGE, Censo Demográfico 2010.
+
+```{r volume, warning=FALSE, fig.width=9, fig.asp=0.6, fig.cap="(ref:vol)"}
+p.vol
+```
+
+Dentre os `r number(sum(file_list[[1]][["populacao"]]), big.mark = ".", decimal.mark = ",")` de migrantes captados no Censo, nota-se que a esmagadora maioria é proveniente da própria região, com os emigrantes externos compondo apenas `r percent(file_list[[1]][[1,"populacao"]]/file_list[[1]][[2,"populacao"]])` do total.
+
+(ref:idade) Fonte: IBGE, Censo Demográfico 2010.
+
+```{r idade, warning=FALSE, fig.width=9, fig.asp=0.6, fig.cap="(ref:idade)"}
+p.idade
+```
+
+A estrutura etária dos migrantes é notadamente mais jovem do que a dos não migrantes, devido a conhecida seletividade por idade da migração, ou seja, ao longo da vida das pessoas, as idades jovens (dos 15 aos 29 anos) e adultas (entre 30 e 45 anos) são o momento onde elas encontram-se mais propensas a migrar, devido a entrada no mercado de trabalho, a busca de oportunidades de estudo, entre outros fatores. O que é interessante é perceber que entre migrantes internos e externos há uma diferença significativa de estrutura etária. Enquanto os migrantes internos tem proporções mais altas de 0 a 14 e 15 a 29 anos, os migrantes externos tem proporções mais altas de 30 a 45 e 46 a 59 anos. Isto sugere que a população de migrantes externos que se muda para a região tende a estar em uma outra etapa da vida, provavelmente com maiores níveis de escolaridade e renda.
+
+(ref:escola) Fonte: IBGE, Censo Demográfico 2010.
+
+```{r escola, warning=FALSE, fig.width=9, fig.asp=0.6, fig.cap="(ref:escola)"}
+p.escola
+```
+
+*Na construção do gráfico acima, utilizamos apenas a população acima de 25 anos de idade, supondo que a partir desta idade o nível de escolaridade da população é mais representativo daqueles que completaram os estudos.*
+
+O nível de escolaridade dos migrantes internos é bastante similar ao nível dos não-migrantes, porém, com uma pequena vantagem para aqueles. Isto mostra que esta população que migra está em condições mais vantajosas que aqueles "que ficam" do ponto de vista da educação, outra faceta da seletividade migratória. A escolaridade dos migrantes externos está em outro patamar, com a proporção de pessoas com nível superior sendo três vezes maior que nas outras categorias. Isto sugere que estes migrantes externos venham assumir postos de trabalho mais qualificados que os "nativos", como cargos públicos de nível superior ou na área técnica do setor agropecuário ou na indústria extrativa.
+
+(ref:renda) Fonte: IBGE, Censo Demográfico 2010.
+
+```{r renda, warning=FALSE, fig.width=9, fig.asp=0.6, fig.cap="(ref:renda)"}
+p.renda
+```
+
+O gráfico acima mostra a distribuição da variável renda mensal total para as categorias de migrantes com alguma renda. Vemos que a renda dos migrantes internos é levemente superior a dos não-migrantes, compatível com as diferenças na escolaridade e com a hipótese de que a migração está ligada a oportunidades econômicas. Isto pode ser visto de forma mais pronunciada na renda dos migrantes externos, que é consideravelmente mais alta que dos outros grupos, também compatível com os diferenciais de escolaridade.
+
+Em suma, embora seja uma categorização bastante simples, ela revela alguns fatos relevantes sobre a mobilidade da população na Amazônia Legal: (1) a migração na amazônia se dá, neste período, principalmente dentro da própria região, sendo o contingente de migrantes externos bem menos significativo (2) os migrantes são uma população mais jovem, embora no caso dos migrantes externos trate-se de uma população um pouco mais velha que os internos, (3) os migrantes são, em geral, mais escolarizados que os não-migrantes, o que sugere que a possibilidade de migrar para acessar oportunidades econômicas está também relacionada com o acesso a educação e (4) a renda dos migrantes internos não é muito diferente dos não-migrantes, o que significa que a migração tem um caráter de necessidade econômica: uma população mais jovem e mais escolarizada não encontra trabalho em sua origem e preciso deslocar-se para o destino, ainda que isso não represente um incremento de renda, como no caso da migração externa.
+
+# Direção dos fluxos migratórios
+
+```{r, include = FALSE}
+# Prep plot data --------------------------------------------------------------
+mig <- read_csv2("coord_plot_data.csv.xz") %>%
+  # eliminar os autofluxos
+  filter(regant != regat,
+         fluxo > 2500)
+
+(meta <- mig %>%
+    select(uf = regat) %>%
+    count(uf) %>%
+    mutate(color = c(RColorBrewer::brewer.pal(10, "Set3")),
+           rank = 1:10,
+           gap = 4))
+
+names(meta$color) <- meta$uf
+```
+
+
+Para onde dirigem-se os migrantes da Amazônia Legal? Vimos na seção \@ref(id1) que alguns estados tanto emitem quanto recebem populações significativas. De onde vem e para onde vão estas pessoas é o que pode ser visto nos diagramas de cordas abaixo.
+
+(ref:cord-vols) Fluxos migratórios, Amazônia Legal, 2005-2010.
+
+```{r cord-vols, fig.cap="(ref:cord-vols)", fig.width=9.5, fig.height=9}
+# Circular plot VOLUME -------------------------------------------------------
+options(scipen = 6)
+
+circos.clear()
+circos.par(track.margin = c(0.01, -0.01), start.degree = 90, gap.degree = meta$gap)
+
+chordDiagram(x = mig, order = meta$uf,
+             grid.col = meta$color,
+             transparency = 0.25,
+             directional = 1, direction.type = c("diffHeight", "arrows"),
+             link.arr.type = "big.arrow", diffHeight = -0.03,
+             link.sort = TRUE, link.largest.ontop = TRUE,
+             annotationTrack = 'grid',
+             annotationTrackHeight = 0.03,
+             preAllocateTracks = list(track.height = 0.25))
+
+circos.track(track.index = 1, bg.border = NA, panel.fun = function(x, y) {
+  s = get.cell.meta.data("sector.index")
+  xx = get.cell.meta.data("xlim")
+  circos.text(x = mean(xx), y = 1,
+              labels = s, cex = 1, adj = c(0.5, 0),
+              facing = "clockwise", niceFacing = TRUE)
+  circos.axis(h = "bottom",
+              major.at = seq(0, 1100000, 100000),
+              labels = number(seq(0, 1100000, 100000), scale = 0.001),
+              labels.cex = 0.75,
+              labels.pos.adjust = FALSE,
+              labels.niceFacing = FALSE)
+})
+text(x = -1.1, y = -1, pos = 4, cex = 1,
+     labels = "Em milhares de pessoas")
+text(x = 1.1, y = -1, pos = 2, cex = 1,
+     labels = "Fonte: IBGE - Censo Demográfico 2010")
+```
+
+No digrama \@ref(fig:cord-vols) vemos os fluxos migratórios mais volumosos da região. Destacam-se os fluxos externos vindos de outras UFs para o Mato Grosso, o Maranhão e o Pará. De uma maneira geral, vemos que ainda há fluxos significativos para todas as UFs da região e há contrafluxos importantes de habitantes que se dirigem para fora da região. 
+
+Internamente, os fluxos mais importantes são entre Maranhão e Pará, Mato Grosso e Rondônia, Pará e Amapá e Pará e Amazonas, cujo volume é significativo dado o tamanho dessas unidades maiores da federação.
+
+(ref:cord-ratio) Fluxos migratórios proporcionais, Amazônia Legal, 2005-2010.
+
+```{r cord-ratio, fig.cap="(ref:cord-ratio)", fig.width=9.5, fig.height=9}
+# Circular plot RATIO --------------------------------------------------------
+options(scipen = 6)
+
+circos.clear()
+circos.par(track.margin = c(0.01, -0.01), start.degree = 90, gap.degree = meta$gap)
+
+chordDiagram(x = mig, scale = TRUE,
+             order = meta$uf,
+             grid.col = meta$color,
+             transparency = 0.25,
+             directional = 1, direction.type = c("diffHeight", "arrows"),
+             link.arr.type = "big.arrow", diffHeight = -0.03,
+             link.sort = TRUE, link.largest.ontop = TRUE,
+             annotationTrack = 'grid',
+             annotationTrackHeight = 0.03,
+             preAllocateTracks = list(track.height = 0.25))
+
+circos.track(track.index = 1, bg.border = NA, panel.fun = function(x, y) {
+  s = get.cell.meta.data("sector.index")
+  xx = get.cell.meta.data("xlim")
+  circos.text(x = mean(xx), y = 1,
+              labels = s, cex = 1, adj = c(0.5, 0),
+              facing = "clockwise", niceFacing = TRUE)
+  circos.axis(h = "bottom",
+              major.at = seq(0, 2, 0.5),
+              labels = number(c(0, 0.25, 0.5, 0.75, NA), accuracy = 0.01),
+              labels.cex = 0.75,
+              labels.pos.adjust = FALSE,
+              labels.niceFacing = FALSE)
+})
+text(x = -1.1, y = -1, pos = 4, cex = 1,
+     labels = "Em proporção do total de fluxos")
+text(x = 1.1, y = -1, pos = 2, cex = 1,
+     labels = "Fonte: IBGE - Censo Demográfico 2010")
+```
+
+A partir da figura \@ref(fig:cord-ratio) podemos ter um panorama mais claro da situação da migração nos estados de menor população. Grande parte deles recebe muitos migrantes externos, e também envia migrantes para fora da região, mas aqui destacaremos a intensidade das trocas regionais, ou seja, entre os estados da Amazônia Legal.
+
+O estado do Acre recebe migrantes principalmente de Rondônia e do Amazonas, seus vizinhos. O estado do Amapá recebe migrantes majoritariamente do Pará, e um pequeno fluxo do Maranhão. O Amazonas recebe principalmente do Pará, embora receba pequenos fluxos de Rondônia, Mato Grosso e Roraima. O Maranhão recebe principalmente do Pará, seu vizinho, com um pequeno fluxo vindo do Mato Grosso. O Mato Grosso recebe principalmente de Maranhão, Rondônia e Pará. O Pará recebe principalmente do vizinho Maranhão, mas recebe fluxos menores de quase todos os outros estados. Rondônia recebe principalmente de seu vizinho Mato Grosso, mas também do Amazonas, do Acre do Pará e do Amapá. Roraima tem três fluxos de importância similar, do Pará, do Amazonas e do Maranhão. Tocantins recebe principalmente do Maranhão, do Pará e, em menor medida, do Mato Grosso.
+
+De maneira geral, configura-se uma complexa e rica rede de trocas migratórias, que certamente tem importância multidimensional para a região, através de seus impactos no crescimento populacional, na força de trabalho e na demanda por produtos e serviços tanto público quanto privados.
+
+
+[1]: https://censo2020.ibge.gov.br/

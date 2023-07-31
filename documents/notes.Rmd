@@ -1,0 +1,163 @@
+---
+title: "Combate a malária de acordo com a OMS"
+output: html_notebook
+---
+
+# Introdução
+
+O manual da Organização Mundial de Saúde ([*MALARIA SURVEILLANCE, MONITORING & EVALUATION: A REFERENCE MANUAL*, World Health Organization, 2018][1]) delineia uma série de objetivos, áreas, príncipios e procedimentos para o combate eficaz, diminuição da prevalência, eliminação da transmissão e prevenção da reintrodução em áreas onde a doença já foi eliminada. As seções abaixo procuram condensar alguns elementos importantes para a condução das atividades do projeto.
+
+# Objectives
+
+An effective malaria surveillance system enables programme managers to:
+
+- identify and target areas and population groups most severely affected by malaria, to deliver the necessary interventions effectively and to advocate for resources;
+- regularly assess the impact of intervention measures and progress in reducing the disease burden and help countries to decide whether adjustments or combinations of interventions are required to further reduce transmission;
+- detect and respond to epidemics in a timely way;
+- provide relevant information for certification of elimination;
+- monitor whether the re-establishment of transmission has occurred and, if so, guide the response.
+
+# Areas
+
+- malaria case surveillance in settings of malaria burden reduction and elimination (sections 1-3);
+- drug efficacy surveillance in elimination settings, especially in areas where each case is followed up in routine surveillance (sections 3-4);
+- entomological surveillance in settings of malaria burden reduction and elimination (sections 3, 4 and 7);
+- epidemic detection, preparedness and response, especially in low- to moderate-transmission settings of burden reduction (sections 2, 3 and 6); 
+- monitoring and evaluation of programmes and surveillance systems in all endemic settings (section 7 and relevant parts in other sections).
+
+# Transmission level and epidemiology
+
+As transmission decreases, the epidemiology of malaria is likely to change:
+
+- The number of uncomplicated malaria cases and related fevers will decrease.
+- The numbers of severe cases and deaths will decrease, although the proportion of severe to uncomplicated disease may increase.
+- Malaria transmission will become more focal.
+- The age distribution of cases of disease will become more evenly distributed, reflecting decreasing exposure.
+- In some settings, disease may become more prevalent among people in certain occupations, such as forest workers.
+- Populations will become less immune, and the risk of epidemics and the associated case fatality ratio will increase if interventions are interrupted.
+- Imported cases may represent an increasing fraction of the overall incidence.
+- In countries with both P. falciparum and P. vivax malaria, the proportion of vivax will gradually increase, as the transmission of falciparum can be reduced faster with current interventions, while vivax infection includes a hypnozoite stage that will evade detection with current standard diagnostics.
+
+As a result, the goals and possibilities of surveillance will change, in order to respond to the new characteristics of disease spread among the population:
+
+- In areas of high transmission, programme monitoring and evaluation are based mainly on aggregate numbers, and actions are designed to ensure that the entire population has access to services and there are no adverse disease trends.
+- In areas with low or moderate transmission, the distribution of malaria is more heterogeneous, and it is important to identify the population groups that are most severely affected by the disease and to target interventions appropriately. This will be facilitated by mapping areas of ongoing transmission and analysis of case distribution at community level.
+- As transmission is reduced, the risk of epidemics increases; thus, cases at health facilities must be analysed more frequently to ensure early detection of a potential outbreak.
+- As progress is made towards elimination, it is critical to ensure efficient detection of and response to new cases and foci. Individual cases of infection or clusters of cases should be investigated to identify risk factors, eliminate foci of transmission and maintain malaria-free status. Surveillance systems become more complex and resource intensive, and additional skills, training and activities are required. As the number of cases is reduced and a country nears elimination, the frequency of case investigations will decrease, thereby eventually reducing the costs of surveillance.
+
+# Principles of design and establishment of malaria surveillance
+
+- Accurate parasitological diganosis of malaria cases, either through quality-assured microscopy or WHO-recommended rapid diagnostic tests (RDTs).
+- System integration of all components of malaria surveillance, with a preference toward a horizontal, communicative, responsive structure for the Health Management Information System (HMIS).
+- Standard procedures should be based on specific country needs and WHO recommendations.
+- Staff responsible for detection, recording and reporting cases should be the first users of data. Analytical capacity should be available at all levels, not just centrally.
+- Surveillance systems should address the heterogeneity of malaria within a country's boundaries.
+- Investments in surveillance, system transition and human resources should anticipate and prepare for reductions in disease burden.
+- All surveillance data must be linked to decision-making at some level of the health system, even if the decision results in no change to interventions.
+- A concerted effort must be made to include cases detected in other sectors (private, nongovernment health care) beside public health facilities.
+- After interruption of transmission, surveillance may fall upon the broad health system, but regular training and monitoring of changes in receptivity and vulnerability of populations should continue to prevent reintroduction.
+- Surveillance should benefit from advances in technology, the adoption of which should be based on proven additional benefits, cost and sustainability, determined empirically.
+- Good understanding of the biology and behavioural ecology of vector species is essential for making programme decisions and monitoring and evaluating vector control interventions, this includes monitoring and evaluating the efficacy of antimalarial drugs.
+- Surveillance systems should be assessed routinely, to ensure their accuracy, reliability, completeness, precision, timeliness and integrity.
+
+
+# Health information systems
+
+Health information is one of the six building blocks of a health system, and surveillance is the main component of a HMIS. It comprises the **people, procedures, tools and structures** required to generate information for planning and targeting interventions and monitoring and evaluating programs.
+
+- The people include **decision-makers** both inside and outside the health service who use data from surveillance systems, the **health staff** who gather and/or use the data and the **patients and communities** whose details are registered.
+- The procedures include **case definitions, reporting frequency, pathways of information flow, data quality checks, incentive schemes, data analysis, mechanisms for reviewing performance, methods for and frequency of disseminating results, using data for making decisions about appropriate responses, supervision and planning.
+- The tools include **report forms, tally sheets, registers, patient cards, dashboards, computer hardware and software, documentation and training materials.
+- The structures include the **ways in which staff are organized to manage, develop and use the system.
+
+# High transmission areas
+
+In areas in which transmission remains moderate to high and the main goal of national programmes is to reduce the burden of disease, there are often so many cases that they cannot be analyzed individually. As such, the analysis is carried out in aggregates obtained from routine health information systems, action is taken at population level. The initial focus is on ensuring good-quality data, obtained through:
+
+- Application of diagnostic tests to all suspected cases.
+- Correct classification of test results and treatment with nationally recommended antimalarial agents.
+- Quality control of RDTs and microscopy.
+- Consistency and completeness of registration and reporting from health facilities.
+- Systematic assessment of the surveillance system itself, data quality audits.
+- A process of analysis and use of surveillance data for response, monitoring and evaluating programmes.
+
+# Monitoring quality of surveillance systems
+
+- maintaining an up-to-date list of operational health facilities and other notification sources;
+- making sure that all core and support functions of the systems are in place;
+- keeping track of which facilities have submitted the required reports and their timeliness;
+- tracking proportion of cases and foci investigated where applicable;
+- following up missing, incomplete and delayed reports;
+- reviewing the data submitted and following up on incomplete or erroneous data;
+- providing positive feedback to health facilities that submit timely, complete, accurate data;
+- ensuring a system for up-to-date training of surveillance staff.
+
+# Data anaylisis and interpretation
+
+Data from malaria surveillance systems are important for tracking geographical and temporal trends in disease incidence, detecting epidemics, assessing progress towards programme targets and evaluating the impact of interventions and the qualitu of the surveillance system. Routine use of surveillance data is expected to improve both programme decision-making and the surveillance system as gaps in data completeness and quality are identified and addressed. Most national surveillance systems now use electronic systems, and programmes should use digital dashboards for analysing key indicators and trends.
+
+## Influence of health facility attendance, diganostic testing and reporting rates on reported malaria incidence rates
+
+Crude incidence rates derived by surveillance of malaria cases
+take into account the size of the population but may not reflect the
+true incidence of malaria in a population because, as shown in the
+surveillance cascade:
+
+- most reports are from the public health sector;
+- the proportion of patients with suspected malaria who attend public health facilities (from which most data are derived) may differ by area and over time;
+- the proportion of people attending public health facilities who have a diagnostic test may differ by area and over time;
+- health facility reporting rates may differ by area.
+
+In the Brazilian case, all reports come through whether from the public or private health sector, given malaria's status as a mandatorily notified illness. We do expect, however, the proportion of people attending health facilities to differ by area and over time, considering the differential access to health services. We should consider metrics of access, such as number of health institutions and professionals per 1000 population, distance to nearest institution, etc. We should also probably investigate the proportion of people attending health facilities who have a diagnostic test and differential health facility reporting rates by area.
+
+Probable areas of focus could be: 
+- Rates of passive and active case detection by area and over time;
+- Hit rates of confirmed vs unconfirmed diagnosis by area and over time;
+- Whether there are differences in reporting by public and private health facilities.
+- Differentials in reporting of cases by health facility or CHW (agente comunitário).
+
+# Data use for decision making
+
+- Process indicators (e.g. number of commodities distributed and where)
+- Input indicators (e.g. number of households who received indoor spraying, nets, etc.)
+- Intermediate indicators (e.g. impact of an intervention on vectors)
+- Outcome indicators (e.g. malaria incidence, severity)
+
+There is room for improvement in the way these indicators are displayed and visualized for health managers at different levels. Maybe interactive dashboards could provide real time and aggregate data on these indicators for smaller levels of management.
+
+## Approaches for disseminating data
+
+- Formal meetings
+- Supervision
+- Feedback
+
+# Componentes of HMIS relevant to malaria surveillance
+
+- Resources for health information systems
+- Recording
+- Data reporting
+- Data analysis and presentation
+- Interpretation and evaluation
+
+In the context of the project, it seems logical that our biggest contribution will be in data analysis, presentation, interpretation and evaluation. Which are described in the manual as "The transformation of data into information requires capacity for basic statistical analysis, preparation of analytical and standard graphs and of surveillance bulletins, including stratification, and of reports and presentations". These can take the form of "User dashboards, reports, queries and alerts give access to the information resulting from data analysis". Also "Data may be used to assess disease trends, detect epidemics and determine the response, quantify and forecast resource requirements, assess programme performance and adjust interventions", and "National information can be used in day-to-day management of a malaria control programme. Greater value should be placed on information collection, management, feedback and use".
+
+## Steps in strenghtening HMIS
+
+- Review the existing system.
+- Define the data needs of relevant units in the health system, such as the community, health system, intermediate and central levels.
+- Determine the most appropriate, effective data flow.
+- Design the data collection and reporting tools.
+- Develop the procedures and mechanisms for data processing.
+- Develop and implement a training programme for data providers and
+data users.
+- Pilot test and, if necessary, redesign the system for optimal data collection, data flow, data processing and data use.
+- Monitor and evaluate the system.
+- Prepare effective data dissemination and feedback mechanisms.
+- Continuously strengthen the HMIS.
+
+<!-- Parei no terceiro capítulo -->
+
+<!-- Próximo capítulo mais importante é o 7 -->
+
+
+[1]: https://apps.who.int/iris/bitstream/handle/10665/272284/9789241565578-eng.pdf?ua=1

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Classificador de esquemas de tratamento malaria usando IA {% endblock %}</h1>
+    <div class=''>
+        <h3>Esquemas de tratamento de malária</h3>
+        <p>Em uma análise de dados realizada no banco de dados SIVEP-Malária, foi identificado que o Esquema de Tratamento mais utilizado (82,8%) é o esquema **"Infecções pelo P. vivax, ou P. ovale com Cloroquina em 3 dias e Primaquina em 7 dias"** (aqui denominado **Esquema 11**). Os demais 17,2% dos indivíduos da base, foram tratados com algum outro esquema de tratamento. Atualmente existem 27 Esquemas de Tratamentos pré-definidos, além de uma opção "Outros Esquemas de Tratamentos".</p>
+    </div>
+
+    <div class="">
+        <h3>Modelos de IA: Machine Learning</h3>
+        <p>Utilizando algoritmos de aprendizado de máquina e dados SIVEP-Malária, foi criado um Sistema de IA para recomendação de esquema de tratamento de malária. Considerando a grande quantidade de indivíduos tratados com o **Esquema 11**, desenvolvemos um modelo de aprendizado de máquina que calcula a probalidade de um indivíduo (identificado conforme dados do formulário abaixo), receber indicação para o **Esquema 11**, ou não, e neste cas0, o indivíduo deve receber indicação de um esquema de tratamento, diferente do **Esquema 11**.</p>
+    </div>
+
+    <div class="">
+        <h3>Sistema de suporte decisão</h3>
+    <p>Para realizar a recomendação, o modelo baseia-se em reconhimento de padrões que podem ser observados nos dados utilizados. A Figura 1 abaixo mostra a importância de cada variável para o modelo, ou seja, as variáveis mais relevantes utilizadas pelo modelo para a recomendação são nesta ordem: 1) "Resultado do Exame", 2) "Idade do paciente", e assim sucessivamente. A Figua 2 apresenta métricas de avaliação do modelo.</p>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<style>
+    .containers {
+        padding: 2% 2% !important;
+    }
+</style>
+
+<div>
+    <div class="data-visualization-first-block containers">
+        <div class="col-md-12">
+            <a class="back-visualizations-button" href="{% url 'website:dashboards' %}">
+                < {% trans "VOLTAR" %}</a>
+                    <h1>
+                        {% trans "Relação Importados" %}
+                    </h1>
+
+
+        </div>
+    </div>
+    <div class="containers">
+        <div>
+            <iframe src="https://vinicius-maia.shinyapps.io/importadosdash/" scrolling="no" class="dashIFrame">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let navLiAhref = document.getElementById("dashboards");
+    navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+{% endblock conteudo%}

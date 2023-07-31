@@ -1,0 +1,82 @@
+.about-page-container{
+  width: 70% !important;
+  margin: 0 auto !important;
+}
+
+.text-about-justify{
+  text-align: initial  !important;
+  vertical-align: top !important;
+}
+
+.team-member-wrapper > div {
+  vertical-align: top !important;
+}
+
+.team-member .team-member-photo{
+  margin-bottom: 15px;
+  border: 5px solid #9fdcce;
+  border-radius: 200px;
+  width: 150px;
+  height: 150px;
+  display: block;
+  margin: 0px auto 15px auto;
+}
+
+.team-member .team-member-name{
+  color: #4aa896;
+  font-weight: 700;
+  margin-bottom: 0;
+  display: block;
+}
+
+.team-member .team-member-contact{
+  font-size: 13px;
+  font-style: italic;
+  color: rgb(120,120,120);
+  display: block;
+}
+
+.team-member .team-member-job{
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 0;
+  display: block;
+}
+
+.team-member .team-member-institute{
+  font-size: 13px;
+  display: block;
+}
+
+.fundamentals-points{
+  background-color: #fff;
+  text-align: center;
+  border: 3px solid rgb(159, 220, 206);
+  border-radius: 8px;
+  padding: 12px 15px;
+  height: 260px;
+}
+
+.fundamentals-points > img{
+  margin-bottom: 15px;
+  width: 100px;
+  height: 100px;
+}
+
+.fundamentals-points > label{
+  font-weight: 900;
+  font-size: 14px;
+}
+
+.fundamentals-points > div{
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.legend{
+  margin: 15px 0;
+}
+
+@media screen and (max-width: 767px){
+  .about-first-container{width: 100% !important;}
+}

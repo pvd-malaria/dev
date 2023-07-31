@@ -1,0 +1,11 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load i18n %}
+{% csrf_token %}
+
+{% endblock %}

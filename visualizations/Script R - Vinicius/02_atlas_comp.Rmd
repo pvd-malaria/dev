@@ -1,0 +1,270 @@
+---
+title: "Composição da população"
+output: bookdown::html_document2
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+# pkgs-opts ------------------------------------------------------------------
+library(tidyverse)
+library(scales)
+library(plotly)
+
+options(digits = 3, scipen = 50)
+
+theme_set(theme_bw())
+```
+
+
+# Introdução
+
+A Amazônia Legal compreende a região norte (7 estados) e mais um estado da região nordeste (Maranhão) e outro do centro-oeste (Mato Grosso). 
+
+Do ponto de vista demográfico, trata-se de uma região em que a população é, em média, mais jovem, devido ao menor ritmo de queda de sua fecundidade ao longo da transição brasileira e do influxo significativo de jovens migrantes. A estrutura etária e por sexo das unidades da federação é apresentada a seguir, numa comparação com o país.
+
+Devido a histórica desigualdade regional entre as unidades da federação brasileira, é uma região em que os indicadores socioeconômicos tendem a estar abaixo da média nacional. Indicadores como rendimento médio do trabalho, índice de Gini (desigualdade da distribuição de renda) e anos de estudo da população são apresentados a seguir.
+
+# Estrutura etária
+
+```{r piramide, fig.height=8, fig.width=9, fig.cap="Fonte: IBGE, Censo Demográfico 2010."}
+# import ---------------------------------------------------------------------
+cd10 <- read_rds("dados/censo_2010_idade_sexo.rds")
+
+# Estrutura etária das UFs em comparação com o Brasil 2010 -------------------
+label <- c(sprintf("%s a %s", seq(0, 65, 5), seq(4, 69, 5)), "70 +")
+
+uf <-
+  cd10 %>%
+  as_tibble() %>%
+  filter(UF %in% c(11:21,51)) %>%
+  mutate(UFf = factor(UF, labels = c("Rondônia", "Acre","Amazonas","Roraima",
+                                     "Pará","Amapá","Tocantins","Maranhão",
+                                     "Mato Grosso")),
+         SEXO = factor(SEXO, labels = c("Masculino", "Feminino")),
+         IDADEf = cut(IDADE,
+                      breaks = c(seq(0, 70, 5), 139),
+                      labels = label,
+                      include.lowest = TRUE,
+                      right = FALSE)) %>%
+  group_by(UF, UFf, SEXO, IDADEf) %>%
+  count(wt = PESO) %>%
+  ungroup() %>%
+  group_by(UF) %>%
+  mutate(p = if_else(SEXO == "Masculino", -n/sum(n), n/sum(n)))
+
+br <-
+  cd10 %>%
+  as_tibble() %>%
+  mutate(SEXO = factor(SEXO, labels = c("Masculino", "Feminino")),
+         IDADEf = cut(IDADE,
+                      breaks = c(seq(0, 70, 5), 139),
+                      labels = label,
+                      include.lowest = TRUE,
+                      right = FALSE)) %>%
+  group_by(SEXO, IDADEf) %>%
+  count(wt = PESO) %>%
+  ungroup() %>%
+  mutate(p = if_else(SEXO == "Masculino", -n/sum(n), n/sum(n)))
+
+to_csv <- br %>%
+  mutate(UF = "1", UFf = "Brasil") %>%
+  bind_rows(uf, .)
+
+p <-
+  uf %>%
+  highlight_key(~IDADEf) %>%
+  ggplot(aes(IDADEf, p,
+             fill = SEXO,
+             text = paste0("Pop.:", number(n, accuracy = 1)))) +
+  geom_col(data = br, aes(fill = "Brasil"), alpha = 0.5) +
+  geom_col(alpha = 0.5, position = "identity") +
+  coord_flip() +
+  facet_wrap(~UFf, ncol = 3) +
+  scale_y_continuous(labels = function(x) percent(abs(x), accuracy = 1)) +
+  scale_fill_manual(values = c("grey50", "red2", "blue2"), name = NULL) +
+  theme(strip.background = element_blank(),
+        legend.position = "top") +
+  labs(x = "Proporção", y = "Grupo etário",
+       title = "Estrutura etária e por sexo")
+
+p <-
+  ggplotly(tooltip = "text") %>%
+  highlight("plotly_click", "plotly_deselect") %>%
+  layout(hovermode = "y") %>%
+  style(hoverinfo = "none", traces = 1:9)
+
+p
+```
+
+Na figura \@ref(fig:piramide), é possível ver, de forma interativa, a composição da população dos estados, com a composição do Brasil como pano de fundo (em cinza). Com exceção de Mato Grosso, que possui estrutura etária mais semelhante a nacional, os outros estados todos apresentam estruturas significativamente mais jovens, como indicado na introdução, devido ao declínio mais lento do número médio de filhos por mulher. Apesar disso, todas as pirâmides já apresentam um estreitamente significativo na base indicativo de uma redução drástica no ritmo de crescimento da população e do consequente envelhecimento relativo da população.
+
+Em relação a distribuição por sexo, especialmente se nos concentramos na população de 15 a 39 anos, é possível perceber os efeitos da migração na estrutura etária, considerando ser esta a idade onde é mais provável que as migrações ocorram por razões de trabalho ou estudo e que os homens são mais propensos a migrar sozinhos que as mulheres. Estados como Rondônia exibem uma sobrepopulação masculina em relação a feminina nessas idades, enquanto estados como Maranhão e Pará, o contrário. Isto sugere que Rondônia é destino de migração, enquanto Maranhão e Pará são origens.
+
+Em idades mais avançadas, as melhores taxas de sobrevivência das mulheres fazem com que as diferenças relativas por sexo em cada idade aumentem em favor destas, algo que se torna cada vez mais pronunciado para as idades mais avançadas.
+
+*Em alguns estados há um "pico" na população de 10 a 14 anos que é provavelmente o resultado da subenumeração de crianças no Censo 2000 que são, agora, [finalmente contadas no Censo 2010][1]*.
+
+# Renda
+
+## Rendimento médio mensal do trabalho das pessoas acima de 10 anos
+
+<!-- Tabela 1860: Pessoas de 10 anos ou mais de idade e Valor do rendimento médio mensal, por sexo, situação e classes de rendimento mensal -->
+
+```{r renda, fig.height=6, fig.width=9, fig.cap="Fonte: IBGE, Pesquisa Nacional por Amostra de Domicílios, 2001-2015."}
+# import ---------------------------------------------------------------------
+renda_uf <- read_csv2("dados/pnad_2001-2015_renda.csv")
+renda_br <- read_csv2("dados/pnad_2001-2015_renda_br.csv")
+
+# Renda média das UFs em comparação com o Brasil 2007-2019 ------------------
+renda <- bind_rows(renda_br, renda_uf)
+
+r <- renda %>%
+  filter(uf %in% c(1:21,51)) %>%
+  highlight_key(~uf_n) %>%
+  ggplot(aes(ano, renda,
+             color = reorder(uf_n, uf),
+             text = paste0("território: ", uf_n))) +
+  geom_line(size = 0.5) +
+  geom_point(size = 1) +
+  scale_x_continuous(breaks = breaks_width(2)) +
+  scale_y_continuous(labels = label_number(big.mark = ".",
+                                           decimal.mark = ",")) +
+  scale_color_manual(values = c("grey50", "darkred", "seagreen", "steelblue",
+                                "gold2", "orange", "purple", "coral",
+                                "forestgreen", "khaki")) +
+  labs(x = "Ano", y = "R$",
+       title = "Valor do rendimento médio mensal",
+       color = "Estado") # População de 10 anos ou mais
+
+p <- r %>%
+  ggplotly(tooltip = c("ano", "renda", "text")) %>%
+  highlight(on = "plotly_hover", off = "plotly_deselect")
+p
+```
+
+O gráfico \@ref(fig:renda) mostra de maneira interativa a evolução do rendimento médio mensal para os estados da Amazônia Legal e o Brasil, no período 2001-2015, para a população acima de 10 anos.
+
+Até o ano de 2007, todos os estados estavam abaixo da média nacional de renda. Estados como Maranhão e Pará estão nas últimas posições do país no quesito do rendimento do trabalho. A partir de 2011, mesmo antes da deflagração da crise política e econômica iniciada em 2014-2015, já é visível um aumento da distância entre o desempenho dos rendimentos a nível nacional e a nível das UFs desta região. 
+
+A principal exceção é o Mato Grosso, que apresenta trajetória ascendente e superior a média do país a partir de 2008, provavelmente puxado pelo desenvolvimento da atividade agropecuária de exportação, um dos poucos setores que não sofreram em cheio os efeitos das crises de 2008 e 2015.
+
+*Antes de 2004, os dados das PNADs não eram representativos [para algumas unidades da federação][2] por não incluírem a população rural.*
+
+## Distribuição da renda
+
+```{r gini, fig.height=6, fig.width=9, fig.cap="Fonte: IBGE, Pesquisa Nacional por Amostra de Domicílos."}
+# import ---------------------------------------------------------------------
+gini_uf <- read_csv2("dados/pnad_2001-2011_gini.csv")
+gini_br <- read_csv2("dados/pnad_2001-2011_gini_br.csv")
+
+# Índices de gini das UFs em boxplot, 2007 e 2019 -----------------------
+gini <- bind_rows(gini_br, gini_uf)
+
+g <- gini %>%
+  filter(uf %in% c(1:21,51),
+         ano >= 2007) %>%
+  highlight_key(~uf_n) %>%
+  ggplot(aes(ano, Valor,
+             color = reorder(uf_n, uf),
+             text = paste0("território: ", uf_n))) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(breaks = breaks_width(1)) +
+  scale_y_continuous(limits = c(0.4, 0.6)) +
+  scale_color_manual(values = c("grey50", "darkred", "seagreen", "steelblue",
+                                "gold2", "orange", "purple", "coral",
+                                "forestgreen", "khaki")) +
+  labs(x = "Ano", y = "Índice", color = "Estado",
+       title = "Índice de Gini (menor é melhor)")
+
+p <- g %>%
+  ggplotly(tooltip = c("ano", "Valor", "text")) %>%
+  highlight(on = "plotly_hover", off = "plotly_deselect")
+
+p
+```
+
+O gráfico \@ref(fig:gini) mostra os índices de Gini para medir a desigualdade de renda nos estados e no Brasil como um todo, para o período 2007-2011. Quanto mais próximo de 0, mais equitativa é a distribuição de renda, e quanto mais próximo de 1, mais desigual.
+
+<!-- interessante incluir esse indicador para períodos mais recentes usando a PNADC -->
+
+Apesar do período restrito, o gráfico conta a história do lento e tortuoso processo de desenvolvimento econômico brasileiro. Neste período, apesar da existência de programas de transferência de renda que beneficiaram os estados da Amazônia Legal, a redução das desigualdades de renda foi tímida.
+
+A nível nacional, observamos uma queda no índice, de 0.534 em 2007 para 0.508 em 2011. Ao nível dos estados, por sua vez, essa história é mais complexa. Alguns deles seguiram a tendência nacional, como o Acre, Tocantins, Maranhão e Mato Grosso e apresenteram ligeira queda no indicador após variações ao longo do período. Outros estados, por sua vez, apresentaram aumento da desigualdade, é o caso do Amazonas, Roraima e Pará. Por fim, Rondônia e Amapá apresentaram  estabilidade no período, com resultados muito similares entre 2007 e 2011.
+
+# Educação
+
+## Anos de estudo da população
+
+```{r anos-estudo, fig.height=6, fig.width=9, fig.cap="Fonte: IBGE, Pesquisa Nacional por Amostra de Domicílios."}
+# import ----------------------------------------------------------------------
+ae_uf <- read_csv2("dados/pnad_2001-2015_anos_estudo.csv")
+ae_br <- read_csv2("dados/pnad_2001-2015_anos_estudo_br.csv")
+
+# Grupos de anos de estudo das UFs em comparação com o Brasil ----------------
+anos_estudo <- bind_rows(ae_br, ae_uf) %>%
+  mutate(
+    aes2 = fct_collapse(
+      aes,
+      `Sem instrução e\nmenos de 1 ano` = c("Sem instrução e menos de 1 ano"),
+      `1 a 3 anos` = c("1 ano", "2 anos", "3 anos"),
+      `4 a 7 anos` = c("4 anos", "5 anos", "6 anos", "7 anos"),
+      `8 a 10 anos` = c("8 anos", "9 anos", "10 anos"),
+      `11 a 14 anos` = c("11 anos", "12 anos", "13 anos", "14 anos"),
+      `15 ou mais anos` = c("15 anos ou mais"),
+      `Não determinados` = c("Não determinados e sem declaração",
+                             "Não determinados")) %>%
+      fct_relevel(
+        "Sem instrução e\nmenos de 1 ano",
+        "1 a 3 anos",
+        "4 a 7 anos",
+        after = 0L)) %>%
+  group_by(uf, uf_n, ano, aes2) %>%
+  summarise(v = sum(v, na.rm = TRUE)) %>%
+  mutate(p = v/sum(v, na.rm = TRUE))
+
+g <-
+  anos_estudo %>%
+  highlight_key(~aes2) %>%
+  ggplot(aes(ano, p,
+             fill = aes2)) +
+  facet_wrap(~fct_reorder(uf_n, uf), ncol = 2) +
+  geom_area(aes(text = NULL)) +
+  scale_x_continuous(name = "Ano", breaks = breaks_width(2)) +
+  scale_y_continuous(name = "Proporção",
+                     labels = label_percent(accuracy = 1)) +
+  scale_fill_viridis_d(name = "Grupos de anos\nde estudo",
+                       labels = label_wrap(12),
+                       option = "E") +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5),
+        strip.background = element_blank()) +
+  ggtitle("Grupos de anos de estudo")
+
+p <-
+  ggplotly(g,
+           tooltip = c("ano", "p"),
+           height = 1000,
+           width = 700) %>%
+  highlight(on = "plotly_click", off = "plotly_relayout", debounce = 25)
+
+p
+```
+
+
+<!-- Preciso complementar esse gráfico e os anteriores com informações mais atualizadas, que peguem os efeitos da crise de 2015 -->
+
+A sequência de painéis da figura \@ref(fig:anos-estudo) mostra a evolução da proporção da população acima de 10 anos que completou um determinado número de anos de estudo. A escolaridade está fortemente relacionada não apenas com o aumento da renda do trabalho, mas também com outros objetivos sociais, como a melhoria dos indicadores de saúde, e portanto, é uma das métricas mais relevantes para o desenvolvimento.
+
+O padrão nacional no período é de ascensão dos níveis de escolaridade mais elevados, representados pelos grupos 8 a 10 anos (Fundamental completo) 11-14 anos (Ensino médio completo) e 15 anos ou mais (superior completo). Esta ascensão é exibida nos gráficos pela redução da área ocupada pela população que não completou o ensino fundamental ou não estudou, gerando um padrão em que as cores mais claras ocupam uma área cada vez maior do gráfico.
+
+Este padrão de expansão da escolaridade é repetido nas UFs, porém, em ritmos variados. Parte da variação vêm da natureza amostral da pesquisa, que pode produzir pequenas diferenças entre um ano e outro, porém, o padrão geral é similar ao padrão nacional.
+
+O nível por sua vez, é ligeiramente inferior ao nacional, vejamos como exemplo a população com nível superior completo. O Brasil saiu de um patamar de 4,7% de população com 15 anos de estudo ou mais em 2001 para quase 10% em 2015. Os estados da Amazônia Legal todos tinham menos de 4% em 2001, com muitos em torno de 2% e o Maranhão em 1%. No ano de 2015, a maioria dos estados tinha atingido o patamar de cerca de 8%, com o estado de Roraima superando a média nacional. No geral, no entanto, a distância em relação a média nacional foi 1 a 2 pontos percentuais para baixo. Os estados do Maranhão e Pará, por sua vez, tinha 4,5 e 5% de sua população com ensino superior completo, ou seja, metade da proporção nacional.
+
+Os números, no geral, oferecem um panorama interessante: por um lado, a região ainda é uma das menos desenvolvidas do país, por outro, beneficiou-se das políticas governamentais e do crescimento econômico do período e acompanhou as tendências nacionais de melhora nos indicadores, o que oferece um cenário alentador.
+
+[1]: https://biblioteca.ibge.gov.br/visualizacao/livros/liv86444.pdf
+[2]: http://api.sidra.ibge.gov.br/desctabapi.aspx?c=1860

@@ -1,0 +1,27 @@
+#comboBoxMap{
+    margin-top: 25px;
+    margin-left: 150px;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    text-align: left;
+    border-radius: 5px;
+}
+
+#comboBoxTaxaMortalidade{
+    margin-top: 25px;
+    margin-left: 700px;
+    position: absolute;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    height: 40px;
+    text-align: left;
+    border-radius: 5px;
+}

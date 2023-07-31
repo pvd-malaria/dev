@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{% block title %} Classificação de esquema de tratamento de malaria {% endblock %}</h1>
+    <p>Defina o perfil do paciente no formulário abaixo para obter recomendação se o Esquema de "Tratamento 11" é
+        recomendado, ou se é recomendado "Outros Esquemas".</p>
+
+    <table border="1">
+        <tr>
+            <td>
+                <form method="post">
+
+                    <h3>Informações Sociodemográficas</h3>
+
+                    <label for="id_pacie">{{ labels.get("id_pacie") }}</label>
+                    <input type="number" id="id_pacie" name="id_pacie" min="0" max="100" value="0">
+
+                    <label for="id_dimea">{{ labels.get("id_dimea") }}</label>
+                    <select name="id_dimea" id="id_dimea">
+                        {% for idx, row in features["id_dimea"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['id_dimea'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <br>
+
+
+                    <label for="sexo">{{ labels.get("sexo") }}</label>
+                    <br>
+                    <select name="sexo" id="sexo">
+                        {% for idx, row in features["sexo"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['sexo'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="raca">{{ labels.get("raca") }}</label>
+                    <br>
+                    <select name="raca" id="raca">
+                        {% for idx, row in features["raca"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['raca'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="niv_esco">{{ labels.get("niv_esco") }}</label>
+                    <br>
+                    <select name="niv_esco" id="niv_esco">
+                        {% for idx, row in features["niv_esco"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['niv_esco'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="cod_ocup">{{ labels.get("cod_ocup") }}</label>
+                    <br>
+                    <select name="cod_ocup" id="cod_ocup">
+                        {% for idx, row in features["cod_ocup"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['cod_ocup'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="gestante">{{ labels.get("gestante") }}</label>
+                    <br>
+                    <select name="gestante" id="gestante">
+                        {% for idx, row in features["gestante"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['gestante'] }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <h3>Informações Epdemiológicas</h3>
+
+                    <label for="sintomas">{{ labels.get("sintomas") }}</label>
+                    <br>
+                    <select name="sintomas" id="sintomas">
+                        {% for idx, row in features["sintomas"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['sintomas'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <label for="vivax">{{ labels.get("vivax") }}</label>
+                    <br>
+                    <select name="vivax" id="vivax">
+                        {% for idx, row in features["vivax"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['vivax'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="falciparum">{{ labels.get("falciparum") }}</label>
+                    <br>
+                    <select name="falciparum" id="falciparum">
+                        {% for idx, row in features["falciparum"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['falciparum'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <h3>Informações do Exame</h3>
+
+                    <label for="tipo_lam">{{ labels.get("tipo_lam") }}</label>
+                    <select name="tipo_lam" id="tipo_lam">
+                        {% for idx, row in features["tipo_lam"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['tipo_lam'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="exame">{{ labels.get("exame") }}</label>
+                    <select name="exame" id="exame">
+                        {% for idx, row in features["exame"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['exame'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="res_exam">{{ labels.get("res_exam") }}</label>
+                    <select name="res_exam" id="res_exam">
+                        {% for idx, row in features["res_exam"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['res_exam'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="qtd_cruz">{{ labels.get("qtd_cruz") }}</label>
+                    <select name="qtd_cruz" id="qtd_cruz">
+                        {% for idx, row in features["qtd_cruz"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['qtd_cruz'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <br>
+
+                    <label for="hemoparasi">{{ labels.get("hemoparasi") }}</label>
+                    <select name="hemoparasi" id="hemoparasi">
+                        {% for idx, row in features["hemoparasi"].iterrows() %}
+                            <option value="{{ idx }}">{{ row['hemoparasi'] }}</option>
+                        {% endfor %}
+                    </select>
+                    <hr>
+                    <button type="submit">Executar</button>
+                    <br>
+                </form>
+            </td>
+
+            <td>
+                <img src="/static/imgs/{{ messages[2] }}">
+            </td>
+        </tr>
+    </table>
+{% endblock %}
+

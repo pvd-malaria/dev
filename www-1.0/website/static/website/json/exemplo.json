@@ -1,0 +1,12 @@
+{"visualizacaoTreemap":[
+	{"codigo":"12","dados":[
+		{"ano":"2000","children":[
+			{"name":"IDH","value":"20"},
+			{"children":[
+				{"name":"Causas Evitaveis","value":"20"},
+				{"name":"Causas Mal Definidas","value":"50"},
+				{"name":"Outras Causas","value":"30"}
+			]}
+		]}
+	]}
+]}

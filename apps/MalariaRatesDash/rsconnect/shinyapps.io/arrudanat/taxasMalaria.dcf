@@ -1,0 +1,12 @@
+name: taxasMalaria
+title: taxasMalaria
+username:
+account: arrudanat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2702407
+bundleId: 3552709
+url: https://arrudanat.shinyapps.io/taxasMalaria/
+when: 1598301643.96642
+asMultiple: FALSE
+asStatic: FALSE

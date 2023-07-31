@@ -1,0 +1,538 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<style>
+  .card1 {
+    background: url({% static 'website/img/new/publications1.png' %}) no-repeat;
+  }
+
+  .card2 {
+    background: url({% static 'website/img/new/publications5.png' %}) no-repeat;
+  }
+
+  .card3 {
+    background: url({% static 'website/img/new/publications4.png' %}) no-repeat;
+  }
+
+  .card4 {
+    background: url({% static 'website/img/new/publications7.png' %}) no-repeat;
+  }
+
+  .card5 {
+    background: url({% static 'website/img/new/publications6.png' %}) no-repeat;
+  }
+
+  .card6 {
+    background: url({% static 'website/img/new/publications2.png' %}) no-repeat;
+  }
+
+  .card7 {
+    background: url({% static 'website/img/new/publications3.png' %}) no-repeat;
+  }
+</style>
+
+<div>
+  <div class="page-first-block containers">
+    <div class="col-md-12">
+      <h1>{% trans "Publicações" %}</h1>
+      <p data-toggle="modal" data-target="#discoveryModal-1" class="container-center-text">
+        {% trans "Para maior detalhamento de como são feitas nossas análises, acesse abaixo os estudos que já publicamos:" %}
+      </p>
+    </div>
+  </div>
+  <div class="publications-items-container containers">
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#determinants-risk">
+      <div class="card1 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Determinantes do Risco de Mortalidade Neonatal no Brasil, 2006-2016" %}</div>
+          <div class="card-text">{% trans "Uma Abordagem com modelos de Machine Learning" %}</div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>PAA 2020 </span> |
+            <span> {% trans "Abr 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#machine-learning-risk">
+      <div class="card2 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Aplicação de Machine Learning para Avaliação de Risco de Mortalidade Neonatal" %}</div>
+          <div class="card-text">{% trans "Um Estudo de Caso Utilizando Dados de Saúde Pública de São Paulo - Brasil" %}
+          </div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>PAA 2020 </span> |
+            <span> {% trans "Abr 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#big-data-risk">
+      <div class="card3 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Métodos de visualização de Big Data Aplicados no Contexto da Mortalidade Neonatal" %}
+          </div>
+          <div class="card-text">{% trans "Análise do Problema e suas Causas" %}</div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>{% trans "XI Computer on the Beach" %}</span> |
+            <span> {% trans "Set 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#maternal-risk">
+      <div class="card4 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Características maternas e risco de mortalidade neonatal no Brasil entre 2006 e 2016" %}
+          </div>
+          <div class="card-text"></div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>{% trans "International Journal of Population Studies" %}</span> |
+            <span> {% trans "Jun 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#visualization-data">
+      <div class="card5 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Visualização de Informações Aplicada ao Entendimento de Fatores de Mortalidade Neonatal" %}</div>
+          <div class="card-text">
+            {% trans "Um estudo de caso baseado em características demográficas e modelos orientados a dados" %}
+          </div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>{% trans "Revista de Saúde Pública" %}</span> |
+            <span> {% trans "Jul 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#machine-learn-neonatal">
+      <div class="card6 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Machine Learning para prever a mortalidade neonatal" %}</div>
+          <div class="card-text">
+            {% trans "Explorando dados de saúde pública de São Paulo - Brasil" %}
+          </div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>{% trans "EPC 2020" %}</span> |
+            <span> {% trans "Abr 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 publications-card-container" data-toggle="modal" data-target="#classification-risk">
+      <div class="card7 publications-bg">
+        <div class="publications-card">
+          <div class="card-title">
+            {% trans "Um estudo de caso baseado em características demográficas e modelos orientados a dados" %}</div>
+          <div class="card-text">
+            {% trans "Explorando dados de saúde pública de São Paulo - Brasil" %}
+          </div>
+          <div class="read-more">{% trans "LEIA MAIS" %} ></div>
+          <div class="card-date">
+            <span>{% trans "Informatics in Medicine Unlocked" %}</span> |
+            <span> {% trans "Abr 2020" %}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="determinants-risk" tabindex="-1" role="dialog"
+  aria-labelledby="determinants-risk" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <a href="http://www.populationassociation.org/sidebar/annual-meeting/" class="discovery_link" target="_blank">
+            <span><b>PAA 2020</b> | {% trans "Abr 2020" %}</span>
+          </a>
+
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">
+          {% trans "Determinantes do risco de mortalidade neonatal no Brasil, 2006-2016" %}
+        </h2>
+        <div style="width: 100%; display: block;">{% trans "Uma Abordagem com modelos de Machine Learning" %}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "A mortalidade neonatal é um importante problema de saúde, pois o primeiro mês de vida é o momento mais vulnerável para a sobrevivência. Os fatores associados à mortalidade neonatal são complexos e influenciados pelas características biológicas da mãe e do recém-nascido, condições sociais e cuidados prestados pelos serviços de saúde. Neste estudo investiga-se características relacionadas ao risco de mortalidade neonatal no Brasil. Os dados são oriundos do Sistema de Informações sobre Mortalidade e do Sistema de Informações sobre Nascidos Vivos." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "A amostra final foi composta por 302.943 crianças entre 2006 e 2016. Destacamos a proposição de uma nova metodologia baseadas em Machine Learning para abordar o problema da classificação de risco de mortalidade por mortalidade neonatal. Os resultados usando três classificadores diferentes apontam para expressividade de características, sendo peso do recém-nascido, Apgar no primeiro e quinto minuto, malformações congênitas, semanas gestacionais e número de consultas pré-natais, as mais expressivas." %}
+              <a href="{% static 'website/discoveries/PresentationPAA2020LCA.pdf' %}" class="discovery-link"
+                target="_blank">
+                <button class="primary-small-button">{% trans "PPT" %}</button>
+              </a>
+            </p>
+
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/determinants-modal-chart.png' %}" />
+          <div class="img-legend">
+            {% trans "Matriz de confusão para estimar métricas. Fonte: SIM, SINASC, 2006-2016" %}
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://doi.org/10.1101/2020.05.22.20109165" class="discovery_link" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="machine-learning-risk" tabindex="-1" role="dialog"
+  aria-labelledby="machine-learning-risk" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <a href="http://www.populationassociation.org/sidebar/annual-meeting/" class="discovery_link" target="_blank">
+            <span><b>PAA 2020</b> | {% trans "Abr 2020" %}</span>
+          </a>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">
+          {% trans "Aplicação de Machine Learning para Avaliação de Risco de Mortalidade Neonatal" %}</h2>
+        <div style="width: 100%; display: block;">
+          {% trans "Um Estudo de Caso Utilizando Dados de Saúde Pública de São Paulo - Brasil" %}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "A mortalidade infantil é reflexo de uma combinação complexa de fatores socioeconômicos e de saúde, necessitando combinação de diversas fontes de dados para uma análise completa. Consequentemente, o uso de ferramentas e técnicas especializadas lidar com um grande volume de dados é extremamente útil. Técnicas de Machine Learning tem sido aplicado para resolver problemas de vários domínios e apresenta grande potencial para o problema proposto, além ser uma inovação para realidade brasileira.Neste trabalho, é proposto um método inovador para realizar um risco de morte neonatal avaliação utilizando técnicas de visão computacional." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "Utilizando de dados de saúde pública da cidade de São Paulo, foi construído um conjunto de dados composto por dados da mãe, da gravidez e do recém-nascido, e posteriormente aplicado um método que codifica amostras de dados em imagens e classifica amostras utilizando uma rede neural convolucional customizada. Experimentos mostram que o método é capaz de detectar amostras de morte com precisão de 90,61%." %}
+              <a href="{% static 'website/discoveries/PAA-2020-Beluzo-Presentation.pdf' %}" class="discovery-link"
+                target="_blank">
+                <button class="primary-small-button">{% trans "PPT" %}</button>
+              </a>
+              <a href="{% static 'website/discoveries/PAA-2020-Beluzo-Oral-Presentation.m4v' %}" class="discovery-link"
+                target="_blank">
+                <button class="primary-small-button">{% trans "VIDEO" %}</button>
+              </a>
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/publications2.png' %}" />
+          <div class="img-legend">{% trans "Relação entre mortalidade, PIB e IDH em São Paulo em 2015." %}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.medrxiv.org/content/10.1101/2020.05.25.20112896v1" class="discovery_link" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="big-data-risk" tabindex="-1" role="dialog" aria-labelledby="big-data-risk"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <a href="https://www.computeronthebeach.com.br/" class="discovery_link" target="_blank">
+            <span><b>{% trans "XI Computer on the Beach" %}</b> | {% trans "Set 2020" %}</span>
+          </a>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">
+          {% trans "Métodos de visualização de Big Data Aplicados no Contexto da Mortalidade Neonatal" %}
+        </h2>
+        <div style="width: 100%; display: block;">{% trans "Análise do Problema e suas Causas" %}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "A mortalidade neonatal é um problema mundial e sua redução é de interesse internacional. Cerca de 46% de todas as mortes no mundo acontece com crianças de até cinco anos de idade e a maioria essas mortes estão concentradas nos primeiros dias após o nascimento. No Brasil, apesar de possuir fontes de dados como IBGE e DATASUS, não há plataforma que forneça uma maneira intuitiva de visualizar esses dados." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "Assim, este trabalho propõe o uso de recursos visuais especializados ferramentas de análise para Big Data, como as bibliotecas Python Dash, Plotly, NumPy e Pandas, a fim de facilitar o entendimento de informações públicas relacionadas à mortalidade neonatal, o que pode levar a mitigação do problema." %}
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/big-data-graphic.png' %}" />
+          <div class="img-legend">
+            {% trans "Relação entre mortalidade, PIB e IDH em São Paulo em 2015." %}</div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="{% static 'website/discoveries/COTB.pdf' %}" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="maternal-risk" tabindex="-1" role="dialog" aria-labelledby="maternal-risk"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span><b>{% trans "International Journal of Population Studies" %}</b> | {% trans "Jun 2020" %}</span>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">
+          {% trans "Características maternas e risco de mortalidade neonatal no Brasil entre 2006 e 2016" %}
+        </h2>
+        <div style="width: 100%; display: block;"></div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "As mortes neonatais, responsáveis ​​por mais de 60% das mortes infantis, tornaram-se uma grande preocupação no Brasil e a redução de seu número parece ser mais desafiadora do que as mortes pós-neonatais, pois essa redução depende mais dos fatores de gravidez e parto do que de doenças condições saudáveis. Este estudo teve como objetivo avaliar fatores maternos sobre o risco de mortalidade neonatal no Brasil em 2006-2016." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "As características da mãe incluíam anos de estudo, estado civil e idade. Os dados vieram do IBGE e dois sistemas de informação do DATASUS: SIM, para mortalidade, e SINASC, para nascimentos. O tamanho total da amostra válido foi de 28.362.359 crianças. Métodos de visualização e classificação foram realizados. Este estudo constatou que mães solteiras ou com baixa escolaridade apresentavam um risco consideravelmente maior de mortes neonatais, juntamente com mães fora da faixa etária de 20 a 34 anos." %}
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/discovery-modal-chart.png' %}" />
+          <div class="img-legend"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="http://ojs.whioce.com/index.php/ijps/article/view/1130" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="visualization-data" tabindex="-1" role="dialog"
+  aria-labelledby="visualization-data" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span><b>{% trans "Revista de Saúde Pública" %}</b> | {% trans "Jul 2020" %}</span>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">
+          {% trans "Visualização de Informações Aplicada ao Entendimento de Fatores de Mortalidade Neonatal" %}
+        </h2>
+        <div style="width: 100%; display: block;"></div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "Estudo observacional, de coorte retrospectivo, que utiliza dados secundários de nascimento (indicadores) e óbitos infantis no Brasil entre 2006 e 2016. Os dados englobam todo o território nacional e foram provenientes do Sistema de Informação sobre mortalidade (SIM) e Sistema de Informação sobre Nascidos Vivos (SINASC) do DATASUS (Departamento de Informação do Sistema Único de Saúde do Brasil). A metodologia utiliza de ferramentas robustas de ciência de dados para a elaboração de visualizações que relacionam diversos indicadores à mortalidade neonatal." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "As visualizações, em consonância com a bibliografia mais recente, apontam como fatores associados a maiores taxas de mortalidade neonatal: baixo peso, maternidade entre os mais jovens ou acima de 34 anos, menos de 4 consultas pré-natal, baixa escolaridade, bebê do sexo masculino. O tipo de parto também é um fator, embora deva ser considerado segundo a realidade brasileira, onde são frequentes as cesáreas eletivas." %}
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/brasil-map.png' %}" />
+          <div class="img-legend"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="http://www.rsp.fsp.usp.br/" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade sami-modal" id="machine-learn-neonatal" tabindex="-1" role="dialog"
+  aria-labelledby="classification-risk" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span><b>{% trans "EPC 2020" %}</b> | {% trans "Abr 2020" %}</span>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">{% trans "Machine Learning para prever a mortalidade neonatal" %}
+        </h2>
+        <div style="width: 100%; display: block;">
+          {% trans "Explorando dados de saúde pública de São Paulo - Brasil" %}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "A mortalidade infantil é um dos mais importantes indicadores socioeconômicos e de qualidade da saúde no mundo. No Brasil, a mortalidade neonatal representa 70% da mortalidade infantil. Apesar de sua importância, a mortalidade neonatal mostrou sinais crescentes nos últimos anos, o que causa preocupações quanto à necessidade de métodos eficientes e eficazes capazes de ajudar a reduzi-la. Neste artigo, uma nova abordagem é proposta para classificar recém-nascidos suscetíveis à mortalidade neonatal, aplicando métodos de aprendizado de máquina usando recursos extraídos de conjuntos de dados de saúde pública." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "A abordagem é avaliada em um conjunto de dados contendo 15.858 registros, que foram criados, vinculando registros do SINASC e SIM, especificamente da cidade de São Paulo (Brasil), entre 2012 e 2018. Como resultados, usando SVM, XGBoost, Regressão Logística e Aleatória Para os algoritmos de Machine Learning do Forests, uma AUC média de 0,96 foi alcançada ao classificar as amostras como suscetíveis à morte ou não. Além disso, o método SHAP foi usado para entender quais recursos que mais influenciaram as saídas dos algoritmos." %}
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/paper_viz.png' %}" />
+          <div class="img-legend"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://doi.org/10.1101/2020.06.19.20112953" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade sami-modal" id="classification-risk" tabindex="-1" role="dialog"
+  aria-labelledby="classification-risk" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div>
+          <span><b>{% trans "Informatics in Medicine Unlocked" %}</b> | {% trans "Abr 2020" %}</span>
+          <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close"> <span
+              aria-hidden="true">&times;</span> </button>
+        </div>
+      </div>
+      <div class="modal-info-header">
+        <h2 style="width: 100%; display: block;">{% trans "Classificação de Risco de Mortalidade Neonatal" %}
+        </h2>
+        <div style="width: 100%; display: block;">
+          {% trans "Um estudo de caso baseado em características demográficas e modelos orientados a dados" %}
+        </div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-two-column div">
+          <div class="col-md-6">
+            <p>
+              {% trans "Embora tenham sido observadas melhorias nas últimas décadas, a implementação de ações para reduzir a mortalidade infantil ainda é uma preocupação em muitos países. Para resolver esse problema tão importante, este artigo propõe uma nova abordagem de decisão de suporte para classificar os recém-nascidos de acordo com o risco de mortalidade neonatal. Utilizando variáveis relacionados à mãe, ao recém-nascido e fatores sócio demográficos, modelamos o problema de classificação baseado em dados capaz de fornecer a probabilidade de um recém-nascido morrer até os 28 dias de vida." %}
+            </p>
+          </div>
+          <div class="col-md-6">
+            <p>
+              {% trans "Superando uma AUC de 96%, o método proposto é capaz de fornecer não apenas a probabilidade de risco de morte, mas também uma interpretação explicável das características mais importantes para a decisão do modelo, que é fundamental para as aplicações de saúde pública." %}
+            </p>
+          </div>
+        </div>
+        <div class="modal-one-column">
+          <img src="{% static 'website/img/new/paper_viz.png' %}" />
+          <div class="img-legend"></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="https://www.journals.elsevier.com/informatics-in-medicine-unlocked" target="_blank">
+          <button class="primary-button">{% trans "LEIA O ARTIGO COMPLETO" %}</button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="sami-footer">
+  <div class="footer-wrapper">
+    <div class="col-md-4 sami-logo">
+      <a href="{% url 'website:home' %}">
+        <img src="{% static 'website/img/new/Logotipo_SaMI.png' %}" />
+      </a>
+    </div>
+    <div class="col-md-4 contact">
+      <h2>{% trans "contato" %}</h2>
+      <div class="doubts"><a>{% trans "Ficou com alguma dúvida?" %}</a></div>
+      <div class="doubts"><a>{% trans "Quer mais visualizações?" %}</a></div>
+      <div class="email"><a>contatoplataformasami@gmail.com</a></div>
+    </div>
+    <div class="col-md-4 address">
+      <h2>{% trans "endereços" %}</h2>
+      <div><span class="uni-name">IFSP</span>
+        {% trans "R. Heitor Lacerda Guedes, 1000 - Cidade Satélite Íris, Campinas - SP, 13059-581" %}
+      </div>
+      <div><span class="uni-name">UNICAMP</span>
+        {% trans "Cidade Universitária Zeferino Vaz, Barão Geraldo, Campinas - SP, 13083-970" %}</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let navLiAhref = document.getElementById("discoveries");
+  navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+{% endblock %}

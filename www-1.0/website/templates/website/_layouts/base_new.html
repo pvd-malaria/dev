@@ -1,0 +1,257 @@
+{% load i18n %}
+{% load static %}
+{% get_available_languages as LANGUAGES %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="robots" content="NOODP">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ProMalaria</title>
+  <link rel="shortcut icon" type="image/png" href="{% static 'website/img/new/logo-malaria.jpg' %}" />
+
+  <!-- Arquivos CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/home.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/main.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/visualizations.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/predictions.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/discoveries.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'website/css/new/about.css' %}" />
+  <link rel="stylesheet" href="{% static 'website/css/new/bootstrap.min.css' %}">
+
+  <style>
+    .main-brascch-container {
+      background: url({% static 'website/img/new/home-main-container-bg.png' %});
+      padding: 0;
+      margin: 55px 0 0 0;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      width: 100%;
+      color: white;
+    }
+
+    .navbar-brascch .navbar-brand {
+      padding: 5px;
+      margin-left: -165px;
+      position: relative;
+      background: url({% static 'website/img/new/logo-malaria.jpg' %});
+      width: 155px;
+      height: 42px;
+      top: 0px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      -webkit-transition: all .5s;
+      transition: all .5s;
+    }
+
+    .navbar-brascch {
+      background-color: #007BBF;
+    }
+
+
+
+    #navbarSupportedContent {
+      background-color: transparent;
+      width: 100vw;
+    }
+
+    .dropdown-menu {
+      background-color: #007BBF;
+    }
+
+    .dropdown-item {
+      color: #fff;
+    }
+
+    #nav-item-dropdown {
+      color: #ffff;
+    }
+
+
+
+    #visualizations {
+      margin-top: -7px;
+      margin-bottom: -10px;
+    }
+
+    .navbar-brascch .brascch-nav-list>#visualizations:hover>a::before {
+      bottom: 4px;
+    }
+
+    .brascch-nav-list .selected-page#visualizations:before {
+      bottom: 4px;
+    }
+
+    #predictions {
+      margin-top: -7px;
+      margin-bottom: -10px;
+    }
+
+    .navbar-brascch .brascch-nav-list>#predictions:hover>a::before {
+      bottom: 4px;
+    }
+
+    .brascch-nav-list .selected-page#predictions:before {
+      bottom: 4px;
+    }
+
+    #discoveries {
+      margin-top: -7px;
+      margin-bottom: -10px;
+    }
+
+    .navbar-brascch .brascch-nav-list>#discoveries:hover>a::before {
+      bottom: 4px;
+    }
+
+    .brascch-nav-list .selected-page#discoveries:before {
+      bottom: 4px;
+    }
+
+    #nav-item-dropdown:hover {
+      color: #cccccc;
+    }
+
+
+    #navbar-brand-text {
+      margin-left: 70px;
+    }
+
+    .navbar-brascch .brascch-nav-list {
+      margin-right: 1px;
+    }
+
+    .navbar-brascch .brascch-nav-list>li:not(:last-child) {
+      margin-right: 25px;
+    }
+
+
+
+    @media screen and (max-width: 767px) {
+      .navbar-brascch .navbar-toggler {
+        background-color: #484242;
+        box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+        -webkit-box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+        -moz-box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+      }
+
+      #navbarSupportedContent {
+        background-color: #007BBF;
+        box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+        -webkit-box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+        -moz-box-shadow: 0px 0px 15px 5px rgba(77, 77, 77, 0.7);
+
+      }
+
+      .navbar-brascch .navbar-brand {
+        margin-left: 1px;
+      }
+
+    }
+  </style>
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+  <!-- Arquivos necessários para o Bootstrap -->
+  <script type="text/javascript" src="{% static 'website/js/new/jquery.min.js' %}"></script>
+  <script src="{% static 'website/js/new/bootstrap.min.js' %}"></script>
+
+
+  <!-- Bloco de scripts -->
+  {% block scripts %}{% endblock %}
+  <!-- Bloco de Estilos -->
+  {% block styles %}{% endblock %}
+</head>
+
+
+
+<body>
+  <div>
+    <nav class="navbar navbar-brascch navbar-expand-md fixed-top navbar-dark">
+      <a class="navbar-brand" href="{% url 'website:home' %}">
+        <span id="navbar-brand-text">ProMalaria</span>
+      </a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav brascch-nav-list ml-auto flex-nowrap" id="sizelist">
+          <li><a id="home" class="nav-item dropdown" href="{% url 'website:home' %}">{% trans "Início" %}</a></li>
+          <li><a id="about" class="nav-item dropdown" href="#">{% trans "Sobre a Malária" %}</a>
+          <li><a id="dashboards" class="nav-item dropdown"
+              href="{% url 'website:dashboards' %}">{% trans "Dashboards" %}</a>
+          </li>
+          <li id="visualizations" class="nav-item dropdown">
+            <a id="nav-item-dropdown" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Visualização de
+              dados</a>
+            <div class="dropdown-menu">
+              <a href="{% url 'website:qualidade_informacao' %}" class="dropdown-item">Qualidade da Informação</a>
+              <a href="{% url 'website:datavisualization' %}" class="dropdown-item">Galeria de
+                Visualizações</a>
+            </div>
+          </li>
+
+          <li id="predictions" class="nav-item dropdown">
+            <a id="nav-item-dropdown" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Modelos</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-item">Modelos Preditivos</a>
+              <a href="#" class="dropdown-item">Modelos de Classificação</a>
+            </div>
+          </li>
+
+
+          <li id="discoveries" class="nav-item dropdown">
+            <a id="nav-item-dropdown" href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Publicações</a>
+            <div class="dropdown-menu">
+              <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">
+                Boletins</a>
+              <div class="dropdown-menu">
+                <a href="{% url 'website:newsletter_atlas_geo' %}" class="dropdown-item">Amazônia Legal</a>
+                <a href="{% url 'website:newsletter_atlas_pop' %}" class="dropdown-item">População</a>
+                <a href="{% url 'website:newsletter_atlas_mig' %}" class="dropdown-item">Migração</a>
+                <a href="{% url 'website:newsletter_atlas_comp' %}" class="dropdown-item">Composição</a>
+                <a href="{% url 'website:newsletter_atlas_metodologia' %}" class="dropdown-item">Metodologia</a>
+              </div>
+            </div>
+          </li>
+
+          <li><a id="about" class="nav-item dropdown" href="#">{% trans "Equipe" %}</a></li>
+          <li><a id="about" class="nav-item dropdown" href="#">{% trans "Contato" %}</a></li>
+
+
+        </ul>
+
+        <div class="divLanguage" style="display: none;">
+          <form action="{% url 'set_language' %}" method="post">
+            {% csrf_token %}
+
+            <input name="next" type="hidden" value="" />
+            {% get_current_language as LANGUAGE_CODE %}
+            {% get_available_languages as LANGUAGES %}
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+
+            <button class="languageButton" type="submit" name="language" value="{{ language.code }}">
+              {{ language.code }}
+            </button>
+            {% endfor %}
+          </form>
+        </div>
+      </div>
+
+
+
+  </div>
+
+  </nav>
+
+  {% block conteudo %}{% endblock %}
+  </div>
+
+</body>
+
+</html>

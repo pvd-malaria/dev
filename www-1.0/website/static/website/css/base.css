@@ -1,0 +1,156 @@
+/* id's */
+
+#logo{
+	margin-top: 50px;
+	margin-left: 90px;
+	margin-top: 1.5cm;
+	margin-left: 2cm;
+	text-align: left;
+}
+
+#imgPI{	
+	margin-left: 2cm;
+	margin-top: 1cm;
+	height: 300px;
+	border-radius: 20px;
+	overflow: hidden;
+
+}
+
+#presentation{
+	
+	text-align: justify;	
+	padding:6px 10px;
+ 	margin:0;
+ 	word-wrap:break-word
+}
+
+
+#copyright{
+	text-align: center;
+	font-family: Times, serif;
+	font-size: 10px;
+}
+
+/* tags */
+
+body{
+	margin-left: 1cm;
+	margin-right: 1cm;
+}
+
+hr {
+	height: 50%;
+	width: 90%;
+	color: #4682B4;
+	border: 1.5px solid #F5DEB3;
+	border-radius: 1.5px;
+}
+
+a{
+	margin-right: 5%;
+	margin-right: 2cm;
+    font-family: Didot, serif;
+	color:black;
+}
+
+a:hover,a:visited,a:active {
+	color:black;
+}
+
+li{
+	color: black;
+	font-family: Didot, serif;
+}
+ul,li, nav { 
+	display: inline;	
+	text-decoration: none;
+	 
+}
+
+header {
+	text-align: right;
+}
+
+h1,h3 {
+	font-family: Didot, serif; 
+	text-align: center;
+}
+
+/* classes */
+.about{
+	font-family: Times, serif;
+	font-size: 20px;
+	text-align: justify;
+	margin-right: 5cm;
+	margin-left: 5cm;
+}
+
+.login {
+    font-family: Times, serif;
+	font-size: 120%;
+	text-align: center;
+	margin-right: 10%;
+	margin-left: 43%;
+    border: 1.5px solid #F5DEB3;
+	width:10em;
+	height:11em;
+	font-size: 20px;
+	text-align: center;
+	margin-right: 5cm;
+	margin-left: 5cm;
+    border: 1.5px solid #F5DEB3;
+	width:200px;
+	height:220px;
+	margin-left: 550px;
+}
+.lista {
+    font-family: Times, serif;
+	font-size: 20px;
+	text-align: justify;
+	margin-right: 5cm;
+	margin-left: 5cm;
+	border-color:#F5DEB3;
+
+
+}
+.upload{
+ 	font-family: Times, serif;
+	font-size: 20px;
+	text-align: justify;
+	margin-right: 5cm;
+	margin-left: 5cm;
+
+}
+
+.login input[type=password],.login button[type=submit],.login input[type=text]{
+	width:140px;
+	margin-top:-12%;
+	background-color:#F5F5F5;
+	border: 1.5px solid #F5DEB3;
+	color:black;
+}
+
+.upload label ,.upload button[type=submit]{
+text-indent: 0;
+margin-top: 0.83em;
+display: block;
+font-size: 20px;
+
+}
+
+input[type=password], button[type=submit], input[type=text]{
+	width:150px;
+	margin-top:-12%;
+	background-color:#F5F5F5;
+	border: 1.5px solid #F5DEB3;
+	color:black;
+	font-family: Times, serif;
+}
+textarea,input[type=file]{
+    width:400px;
+	background-color:#F5F5F5;
+	border: 3.0px solid #F5DEB3;
+	color:black;
+	font-family: Times, serif;
+}

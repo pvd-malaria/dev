@@ -1,0 +1,52 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<style>
+    .dashIFrame {
+        position: relative;
+        background-color: #ffffff;
+        width: 95vw;
+        display: block;
+        border: none;
+        overflow: hidden;
+        height: 850px;
+    }
+
+    .containers {
+        padding: 2% 2% !important;
+    }
+</style>
+
+<div>
+    <div class="data-visualization-first-block containers">
+        <div class="col-md-12">
+
+            <h1>
+                {% trans "Qualidade da Informação" %}
+            </h1>
+
+
+        </div>
+    </div>
+    <div class="containers">
+        <div>
+            <iframe src="https://lcalves.shinyapps.io/quality/" scrolling="no" class="dashIFrame">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let navLiAhref = document.getElementById("visualizations");
+    navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+{% endblock conteudo%}

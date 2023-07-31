@@ -1,0 +1,42 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}ProMalaria{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+{% load static %}
+
+
+<div>
+    <div class="data-visualization-first-block containers">
+        <div class="col-md-12">
+            <a class="back-visualizations-button" href="{% url 'website:datavisualization' %}">
+                < {% trans "VOLTAR" %}</a>
+                    <h1>
+                        {% trans "Relação Proporção de casos positivos" %}
+                    </h1>
+
+
+        </div>
+    </div>
+    <div class="containers">
+        <div class="col-md-6">
+            <img style="width: 80vw;" src="{% static 'website/img/new/plot_ridges.png' %}" />
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script>
+    let navLiAhref = document.getElementById("visualizations");
+    navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+{% endblock %}

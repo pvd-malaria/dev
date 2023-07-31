@@ -1,0 +1,55 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}ProMalaria{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+{% load static %}
+
+<style>
+    .mobilidadeIFrame {
+        background-color: #F1F0E6;
+        background-size: cover;
+        position: relative;
+        padding: 0;
+        width: 72vw;
+        height: 102vh;
+        display: block;
+        border: none;
+        overflow: hidden;
+    }
+</style>
+
+
+<div>
+    <div class="data-visualization-first-block containers">
+        <div class="col-md-12">
+            <a class="back-visualizations-button" href="{% url 'website:datavisualization' %}">
+                < {% trans "VOLTAR" %}</a>
+                    <h1>
+                        {% trans "Relação Mobilidade" %}
+                    </h1>
+
+
+        </div>
+    </div>
+    <div class="containers">
+        <div class="col-md-12">
+            <iframe src="{% static 'website/img/Mobilidade/fluxos_infeccao_residencia.html' %}" scrolling="no"
+                class="mobilidadeIFrame">
+            </iframe>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    let navLiAhref = document.getElementById("visualizations");
+    navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+{% endblock %}

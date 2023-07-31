@@ -1,0 +1,242 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<style>
+  .agua-x-mortalidade-bg {
+    background: url({% static 'website/img/new/water.jpg' %}) no-repeat;
+  }
+
+  .partos-x-mortalidade-bg {
+    background: url({% static 'website/img/new/parto.jpg' %}) no-repeat;
+  }
+
+  .mortalidade-pib-idh-bg {
+    background: url({% static 'website/img/new/mortalidade_pib_idh.jpg' %}) no-repeat;
+  }
+
+  .proporcoes-gestacao-bg {
+    background: url({% static 'website/img/new/proporcoes_gestacao.jpg' %}) no-repeat;
+  }
+
+  .fluxo-saude-bg {
+    background: url({% static 'website/img/new/fluxo.jpg' %}) no-repeat;
+  }
+
+  .consultas-x-mortalidade-bg {
+    background: url({% static 'website/img/new/raca-est-civil.jpg' %}) no-repeat;
+  }
+
+  .idade-mae-bg {
+    background: url({% static 'website/img/new/idade_mae.jpg' %}) no-repeat;
+  }
+
+  .tempo-gestacao-bg {
+    background: url({% static 'website/img/new/tempo_gestacao.jpg' %}) no-repeat;
+  }
+
+  .pesos-nascidos-bg {
+    background: url({% static 'website/img/new/peso_nascidos.jpg' %}) no-repeat;
+  }
+
+  .qtd-partos-bg {
+    background: url({% static 'website/img/new/qtd_partos_idade.jpg' %}) no-repeat;
+  }
+
+  .incubadoras-por-ubs-bg {
+    background: url({% static 'website/img/new/incubadoras_por_ubs.jpg' %}) no-repeat;
+  }
+
+  .mortalidades-medias-mensais-bg {
+    background: url({% static 'website/img/new/mortalidades_medias_mensais.jpg' %}) no-repeat;
+  }
+
+  .nascimentos-por-incubadoras-bg {
+    background: url({% static 'website/img/new/nascimentos_por_incubadoras.jpg' %}) no-repeat;
+  }
+
+  .nascimentos-por-neonatal-bg {
+    background: url({% static 'website/img/new/nascimentos_por_neonatal.jpg' %}) no-repeat;
+  }
+
+  .porcentagem-de-maes-por-cor-bg {
+    background: url({% static 'website/img/new/porcentagem_de_maes_por_cor.jpg' %}) no-repeat;
+  }
+
+  .ggridges-bg {
+    background: url({% static 'website/img/new/plot_ridges-bg.jpg' %}) no-repeat;
+  }
+
+
+  .mobilidade-bg {
+    background: url({% static 'website/img/new/mobilidade.png' %}) no-repeat;
+  }
+
+
+
+  .page-first-block {
+    background: url({% static 'website/img/new/main-bg-malaria.jpg' %}) no-repeat;
+    background-size: cover;
+  }
+
+  .page-first-block>div>h1 {
+    font-family: Playfair Display, Montserrat, Arial, Helvetica, sans-serif;
+    color: #FFFF;
+    font-size: 56px;
+    border-bottom: none;
+  }
+</style>
+
+<div>
+  <div class="page-first-block containers">
+    <div class="col-md-12">
+      <h1>{% trans "Visualização de Dados" %}</h1>
+    </div>
+  </div>
+  <div class="visualization-items-container containers">
+    <h3>{% trans "Galeria de Visualizações" %}</h3>
+    <div class="col-md-4 visualization-card-container">
+      <div class="agua-x-mortalidade-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_case_bubble' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Casos de Malária - Bubble" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="idade-mae-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_case_line' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Casos de Malária - Line" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="consultas-x-mortalidade-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_escolaridade_nivel' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Nível de Escolaridade Testados Positivos" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="porcentagem-de-maes-por-cor-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_escolaridade_anos_estudo' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Grupos de Anos de Estudo" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="tempo-gestacao-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_gestante' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Gestantes" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="mortalidade-pib-idh-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_ocupacao' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Ocupação" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="nascimentos-por-incubadoras-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_mortes' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Número de Mortes" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="mortalidades-medias-mensais-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_cruzes' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Quantidade de Cruzes" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="proporcoes-gestacao-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_populacao' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Estrutura Etária e por Sexo" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="partos-x-mortalidade-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_taxa_incidencia' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Taxa de Incidência" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="ggridges-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_ggridges' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Proporção de casos positivos" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="idade-mae-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_rendimento' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Rendimento" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="idade-mae-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_rendimento_gini' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Rendimento Gini" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="mobilidade-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:plotly_mobilidade' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Mobilidade" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script>
+  let navLiAhref = document.getElementById("visualizations");
+  navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+{% endblock %}

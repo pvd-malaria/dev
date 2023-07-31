@@ -1,0 +1,84 @@
+---
+title: "Age structure and malaria rates in the Legal Amazon: a demographic perspective"
+author:
+  - Vinícius de Souza Maia
+  - Natália Martins Arruda
+  - Carlos Eduardo Beluzo
+  - Bianca Cechetto Carlos
+  - Luciana Correia Alves
+  
+abstract: "Despite advances in reducing the burden of malaria in recent decades, the disease remains relevant for population health in the Legal Amazon region of Brazil. At the same time that rates decreased from 18.4 to only 5.4 cases per 1000 population, the Brazilian population has experienced rapid changes in its age structure. This is relevant for malaria control since populations of different ages have different risk profiles. We will use data from National Household Surveys and the Malaria Epidemiological Surveillance System to estimate the contribution of age to malaria rate schedules, using visualizations and rate decomposition to compare the years 2007 and 2019 for nine states in the Legal Amazon. Our expected findings are that although malaria rates have fallen considerably from 2007 to 2019, changes in population structure will have non-negligible contribution to changes in malaria rate schedules, especially since states may have had malaria rate reductions and population structure changes of varying intensity. Furthermore, we believe the contribution of age structure to malaria rate schedules will tend to increase as further reductions in rates become more challenging in the next few years and trends in fertility and mortality in the country have been accelerating population aging."
+
+keywords:
+  #- Sustainable Development Goals (SDGs)
+  - Decomposition analysis/methods
+  - Health and morbidity
+  - Applied demography
+  - Age structure
+  #- Population ageing
+  #- Amazon
+  #- Malaria
+
+output: 
+  bookdown::pdf_document2:
+    toc: false
+    number_sections: false
+    keep_tex: true
+    latex_engine: xelatex
+    citation_package: natbib
+
+bibliography: references.bib
+biblio-style: unsrtnat
+natbiboptions: numbers, round, super
+
+fontsize: 12pt
+linkcolor: blue
+fontfamily: mathptmx
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+library(tidyverse)
+library(kableExtra)
+
+options(digits = 2)
+
+yr <- read_csv2("rate_change.csv", col_types = cols())
+```
+
+## Introduction
+
+Worldwide, malaria is major health issue, with over 200 million cases every year and over 400,000 deaths each year [@WorldMalariaReport], so much so that it is a part of Sustainable Development Goal 3.3: "*By 2030, end the epidemics of AIDS, tuberculosis, malaria and neglected tropical diseases* [...]" [@TransformingOurWorld] . Despite the progress made in the previous decades, it continues to be a common disease in the Legal Amazon region of Brazil, where 157 thousand cases were reported in 2019 and another 60 thousand in the first half of 2020 [@saudeBoletimEpidemiologicoMalaria2020]. For this reason, one of the goals of National Malaria Control Program (NCMP) is the eradication of the disease, with current goals of eliminating *P. falciparum* malaria until 2030.
+
+However, as the country has reduced disease incidence rapidly in the preceding decades, the disease has become more focal and heterogeneously distributed in the territory [@lanaTopQuantifyingUnequal2021] and further reductions in malaria rates will probably become more challenging[@ferreiraChallengesMalariaElimination2016] to achieve with wide-ranging strategies, requiring tailored, local approaches. This is especially relevant considering the complex nature of malaria risk, which involves ecological, demographic, socioeconomic and institutional factors complexly intertwined [@worldhealthorganizationGlobalTechnicalStrategy2015].
+
+From a demographic perspective, these successes in malaria control happen at a time where Brazil is undergoing rapid population aging [@camaranoPopulacaoBrasileiraSeus2014] and also an expansion of education access. This is relevant for malaria epidemiology because certain age and education profiles tend to show higher levels of disease incidence [@bezerraChangesMalariaPatterns2020; @corderStatisticalModelingSurveillance2019], particularly in the Brazilian case, where the pattern has shifted from younger towards adult, working-age populations. So, it is reasonable to ask if demographic change has had an effect on the rate schedules of malaria and, if so, to what extent.
+
+In summary, the goal of this study is to compare the age structure of the population afflicted with malaria in Brazil in the years 2007 and 2019 and to estimate the contribution of demographic and education changes to changes in rate schedules in the context of falling incidence rates.
+
+## Methods
+
+Data on population estimates for States in the LA region was obtained from the National Household Sample Survey (PNAD) for 2007 and the Continuous National Household Sample Survey (PNADC) for 2019. Data on number of cases by age and state was obtained from the Malaria Epidemiological Surveillance System (SIVEP Malaria), maintained by the Ministry of Health.
+
+The study area is the Legal Amazon, a group of nine Brazilian States that contain, in full or in part, the amazon rainforest biome and are, therefore, constitutionally mandated to preserve it. It is composed by Acre (AC), Amapá (AP), Amazonas (AM), Maranhão (MA), Mato Grosso (MT), Pará (PA), Tocantins (TO), Rondônia (RO) and Roraima (RR) states and is located in the Northwestern part of Brazil, bordering several countries in South America.
+
+We define a malaria case as a positive slide test that corresponds to a new infection, by discarding cases that were reported as "cure verification slides" happening in one of the states in the Legal Amazon in the year 2007 or 2019. The study population is comprised of the estimated population of these states according to the National Institute for Geography and Statistics (IBGE). The malaria rate is the ratio between the number of cases in the given year divided by the estimated midyear population.
+
+We will use data visualizations to compare the age structures of malaria cases for both periods and decomposition [@prestonDemographyMeasuringModeling2000] to estimate the contribution of age structure to malaria rate schedules.
+
+## Expected findings
+
+We expect that falling fertility and increasing longevity will increase the share of the working age population, which historically has had lower rates of infection and death than younger populations[@meloEvaluationMalariaElimination2020]. However, the trend in Brazil seems to be shifting towards higher risk in working age populations, a result we expect to confirm. We also expect to find that reductions in malaria rates also tend to change the shape of the age distribution, not just its level, since the transmission becomes more heterogeneous as it becomes less frequent, so certain risk profiles tend to stand out [@lanaTopQuantifyingUnequal2021].
+
+We do not expect that decomposition will show that high proportions of the rate differences can be attributed to age structure, since the study period was one of very intense decline in rates, but nevertheless, we expect to find some proportion of rate differences to be due to age structure, since the Brazilian population is aging rapidly [@camaranoPopulacaoBrasileiraSeus2014].
+
+In closing, we also intend to investigate interaction between age structure and malaria rates through decomposition, as well as review literature on the age profile of malaria in the study area, since these tend to affect the efficacy of malaria control strategies based upon the relationship between vulnerability and characteristics of exposed populations.
+
+## Preliminary Results
+
+Our results show that even in the Legal Amazon, a region typically lagging in regards to population aging trends in the rest of the country, population aging is already ongoing and the proportion of the population below 20 has reduced visibly between the two periods for every state.
+
+It is also apparent from age-specific malaria rates that not only there was an overall reduction of the level of malaria infection, there were also changes in shape of the distributions: States that reduced the level of malaria infection very quickly show a more pronounced reduction in infection rates for younger populations than adults, while states were the decline was less pronounced maintained a similar pattern were the younger the population, the higher the rates.
+
+The decomposition of rate changes showed that, even as malaria rates plummeted in the last few decades, age structure still had a modest, but significant contribution to rate changes, and in the context of an aging population and current challenges to reduce malaria rates, it is likely that contribution will increase in the future.

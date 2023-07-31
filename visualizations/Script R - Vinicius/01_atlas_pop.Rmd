@@ -1,0 +1,168 @@
+---
+title: "População"
+output: bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+```
+
+```{r pkgs-opts}
+# Pkgs/opts -------------------------------------------------------------
+xfun::pkg_attach("data.table",
+                 "ggplot2",
+                 "plotly",
+                 "dplyr",
+                 "forcats",
+                 "scales",
+                 message = FALSE)
+setDTthreads(4)
+options(datatable.print.class = TRUE,
+        scipen = 20)
+```
+
+```{r import}
+# import state counts for 2000, 2010 and 2019 ---------------------------
+c00 <- readRDS("dados/censo_2000_migracao_datafixa.rds")
+
+c10 <- readRDS("dados/censo_2010_migracao_datafixa.rds")
+
+c19 <- readxl::read_xls("dados/etc/estimativa_populacao_dou_2019.xls",
+                        skip = 2, n_max = 33,
+                        col_names = c("reg", "skip", "count"),
+                        col_types = c("text", "skip", "text"))
+```
+
+```{r cozinha}
+# munge col names and types --------------------------------
+setDT(c19)
+c19[, count_19 := readr::parse_number(
+  c19$count,
+  locale = readr::locale(grouping_mark = "."))
+  ][,count := NULL]
+
+c00 <- c00[UF != "\032"]
+
+# get counts for 2000 e 2010 ---------------------------------
+x1 <- c00[UF %in% c(11:17, 21, 51), list(count_00 = sum(PESO)), keyby = UF]
+x2 <- c10[UF %in% c(11:17, 21, 51), list(count_10 = sum(PESO)), keyby = UF]
+estados <- c("Rondônia","Acre","Amazonas","Roraima","Pará","Amapá","Tocantins","Maranhão","Mato Grosso")
+x3 <- c19[reg %in% estados][,UF := c("11":"17","21","51")]
+
+setkey(x1, UF)
+setkey(x2, UF)
+setkey(x3, UF)
+
+pop <- x1[x2][x3]
+setcolorder(pop, c("UF", "reg", "count_00", "count_10", "count_19"))
+
+# Growth rate between 2000 and 2010 --------------------------------------
+x1 <- c00[, list(count_00 = sum(PESO))][, reg := "Brasil"]
+x2 <- c10[, list(count_10 = sum(PESO))][, reg := "Brasil"]
+
+setkey(x1, reg)
+setkey(x2, reg)
+
+br <- x1[x2]
+
+aml <- pop %>%
+  mutate(Growth = (count_10 / count_00) ^ (1 / 10) - 1) %>%
+  select(UF, reg, Growth) %>%
+  summarise(Growth = mean(Growth)) %>%
+  mutate(UF = "98", reg = "Amazônia Legal")
+
+br2 <- br %>%
+  mutate(UF = "99", Growth = (count_10 / count_00) ^ (1 / 10) - 1) %>%
+  select(UF, reg, Growth)
+
+pop3 <- pop %>%
+  mutate(Growth = (count_10 / count_00) ^ (1 / 10) - 1) %>%
+  select(UF, reg, Growth) %>%
+  bind_rows(br2, aml) %>%
+  mutate(grupo = if_else(UF >= 98, 1, 0))
+
+# Long count data --------------------------------------------------------
+pop2 <-
+  melt(pop,
+       id.vars = c("UF", "reg"),
+       variable.name = "ano",
+       value.name = "pop") %>%
+  mutate(ano = recode_factor(ano,
+                             "count_00" = "2000",
+                             "count_10" = "2010",
+                             "count_19" = "2019"))
+```
+
+```{r display-numbers}
+# display numbers for text --------------------------------------------------
+pop_aml <- pop2 %>%
+  filter(ano == 2019) %>%
+  summarise(pop_total = sum(pop)) %>%
+  unlist()
+
+pop_br <- c19 %>% filter(reg == "Brasil") %>% select(count_19) %>% unlist()
+
+pop_total <- pop_aml %>% number(big.mark = ".",
+                                decimal.mark = ",")
+pop_percent <- (pop_aml/pop_br) %>% percent(accuracy = 0.01, 
+                                            big.mark = ".", 
+                                            decimal.mark = ",")
+```
+
+A população total da Amazônia legal é estimada em `r pop_total` para o ano de 2019, o que representa `r pop_percent` da população estimada do país. A região como um todo apresenta um crescimento acima da média nacional, embora isto não seja uma regra para todos os estados da região.
+
+# População total
+
+Como pode ser visto na figura \@ref(fig:vol-pop), os estados mais populosos da região são Maranhão e Pará, com populações estimadas de cerca de 7 e 8,5 milhões de habitantes, respectivamente. Apesar de seu tamanho, são estados em que já se estima crescimento menor. Entre 2000 e 2010, a população do Maranhão aumentou em quase 1 milhão de habitantes, já entre 2010 e 2019, a população aumentou em cerca de 500 mil pessoas. De maneira semelhante, a população do Pará aumentou em quase 1,4 milhão de habitantes no primeiro período, e no segundo, esse número caiu para 1,1 milhão.
+
+Em seguida, temos os estados do Mato Grosso e Amazonas, com populações estimadas em 3,5 e 4 milhões aproximadamente. São estados com população ainda em expansão e para os quais o ritmo de crescimento não parece ter arrefecido. Entre 2000 e 2010, Mato Grosso e Amazonas registraram aumento de 500 e 600 mil pessoas aproximadamente, valor similar ao registrado no período seguinte.
+
+Os estados menores também apresentam trajetória de crescimento bastante parecida nos dois períodos. Tocantins e Rondônia aumentaram sua população em cerca de 200 mil pessoas nos dois períodos, enquanto a população de Acre, Amapá e Roraima cresceu em cerca de 150 mil pessoas por período.
+
+
+```{r vol-pop, fig.cap='Fonte: IBGE - Censos Demográficos 2000 e 2010, Estimativas da população 2019.'}
+# Gráfico do volume da população -----------------------------------------
+g <- pop2 %>%
+  ggplot(aes(x = ano,
+             y = pop,
+             group = reg,
+             color = fct_inorder(reg))) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(breaks = breaks_extended(8),
+                     labels = label_number(big.mark = ".", 
+                                           decimal.mark = ",")) +
+  scale_color_viridis_d(option = "E") +
+  theme_bw() +
+  labs(title = "População total, 2000-2019",
+       x = "Ano", y = "População", color = "Estado")
+
+ggplotly(g)
+```
+
+# Ritmo do crescimento
+
+Quando analisamos a figura \@ref(fig:cresc-pop), o cenário se inverte de certa forma. Pequenos estados como Amapá, Roraima e Acre apresentam um ritmo de crescimento acelerado, com taxas acima de 3% ao ano. Alguns estados maiores como Amazonas e Pará ainda apresentam ritmo de crescimento acima da média nacional, mas a diferença é pequena (0,2%). Algo similar ocorre com as taxas de Mato Grosso e Tocantins, bastante próximas a média nacional. Maranhão e Rondônia, por sua vez, já apresentam taxas de crescimento bem menores, de 1,5% e 1,2% ao ano, que sugerem que estes estados já estão "perdendo" sua população de alguma forma, provavelmente através da emigração.
+
+É importante ressaltar que o Brasil já vive um contexto geral de desaceleração do crescimento populacional, embora a população brasileira ainda tenda a aumentar nas próximas décadas. Assim, a região como um todo não apresenta crescimento particularmente acelerado, ou "explosivo".
+
+```{r cresc-pop, fig.cap='Fonte: IBGE - Censos Demográficos 2000 e 2010.'}
+# Gráfico do crescimento da população ------------------------------------
+g2 <- pop3 %>%
+  ggplot(aes(x = fct_reorder(reg, Growth),
+             y = Growth,
+             fill = grupo)) +
+  geom_col(color = "black",
+           width = 0.5) +
+  scale_y_continuous(labels = label_percent()) +
+  labs(x = "UF", y = "Crescimento",
+       title = "Crescimento Populacional, 2000-2010") +
+  coord_flip() +
+  theme_bw() +
+  guides(fill = FALSE)
+
+ggplotly(g2)
+```
+

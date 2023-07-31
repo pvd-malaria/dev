@@ -1,0 +1,42 @@
+.multi-column-wrapper > div{
+  margin-bottom: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.multi-column-wrapper > div > img {width: 100%;}
+
+.prediction-second-level-pages-title {
+  border: 0 !important;
+  color: #44403f !important;
+}
+
+.blue-indicator{
+  color: #4aa896;
+  font-weight: 700;
+}
+
+.bold-indicator{
+  font-weight: 700;
+}
+
+.form-risk, .results-section{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.results-section{text-align: center;}
+
+.form-risk h2{color: #4aa896; font-weight: 700;}
+.form-risk select{border-color: #cacaca; margin-bottom: 15px; border-radius: 5px; max-width: 100%;}
+.form-risk label{    
+  margin-bottom: 3px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.form-risk button{margin-top: 10px;}
+
+.results-section .title{color: rgb(120,120,120);text-align: center;font-size: 14px;margin-bottom: 15px;}
+
+.results-section .multi-column-wrapper > div{vertical-align: top;}

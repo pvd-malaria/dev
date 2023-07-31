@@ -1,0 +1,12 @@
+name: PCA_dasboard
+title: PCA_dasboard
+username:
+account: arrudanat
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 4472919
+bundleId: 5103602
+url: https://arrudanat.shinyapps.io/PCA_dasboard/
+when: 1633377335.26644
+asMultiple: FALSE
+asStatic: FALSE

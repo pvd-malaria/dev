@@ -1,0 +1,98 @@
+.btn-button {
+    display: block;
+    width: 100px;
+    height: 50px;
+    background: #4E9CAF;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px
+}
+.btn-primary {
+    display: block;
+    width: 70px;
+    height: 20px;
+    background: #4E9CAF;
+    padding: 15px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    font-size: 15px
+}
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700');
+
+$base-spacing-unit: 24px;
+$half-spacing-unit: $base-spacing-unit / 2;
+
+$color-alpha: #1772FF;
+$color-form-highlight: #EEEEEE;
+
+.container {
+    max-width: 1000px;
+    margin-right:auto;
+    margin-left:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+}
+
+.table {
+    width:150%;
+    border:1px solid $color-form-highlight;
+}
+
+.table-header {
+    display:flex;
+    width:100%;
+    background:#000;
+    padding:($half-spacing-unit * 1.5) 0;
+}
+
+.table-row {
+    display:flex;
+    width:100%;
+    padding:($half-spacing-unit * 1.5) 0;
+    background:#EEEEEE;
+}
+
+.table-data, .header__item {
+    flex: 1 1 20%;
+    text-align:left;
+}
+
+.header__item {
+    text-transform:uppercase;
+}
+
+.filter__link {
+    color:white;
+    text-decoration: none;
+    position:relative;
+    display:inline-block;
+    padding-left:$base-spacing-unit;
+    padding-right:$base-spacing-unit;
+
+&::after {
+    content:'';
+    position:absolute;
+    right:-($half-spacing-unit * 1.5);
+    color:white;
+    font-size:$half-spacing-unit;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+&.desc::after {
+    content: '(desc)';
+}
+
+&.asc::after {
+    content: '(asc)';
+}
+
+

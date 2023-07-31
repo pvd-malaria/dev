@@ -1,0 +1,86 @@
+rm(list = ls())
+
+xfun::pkg_attach("tidyverse", "readxl")
+
+# import census ---------------------------------------------------------------
+cd10 <- readRDS("dados/censo_2010_migracao.rds")
+
+# tidy variables --------------------------------------------------------------
+cd10 <- as_tibble(cd10)
+cd10
+
+
+uf_ant_label <- read_excel(
+  "dados/etc/Migracao e deslocamento _Unidades da Federacao.xls",
+  col_names = c("uf_nome", "uf_cod"), skip = 4)
+
+
+uf_label <- read_excel(
+  "dados/etc/divisao territorial brasil.xls",
+  col_types = c("text", "text", "skip", "skip", "skip", "skip", "skip", "skip"),
+  skip = 2
+)
+
+cd_tidy <-
+  cd10 %>%
+  mutate(
+    ufb = factor(uf, levels = uf_label$UF, labels = toupper(uf_label$Nome_UF)),
+    uf = as.numeric(uf),
+    sexo = factor(sexo, labels = c("Masculino", "Feminino")),
+    uf05b = factor(
+      uf05,
+      labels = uf_ant_label$uf_nome,
+      exclude = ""
+    ),
+    uf05 = as.numeric(substr(uf05, 1, 2)),
+    nv_ins2 = factor(nv_ins, labels = c(
+      "Sem instrução e fundamental incompleto",
+      "Fundamental completo e médio incompleto",
+      "Médio completo e superior incompleto",
+      "Superior completo",
+      "Não determinado")
+    )
+  ) %>%
+  select(-mun)
+
+# população total -------------------------------------------------------
+uf_tbl <- cd_tidy %>%
+  count(uf, ufb, wt = peso, name = "populacao")
+
+# volume de migração por uf ---------------------------------------------
+x <- cd_tidy %>%
+  filter(!is.na(uf05)) %>%
+  count(uf, ufb, uf05, uf05b, wt = peso) %>%
+  filter(uf != uf05) %>%
+  group_by(uf, ufb) %>%
+  summarise(imigrante = sum(n))
+
+x
+
+y <- cd_tidy %>%
+  filter(!is.na(uf05)) %>%
+  count(uf05, uf05b, uf, ufb, wt = peso) %>%
+  filter(uf != uf05) %>%
+  group_by(uf = uf05, ufb = uf05b) %>%
+  summarise(emigrante = sum(n))
+
+y
+
+uf_tbl <- uf_tbl %>% inner_join(x)
+uf_tbl
+
+uf_tbl <- uf_tbl %>% inner_join(y)
+uf_tbl
+
+# indicadores de migração -----------------------------------------------
+export <- uf_tbl %>%
+  mutate(
+    mig_bruta = imigrante + emigrante, # migração bruta
+    mig_saldo = imigrante - emigrante, # saldo migratório
+    tx_bruta  = mig_bruta/populacao, # taxa bruta de migração
+    tx_liqui  = mig_saldo/populacao, # taxa líquida de migração
+    indice_ef = mig_saldo/mig_bruta # índice de eficácia
+  )
+
+# export table ----------------------------------------------------------
+write_excel_csv2(export, "atlas/03_indicadores_migração.csv.xz")

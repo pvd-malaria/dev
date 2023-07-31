@@ -1,0 +1,11 @@
+name: forecasts
+title:
+username:
+account: vinicius-maia
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6354718
+bundleId: 5934855
+url: https://vinicius-maia.shinyapps.io/forecasts/
+when: 1653306030.71771
+lastSyncTime: 1653306030.71771

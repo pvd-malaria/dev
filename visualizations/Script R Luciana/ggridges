@@ -1,0 +1,31 @@
+library(tidyverse)
+
+viz2 <- readxl::read_excel("txpositivo.xlsx") %>% 
+  janitor::clean_names()
+
+summary(viz2)
+
+library(ggplot2)
+library(ggridges)
+names(viz2)
+
+v<-ggplot(viz2, aes(x = propositivo, y = uf, fill = stat(x))) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis_c(name = "%", option = "C") +
+  labs(title = 'Proporção de casos positivos entre os casos investigados segundo Unidade da Federação, 2007-2019')+
+  labs(x = "Proporção de Positivos",
+       y = "Unidade da Federação-UF") +
+  labs(caption = "Fonte: SIVEP Malaria, 2007-2019")
+v
+
+
+#EM INGLÊS
+
+v<-ggplot(viz2, aes(x = propositivo, y = uf, fill = stat(x))) +
+  geom_density_ridges_gradient(scale = 3, rel_min_height = 0.01) +
+  scale_fill_viridis_c(name = "%", option = "C") +
+  labs(title = 'Proportion of cases confirmed among investigated of Malaria by Federation Unit (FU), Brazil, 2007-2019')+
+  labs(x = "Proportion of cases confirmed",
+       y = "FU") +
+  labs(caption = "Source: SIVEP Malaria, 2007-2019")
+v

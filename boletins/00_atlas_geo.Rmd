@@ -1,0 +1,96 @@
+---
+title: "A Amazônia Legal"
+output: bookdown::html_document2
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      warning = FALSE,
+                      message = FALSE)
+xfun::pkg_attach("leaflet", "sf", "dplyr", message = F)
+```
+
+
+```{r importacao}
+# importação -------------------------------------------------------------
+xls_file <- "lista_de_municipios_da_amazonia_legal_2014.xls"
+aml_municipios <- readxl::read_xls(
+  xls_file,
+  skip = 2,
+  col_names = c("UF", "UF_NM", "MUNIC", "MUNIC_NM"),
+  col_types = c("numeric", "text", "numeric", "text"))
+
+sf_municipios <- geobr::read_municipality(showProgress = FALSE)
+sf_estados <- geobr::read_state(showProgress = FALSE)
+```
+
+
+```{r cozinha}
+sf_municipios <- st_make_valid(sf_municipios) %>% st_transform(4326)
+sf_estados <- st_make_valid(sf_estados) %>% st_transform(4326)
+
+# str(sf_municipios)
+# str(sf_estados)
+# str(aml_municipios)
+
+aml_municipios <-
+  aml_municipios %>%
+  mutate(in_aml = "Amazônia Legal") %>%
+  select(MUNIC, in_aml)
+
+sf_join <-
+  inner_join(sf_municipios, aml_municipios, c("code_muni" = "MUNIC"))
+
+sf_estados_aml <- sf_estados %>% filter(code_state %in% c(11:21,51))
+```
+
+
+Segundo o [IBGE][1], "a Amazônia Legal corresponde a área de atuação da SUDAM, delimitada atualmente pela Lei Complementar n.124 de 03-01-2007. A região é composta por 52 municípios de Rondônia, 22 municípios do Acre, 62 do Amazonas, 15 de Roraima, 144 do Pará, 16 do Amapá, 139 do Tocantins, 141 do Mato Grosso, bem como, por 181 municípios do Estado do Maranhão situados a oeste do Meridano 44º, dos quais, 21 deles estão parcialmente integrados à Amazônia Legal". Esta superfície teria uma área de cerca de 5 milhões de km², correspondente a cerca de 60% do território brasileiro.
+
+Já a [Câmara dos Deputados][2] delimita a região em termos administrativos, a partir dos estados que a compõem, são eles: Acre, Amapá, Amazonas, Pará, Rondônia, Roraima, Tocantins, Mato Grosso e Maranhão. O documento ressalta a porosidade dos 11,5 mil quilômetros de fronteira e a presença de comunidades quilombolas e indígenas, bem como a diversidade biológica do bioma amazônico. Destaca ainda o forte crescimento da população da região e os baixos índices de desenvolvimento humano e os resultados ruins dos indicadores socioeconômicos e de saúde. Outro elemento mencionado é a presença de conflitos violentos pela posse da terra na região, composta majoritariamente de terras da união. O sistema de transportes é precário, com dificuldade de atender as demandas da região, com reduzida malha rodoviária reduzida e em sua maioria não pavimentada. Grande destaque é dado para o potencial de geração de energia hidrelétrica, embora não se faça menção aos conflitos sociais e impactos ambientais gerados pela exploração desta fonte. O documento limita-se a listar os grupos indígenas que habitam os estados da região e a sua população total.
+
+Em [matéria publicada em 27 de agosto de 2019][3], o Estado de S. Paulo ressalta o contexto político e econômico da criação da região. Criada em 1953 para "que o governo planejasse o desenvolvimento econômico de toda a região de forma integrada", razão pela qual são criados os orgãos de desenvolvimento, como a SUDAM e o Banco da Amazônia. Ainda de acordo com a redação do jornal, este enfoque no desenvolvimento econômico faz com que a região tenha vários biomas em seu território além da floresta amazônica, como matas de transição e outros; e seus limites tenham sido alterados diversas vezes de acordo com as mudanças na divisão política do país.
+
+Essas diferentes fontes divergem em algumas características do território, por exemplo, o IBGE ressalta que nem todos os municípios de todas os estados estão incluídos na Amazônia Legal, enquanto as outras duas fontes sugerem que a região é composta pelos estados como um todo, mas no geral, as informações são convergentes no tocante à superfície do território, sua população e sua importância para o país.
+
+A ênfase dada ao desenvolvimento econômico da região coloca um grande desafio a convivência do ser humano com o espaço regional, considerando, além das questões de saúde e epidemiologia, as questões ambientais e os conflitos sociais suscitados historicamente pela exploração das atividades econômicas agropecuária, mineral e extrativista e pela existência de povos indígenas originários da amazônia, cuja presença de fato precede as recentes ondas sucessivas de povoamento da amazônia provenientes de outras regiões do país.
+
+# Mapa interativo da Amazônia Legal
+
+No mapa abaixo, é possível ver os limites territoriais dos municípios e dos estados que compõem a Amazônia legal. Os dados são do [IBGE][4].
+
+```{r mapa}
+# Map plotter -----------------------------------------------------------
+labels <- 
+  sprintf("<strong>%s - %s</strong>", 
+          sf_join$name_muni, sf_join$abbrev_state) %>% 
+  lapply(htmltools::HTML)
+
+leaflet() %>% 
+  addProviderTiles("GeoportailFrance.orthos") %>% 
+  addPolygons(
+    data = sf_join,
+    stroke = T,
+    color = "#000000",
+    weight = 0.25,
+    opacity = 0.7,
+    fillColor = ~ "#32A83C",
+    fillOpacity = 0.7,
+    highlight = highlightOptions(
+      weight = 3,
+      opacity = 0.8,
+      fillColor = "#82EB7B"),
+    label = ~ labels,
+    labelOptions = labelOptions(
+      style = list("font-weight" = "normal", padding = "3px 8px"),
+      textsize = "15px",
+      direction = "auto")) %>% 
+  addPolylines(data = sf_estados_aml, weight = 2.5, color = "#3061C9")
+
+```
+
+
+[1]: https://www.ibge.gov.br/geociencias/cartas-e-mapas/mapas-regionais/15819-amazonia-legal.html?=&t=o-que-e
+[2]: https://www2.camara.leg.br/atividade-legislativa/comissoes/comissoes-permanentes/cindra/amazonia-legal/mais-informacoes-sobre-a-amazonia-legal
+[3]: https://sustentabilidade.estadao.com.br/noticias/geral,o-que-e-a-amazonia-legal,70002984530
+[4]: https://www.ibge.gov.br/geociencias/organizacao-do-territorio/malhas-territoriais.html

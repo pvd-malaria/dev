@@ -1,0 +1,104 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+
+<style>
+  .main-button {
+    cursor: pointer;
+  }
+
+  .pTexto {
+    text-align: justify;
+  }
+</style>
+
+<div>
+  <div class="page-first-block containers">
+    <div class="col-md-12">
+      <h1>{% trans "Aprendizado de Máquina" %}</h1>
+      <div class="col-md-6 double-column">
+        <p>
+          {% trans "Aprendizado de Máquina (Machine Learning, no original em inglês) é uma sub-classe de métodos de Inteligência Artificial. Este tipo de método é capaz de, a partir de um conjunto representativo de amostras (dados de treinamento) compostas por diferentes informações (atributos) associadas ao problema, aprender a reconhecer padrões que permitem classificar uma nova amostra, nunca antes vista nos dados." %}
+        </p>
+        <p>
+          {% trans "Nos modelos de Inteligência Artificial desenvolvidos para a Plataforma SAMI, os dados de treinamento correspondem aos dados relacionados a nascimento e óbitos (até 28 dias) que ocorreram no Brasil entre os anos de 2006 a 2016. Cada uma das amostras, conta com informações (atributos) como como exames pré-natal feitos pela mãe, peso da criança ao nascer, condições socioeconômicas da mãe, entre outras." %}
+        </p>
+      </div>
+      <div class="col-md-6 double-column">
+        <p>
+          {% trans "Ao contrário do que ocorre em métodos estatísticos tradicionais, os modelos de Aprendizado de Máquina desenvolvidos para a Plataforma SaMI levam em conta todos os atributos disponíveis, relacionando-os da maneira mais adequada para o problema em questão (seja ele a classificação quanto ao risco de morte em até 28 dias após o nascimento, ou a predição da taxa de mortalidade neonatal para uma região de saúde em até 4 meses a frente)." %}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="containers">
+    <div class="multi-column-wrapper">
+      <div class="col-md-6">
+        <img src="{% static 'website/img/new/risk-mortalidade.png' %}" />
+      </div>
+      <div class="col-md-6">
+        <h3>{% trans "Classificação Quanto ao Risco de Mortalidade Neonatal" %}</h3>
+        <p>
+          {% trans "O modelo fornece a probabilidade de um recém-nascido sobreviver até o 28º dia após seu nascimento." %}
+        </p>
+        <a href="{% url 'website:prediction' %}">
+          <button class="primary-button-icon"><label>{% trans "Usar o modelo" %}</label>
+            <div class="plus-button">+</div>
+          </button>
+        </a>
+      </div>
+    </div>
+    <div class="multi-column-wrapper">
+      <div class="col-md-6">
+        <img src="{% static 'website/img/new/tax-mortalidade.png' %}" />
+      </div>
+      <div class="col-md-6">
+        <h3>
+          {% trans "Predição da Taxa de Mortalidade Neonatal Para Meses Futuros" %}</h3>
+        <p>
+          {% trans "Dado o histórico de mortalidade neonatal dos últimos 5 anos (até o mês atual), prevê a taxa de mortalidade neonatal para 1, 2, 3 e 4 meses à frente." %}
+        </p>
+        <a href="{% url 'website:dash_series_temporais' %}">
+          <button class="primary-button-icon"><label>{% trans "Usar o modelo" %}</label>
+            <div class="plus-button">+</div>
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="sami-footer">
+  <div class="footer-wrapper">
+    <div class="col-md-4 sami-logo">
+      <a href="{% url 'website:home' %}">
+        <img src="{% static 'website/img/new/Logotipo_SaMI.png' %}" />
+      </a>
+    </div>
+    <div class="col-md-4 contact">
+      <h2>{% trans "contato" %}</h2>
+      <div class="doubts"><a>{% trans "Ficou com alguma dúvida?" %}</a></div>
+      <div class="doubts"><a>{% trans "Quer mais visualizações?" %}</a></div>
+      <div class="email"><a>contatoplataformasami@gmail.com</a></div>
+    </div>
+    <div class="col-md-4 address">
+      <h2>{% trans "endereços" %}</h2>
+      <div><span class="uni-name">IFSP</span>
+        {% trans "R. Heitor Lacerda Guedes, 1000 - Cidade Satélite Íris, Campinas - SP, 13059-581" %}
+      </div>
+      <div><span class="uni-name">UNICAMP</span>
+        {% trans "Cidade Universitária Zeferino Vaz, Barão Geraldo, Campinas - SP, 13083-970" %}</div>
+    </div>
+  </div>
+</div>
+
+<script>
+  let navLiAhref = document.getElementById("predictions");
+  navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+{% endblock %}

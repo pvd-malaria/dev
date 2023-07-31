@@ -1,0 +1,126 @@
+<!-- Estendemos do template base -->
+{% extends "website/_layouts/base_new.html" %}
+<!-- Bloco que define o <title></title> da plataforma -->
+{% block title %}BraSCCH{% endblock %}
+
+<!-- Bloco de conteúdo da plataforma -->
+{% block conteudo %}
+{% load static %}
+{% load i18n %}
+{% csrf_token %}
+
+<style>
+  .agua-x-mortalidade-bg {
+    background: url({% static 'website/img/new/water.jpg' %}) no-repeat;
+  }
+
+  .partos-x-mortalidade-bg {
+    background: url({% static 'website/img/new/parto.jpg' %}) no-repeat;
+  }
+
+  .mortalidade-pib-idh-bg {
+    background: url({% static 'website/img/new/mortalidade_pib_idh.jpg' %}) no-repeat;
+  }
+
+  .proporcoes-gestacao-bg {
+    background: url({% static 'website/img/new/proporcoes_gestacao.jpg' %}) no-repeat;
+  }
+
+  .fluxo-saude-bg {
+    background: url({% static 'website/img/new/fluxo.jpg' %}) no-repeat;
+  }
+
+  .consultas-x-mortalidade-bg {
+    background: url({% static 'website/img/new/raca-est-civil.jpg' %}) no-repeat;
+  }
+
+  .idade-mae-bg {
+    background: url({% static 'website/img/new/idade_mae.jpg' %}) no-repeat;
+  }
+
+  .tempo-gestacao-bg {
+    background: url({% static 'website/img/new/tempo_gestacao.jpg' %}) no-repeat;
+  }
+
+  .pesos-nascidos-bg {
+    background: url({% static 'website/img/new/peso_nascidos.jpg' %}) no-repeat;
+  }
+
+  .qtd-partos-bg {
+    background: url({% static 'website/img/new/qtd_partos_idade.jpg' %}) no-repeat;
+  }
+
+  .incubadoras-por-ubs-bg {
+    background: url({% static 'website/img/new/incubadoras_por_ubs.jpg' %}) no-repeat;
+  }
+
+  .mortalidades-medias-mensais-bg {
+    background: url({% static 'website/img/new/mortalidades_medias_mensais.jpg' %}) no-repeat;
+  }
+
+  .nascimentos-por-incubadoras-bg {
+    background: url({% static 'website/img/new/nascimentos_por_incubadoras.jpg' %}) no-repeat;
+  }
+
+  .nascimentos-por-neonatal-bg {
+    background: url({% static 'website/img/new/nascimentos_por_neonatal.jpg' %}) no-repeat;
+  }
+
+  .porcentagem-de-maes-por-cor-bg {
+    background: url({% static 'website/img/new/porcentagem_de_maes_por_cor.jpg' %}) no-repeat;
+  }
+
+  .mapa-importados-bg {
+    background: url({% static 'website/img/new/brasil-map.png' %}) no-repeat;
+  }
+
+  .page-first-block {
+    background: url({% static 'website/img/new/main-bg-malaria.jpg' %}) no-repeat;
+    background-size: cover;
+  }
+
+  .page-first-block>div>h1 {
+    font-family: Playfair Display, Montserrat, Arial, Helvetica, sans-serif;
+    color: #FFFF;
+    font-size: 56px;
+    border-bottom: none;
+  }
+</style>
+
+<div>
+  <div class="page-first-block containers">
+    <div class="col-md-12">
+      <h1>{% trans "Dashboards" %}</h1>
+    </div>
+  </div>
+  <div class="visualization-items-container containers">
+    <h3>{% trans "Galeria de Dashboards" %}</h3>
+    <div class="col-md-4 visualization-card-container">
+      <div class="incubadoras-por-ubs-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:dashboardTaxasMalaria' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Taxas Malaria" %}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 visualization-card-container">
+      <div class="mapa-importados-bg">
+        <div class="visualization-card">
+          <a href="{% url 'website:dashboardImportados' %}">
+            <div>{% trans "Relação" %}</div>{% trans "Importados" %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  let navLiAhref = document.getElementById("dashboards");
+  navLiAhref.setAttribute("class", "nav-item dropdown selected-page");
+</script>
+
+{% endblock %}

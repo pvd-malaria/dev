@@ -1,0 +1,79 @@
+---
+title: "Metodologia"
+output: 
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    number_sections: false
+bibliography: 04_refs.bib
+---
+
+# Introdução
+
+Este documento explicita aspectos técnicos da produção dos boletins sobre a amazônia, em especial a extração dos dados, a seleção das variáveis e dos casos e os softwares estatísticos utilizados.
+
+# Parte 1 - Amazônia Legal
+
+Esta seção foi executada no software `R` [@R], utilizando os pacotes `tmap`[@tmap], `sf`[@sf], `geobr`[@geobr] e `dplyr`[@dplyr]. `sf` permite a utilização de bibliotecas espaciais em `R`, `geobr` facilita o acesso as malhas espaciais do território brasileiro produzidas pelo IBGE, `tmap` é utilizado para produção dos mapas, e `dplyr` é uma extensão das capacidades do próprio R para processamento de banco de dados. 
+
+Foram utilizadas duas malhas: uma de estados e outra de municípios, ambas provenientes do IBGE, bem como uma lista de municípios da amazônia legal de 2014 produzida pelo IBGE.
+
+As malhas originais foram filtradas para conter apenas os casos referentes a Amazônia Legal, através de uma variável dummy construída a partir do join com a tabela de municípios supracitada.
+
+O mapa base foi disponibilizado pelo GeoportailFrance [@geoportail] através do pacote `tmap`, que o importa do projeto open source Leaflet [@leaflet]. O mapa final é composto das camadas base, camada de polígonos dos municípios, camada de fronteiras dos municípios e camada de fronteiras dos estados.
+
+# Parte 2 - População
+
+Esta seção foi construída em software R com os pacotes `data.table` [@data.table], `ggplot2` [@ggplot2], `plotly` [@plotly], `dplyr` [@dplyr], `forcats` [@forcats] e `scales` [@scales]. `data.table` e `dplyr` são pacotes de manipulação de banco de dados, `ggplot2` e `plotly` são pacotes para produção de visualizações e gráficos, `forcats` e `scales` são pacotes que ajudam a trabalhar com variáveis categóricas e com formatação de textos e escalas gráficas, respectivamente.
+
+Foram importados os [Censos 2000 e 2010][3] e a [PNAD 2019][4], dos quais foram extraídos os totais populacionais enumerados ou estimados para os três anos. A taxa de crescimento foi calculada apenas para 2000-2010, pois a PNAD não permite estimar a população total com segurança, motivo pelo qual se utilizam projeções populacionais para ajustar as estimativas da pesquisa. Foram calculadas as populações do país, da região da amazônia legal e dos estados componentes através da expansão amostral, já em 2019, foi utilizada [a estimativa publicada pelo IBGE][2]. Estas populações e taxas foram transformadas em visualizações utilizando os pacotes `ggplot2` e `plotly`.
+
+# Parte 3 - Composição sociodemográfica
+
+Nesta seção foram utilizados os pacotes do `tidyverse` [@tidyverse] (que incluem alguns dos pacotes já citados, como `dplyr`), `scales`, `plotly` e o pacote de interface com a API do IBGE `sidrar` [@sidrar]. As fontes de dados foram o Censo Demográfico e as séries históricas da PNAD e de outras pesquisas do IBGE presentes no [SIDRA][5].
+
+Enquanto o Censo Demográfico foi importado diretamente, e as tabulações foram construídas manualmente, os dados provenientes da PNAD e de outras fontes vêm diretamente das tabulações do SIDRA. As tabelas consultadas são 272, 1860 e 1167.
+
+A pirâmide etária foi construída a partir das variáveis de idade calculada em anos (V6036) e sexo (V0601). A idade foi categorizada em grupos quinquenais até os 70 anos de idade. A população acima de 70 anos foi agrupada em um grupo único. Este procedimento é praxe devido a erros de declaração em idades mais avançadas que prejudicam a precisão das estimativas, embora a escolha por 70 anos seja relativamente arbitrária.
+
+A renda foi obtida da tabela 1860, do SIDRA, compilada a partir de dados da PNAD. Ela representa os rendimentos mensais totais de pessoas maiores de 10 anos. Optamos por esta métrica devido a sua capcaidade de medir a expectativa de rendimento médio do trabalho de uma pessoa em um determinado lugar. Existem outras métricas possíveis, especialmente a renda domiciliar per capita, mas esta tende a ser mais relevante para medir pobreza ou nível de bem estar social e nossa pergunta de pesquisa estava mais relacionada ao retorno esperado a partir do trabalho.
+
+O índice de Gini foi obtido a partir da tabela 1167, que contém os índices para as unidades da federação entre 2007 e 2011, obtidos a partir das PNADs. O ideal seria um período mais longo, considerando a flutuação intensa do índice no nível de análise, provavelmente artefato de variações anuais na amostra, porém, era o que estava disponível imediatamente. O objetivo ao mostrar o índice era combinar uma medida de rendimento médio do trabalho com uma medida sobre a desigualdade de sua distribuição na população, dadas as marcadas disparidades socioeconômicas presentes no Brasil.
+
+Os anos de estudo foram obtidos a partir da tabela 272, para o período 2001-2015. O número de anos de estudo oferece uma forma simples e comparável de analisar a evolução da educação na população. A população com determinado número de anos de estudo foi agrupada em categorias que representam aproximadamente os níveis de escolaridade correspondentes ao primeiro ciclo do ensino fundamental, o ensino fundamental completo, o ensino médio e o ensino superior. A hipótese subjacente a este gráfico é a conhecida relação entre a melhora nos níveis educacionais e o desenvolvimento econômico de uma região, particularmente no momento em que vivemos, quando níveis cada vez mais elevados de educação são necessários para o trabalho em uma parcela crescente dos setores de atividade da economia.
+
+# Parte 4 - Mobilidade
+
+Esta seção foi construída a partir do Censo Demográfico 2010, por ser, ainda, a grande fonte de dados para análises desagregadas da migração no Brasil. Algumas métricas, como os fluxos migratórios só podem ser calculados a partir dessa fonte para a região norte, pois, nas pesquisas amostrais, não há amostra suficiente para cálculo com significância estatística de fluxos, embora outros tipos de análise de composição sejam possíveis.
+
+Foram utilizados os pacotes `sf`, `tidyverse`, `geobr`, `scales`, `tmap`,  `manipulateWidget`, `plotly` e `circlize`. O pacote `manipulateWidget` [@manipulatewidget] serve para renderização das figuras em *iframes* e `circlize` [@circlize] para a produção dos gráficos circulares de fluxos.
+
+O *tileset* de mapas com as estatísticas de migração foi produzido a partir de agregações do Censo 2010. Foram contados o número de habitantes em cada estado, o número de emigrantes e imigrantes, e foram calculadas as taxas respectivas a partir da divisão simples entre as contagens e as métricas, como a migração bruta (imigrantes + emigrantes) e a migração líquida ou saldo migratório (imigrantes - emigrantes). O índice de eficácia migratória é a divisão do saldo migratório pela migração bruta e representa uma aproximação da [capacidade de atração, evasão ou rotatividade migratória][1]. O objetivo desta visualização era oferecer um resumo rápido e visual das características dessas unidades da federação no que diz respeito a migração.
+
+Na seção sobre o perfil dos migrantes, foi criada uma categorização simples do migrante: foram considerados não-migrantes as pessoas que não responderam o quesito sobre migração em uma data-fixa 5 anos antes do recenseamento; foram considerados migrantes internos aqueles que responderam que residiam em uma das unidades da federação da amazônia legal 5 anos antes; e foram considerados migrantes externos aqueles que responderam que residiam em outra unidade da federação do país. Os casos considerados "ignorados" (Código 8888888) ou em que a unidade anterior era desconhecida (98 e 9999999) foram descartados. Optamos pelo descarte pois consideramos mais prudente oferecer uma estimativa conservadora do que tentar realizar algum processo de imputação a partir de outras características.
+
+A partir desta categorização, foram feitas visualizações do volume de migrantes internos e externos, da sua distribuição de renda, nível de instrução e estrutura etária simplificada. O volume e o nível de instrução são tabulações simples das contagens das categorias cruzadas. 
+
+A distribuição de renda é um boxplot por categorias, com dois filtros importantes: apenas a população com renda (renda > 0) e apenas a população respondente (caso não em branco, maior de 15 anos de idade). Na visualização, foi aplicada uma escala logarítimica ao eixo Y para facilitar a visualização da renda, que tem uma variância muito elevada.
+
+A estrutura etária simplificada foi construída com base na experiência teórica e empírica dos estudos migratórios, que constataram repetidas vezes o fenômeno da seletividade migratória por idade e sexo, provavelmente causadas pela estrutura de incentivos e constrangimentos sociais e econômicos à migração, que tornam mais provável que a migração ocorra em idades jovens (dos 16 anos aos 30) e torne-se cada vez menos provável com o avanço da idade. Nesse sentido um dos resultados mais relevantes da análise que pode ser visto no gráfico é o fato de que os migrantes externos tem uma estrutura etária bem mais envelhecida que os internos, com uma população de migrantes mais velhos e provavelmente em outra etapa de seu curso de vida. 
+
+As categorias escolhidas procuram representam grandes fases da vida em torno do qual estão construídas certas expectativas sociais sobre a temporalidade e a participação no mercado de trabalho. Até os 15 anos, espera-se que as crianças frequentem a escola e não trabalhem. Dos 15 aos 30 anos espera-se que parte da população ingresse no mercado do trabalho concomitantemente ao prosseguimento de uma etapa mais alongada de estudos, que, infelizmente, não é acessível a todos os estratos sociais. Dos 30 aos 45 anos, espera-se que a população encontre-se mais bem estabelecida na atividade produtiva, recebendo rendimentos maiores, embora isto não seja regra para todos. Dos 45 aos 60 anos, espera-se que esta população que esteve empregada ao longo da vida acumulou alguns bens e encontra-se numa posição economicamente mais estável e talvez já preparando-se para sua saída da força de trabalho, embora crescentemente esta saída tenha ocorrido cada vez mais tarde. A partir dos 60 anos, pressupõe-se que esta é uma população que já está na iminência de sair da força de trabalho, apesar do já mencionado fenômeno do retardamento desta saída. 
+
+Se do ponto de vista sociológico é certo que estas simplificações reduzam bastante a complexidade das diferentes trajetórias individuais, do ponto de vista das migrações elas ainda fazem sentido, pois ao longo dessas divisões etárias nota-se no agregado da população uma redução progressiva nas taxas de migração. O avanço na idade, por distintos meandros, promove uma certa estabilidade na população, seja por conforto, seja pela diminuição nas oportunidades disponíveis e no retorno percebido ou real de um movimento que é, muitas vezes, arriscado e desconfortável. É importante lembrar que a migração desenraíza uma pessoa de sua rede social local e, não obstante a presença de redes migratórias que amortecem os impactos deste movimento, estas redes não atingem a todos e o movimento não deixa de ser um processo potencialmente traumático.
+
+Por fim, os mapas de fluxos representam visualmente a intensidade dos fluxos populacionais entre as unidades da federação, no período 2005-2010, e mostram a intensa e complexa rede de movimentos migratórios entre as unidades da federação da própria região, bem como das relações entre a região e o resto do país. Foram construídos a partir de uma matriz de fluxos migratórios ou matriz origem-destino que contém um registro para cada fluxo entre unidades da federação. No total, são cerca de 90 ligações no nível de análise das unidades da federação, que foram filtradas para as ligações com pelo menos 2500 pessoas para diminuir a poluição visual e permitir a visualização dos fluxos mais significativos. Neste corte, foram perdidos menos de 5% das observações, mas o gráfico ficou visualmente muito mais claro, em nossa opinião.
+
+Eles mostram que, apesar do comentários inicial sobre a redução dos fluxos, mais do que em outras regiões do país, a migração na Amazônia Legal continua a ser um motor importante da dinãmica populacional das unidades da federação e, seguramente, de alguns municípios e microrregiões específicas. Nosso objetivo ao agregar em unidades da federação foi oferecer ao leitor uma visual panorâmica do fenômeno, que pode ser complementada com análises mais desagregadas.
+
+# Referências
+
+[1]: https://censo2010.ibge.gov.br/noticias-censo.html?busca=1&id=1&idnoticia=1928&t=publicacao-aborda-aspectos-teoricos-analisa-deslocamentos-populacionais-brasil&view=noticia
+
+[2]: https://www.ibge.gov.br/estatisticas/sociais/populacao/9103-estimativas-de-populacao.html?=&t=o-que-e
+
+[3]: https://www.ibge.gov.br/estatisticas/sociais/populacao/9662-censo-demografico-2010.html?=&t=o-que-e
+
+[4]: https://www.ibge.gov.br/estatisticas/sociais/populacao/17270-pnad-continua.html?=&t=o-que-e
+
+[5]: https://sidra.ibge.gov.br/home/pms/brasil

@@ -1,0 +1,268 @@
+* {
+  font-family: 'Lato', sans-serif;
+}
+
+.sami-main-wrapper{margin-top: 55px;}
+
+.linear-background{
+  background-size: 100%;
+  background-image: linear-gradient(#4aa896 65%, rgb(241,240,236) 35%);
+}
+.sami-main-wrapper .sami-wrapper{padding: 3% 5%;}
+.sami-main-wrapper .center-container{
+  text-align: center;
+  padding: 5% 4%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.sami-main-wrapper .credits-section span{ color: rgb(120,120,120); }
+
+.sami-main-wrapper .credits-section .waiting-def{ 
+  color: rgb(225,124,3);
+  font-size: 2rem;
+  font-weight: 700; 
+  
+}
+
+.sami-main-wrapper .credits-section .img-execucao-01 img{ 
+  background-color: #dddddd;
+  border-width: 2px;
+  border-color: #c5c3c3;
+  border-style: solid;
+  box-shadow: 1px 2px 4px #dddddd;
+  width: 70%;
+}
+
+.sami-main-wrapper .credits-section .img-execucao-02 img{ 
+  background-color: #ffffff;
+  border-width: 2px;
+  border-color: #f4f4f4;
+  border-style: solid;
+  box-shadow: 1px 2px 4px #ffffff;
+  width: 70%;
+}
+
+.sami-main-wrapper .credits-section .img-apoio-01 img{ 
+  background-color: #dddddd;
+  border-width: 2px;
+  border-color: #c5c3c3;
+  border-style: solid;
+  box-shadow: 1px 2px 4px #dddddd;
+  width: 70%;
+}
+
+.sami-main-wrapper .credits-section .img-apoio-02 img{ 
+  background-color: #dddddd;
+  border-width: 2px;
+  border-color: #c5c3c3;
+  border-style: solid;
+  box-shadow: 1px 2px 4px #dddddd;
+  width: 70%;
+}
+
+.sami-main-wrapper .credits-section .img-financiamento-01 img{ 
+  background-color: #ffffff;
+  border-width: 2px;
+  border-color: #f4f4f4;
+  border-style: solid;
+  box-shadow: 2px 2px 4px #b3b1b1;
+}
+
+.sami-main-wrapper .credits-section .img-financiamento-02 img{ 
+  background-color: #ffffff;
+  border-width: 2px;
+  border-color: #f4f4f4;
+  border-style: solid;
+  box-shadow: 2px 2px 4px #b3b1b1;
+}
+
+.sami-main-wrapper .credits-section .img-financiamento-03 img{ 
+  background-color: #ffffff;
+  border-width: 2px;
+  border-color: #f4f4f4;
+  border-style: solid;
+  box-shadow: 3px 3px 4px #b3b1b1;
+}
+
+.sami-main-wrapper .center-container .multi-column-wrapper{
+  vertical-align: middle;
+  align-items: center;
+}
+
+.sami-main-wrapper .center-container .dashed-bottom{
+  border-bottom: 1px dashed rgb(120,120,120);
+  margin-bottom: 30px;
+}
+
+.sami-main-wrapper .center-container .crucial-points{
+  text-align: justify;
+}
+
+.sami-main-wrapper .center-container .crucial-points>div:nth-child(2){
+  font-size: 14px;
+}
+
+.sami-main-wrapper .center-container .crucial-points .crucial-points-info>div{
+  display: inline-block;
+  vertical-align: top;
+}
+
+.sami-main-wrapper .center-container .crucial-points .crucial-points-info>div:nth-child(1){
+  width: 28%;
+  top: -1.7rem;
+  position: relative;
+}
+
+.sami-main-wrapper .center-container .crucial-points .crucial-points-info>div:nth-child(1)>span{
+  position: absolute;
+  bottom: 0px;
+}
+
+.sami-main-wrapper .center-container .crucial-points .crucial-points-info>div:nth-child(2){
+  width: 70%;
+}
+
+.sami-main-wrapper .center-container .crucial-points > div>div:nth-child(1){
+  color: rgb(159, 220, 206);
+  font-size: 5rem;
+  font-weight: 300;
+}
+
+.sami-main-wrapper .center-container .crucial-points > div>div:nth-child(2){
+  color: #4aa896;
+  font-weight: bold;
+}
+
+.sami-main-wrapper .center-container .multi-column-wrapper > div{
+  margin-bottom: 30px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.sami-main-wrapper .center-container .crucial-points > div{
+  vertical-align: top;
+}
+
+.sami-wrapper .center-container .main-topics .card-wrapper{
+  padding: 5px;
+}
+
+.sami-wrapper .center-container .main-topics .card-wrapper > div{
+  background-color: #fff;
+  text-align: center;
+  border: 3px solid rgb(159, 220, 206);
+  border-radius: 8px;
+  
+}
+
+.sami-wrapper .center-container .main-topics .card-wrapper > div > img{
+  width: 140px;
+  padding: 15px;
+}
+
+.sami-wrapper .center-container .main-topics .card-wrapper label{
+  padding: 0px 5%;
+  text-align: center;
+  margin-top: 0px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.sami-wrapper-white{background-color: #fff;}
+.sami-wrapper-grey{background-color:rgb(241,240,236); padding: 7% !important;}
+
+.sami-main-wrapper .card-container{
+  background-color: white;
+  border-radius: 75px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.sami-main-wrapper .welcome-container{
+  font-size: 18px;
+  text-align: center;
+}
+
+.sami-main-wrapper .welcome-container p{ 
+  padding: 0 13%;
+}
+.sami-main-wrapper .welcome-container span{
+  font-weight: 900;
+}
+
+.sami-main-wrapper .welcome-container >div > img{
+  width: 75%;
+}
+
+.sami-main-wrapper .no-card-section {
+  padding: 0 4%;
+}
+
+.sami-main-wrapper .welcome-container .welcome-text{ 
+  color: #4aa896;
+  font-weight: 900;
+  margin-bottom: 30px;
+}
+
+.sami-main-wrapper .sami-wrapper .section-title{ 
+  padding: 0px 5%;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.sami-main-wrapper .services-section > div{text-align: center;}
+
+.sami-main-wrapper .services-section .services-section-title{
+  margin: 20px 0;
+}
+
+.sami-main-wrapper .services-section p{
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 25px;
+  padding: 0 40px;
+  color: rgb(120,120,120);
+}
+
+.primary-button{
+  background-color: #4aa896;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  border: 0;
+  text-align: left;
+  padding: 10px 20px;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+  box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+  -moz-box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+}
+
+.primary-small-button{
+  background-color: #4aa896;
+  border-radius: 50px;
+  color: white;
+  font-weight: 700;
+  font-size: 12px;
+  border: 0;
+  text-align: left;
+  padding: 5px 5px;
+  cursor: pointer;
+  -webkit-box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+  box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+  -moz-box-shadow: 2px 3px 10px 0px rgba(176,176,176,1);
+}
+
+@media screen and (max-width: 767px) {
+  .sami-main-wrapper .welcome-container{padding: 10% 4%;}
+  .linear-background .background-bubble {
+    background-size: 200% 65% !important;
+    background-position: top !important;
+  }
+  .sami-main-wrapper .sami-wrapper {
+    padding: 7% 0%;
+  }
+}

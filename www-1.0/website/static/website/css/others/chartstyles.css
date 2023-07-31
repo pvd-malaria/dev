@@ -1,0 +1,17 @@
+.show_graph {
+    width: auto;
+}
+
+.show_graph.tooltip {
+    text-decoration: underline;
+}
+
+.show_graph.axis {
+    font: 10px Georgia, Arial, sans-serif;
+}
+
+.show_graph.axis path, .show_graph.axis line {
+    fill: none;
+    stroke: #dadada;
+    shape-rendering: crispEdges;
+}
